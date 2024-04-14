@@ -1,6 +1,8 @@
+import { BuildOptions } from 'config/types';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { RuleSetRule } from 'webpack';
 
-export const buildLoaders = (): RuleSetRule[] => {
+export const buildLoaders = ({ isDev }: BuildOptions): RuleSetRule[] => {
   const typescriptLoader = {
     test: /\.tsx?$/,
     use: 'ts-loader',
@@ -10,11 +12,8 @@ export const buildLoaders = (): RuleSetRule[] => {
   const scssLoader = {
     test: /\.s[ac]ss$/i,
     use: [
-      // Creates `style` nodes from JS strings
-      'style-loader',
-      // Translates CSS into CommonJS
+      isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       'css-loader',
-      // Compiles Sass to CSS
       'sass-loader',
     ],
   };
