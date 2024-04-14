@@ -1,4 +1,7 @@
 import { render } from 'react-dom';
-import './style.scss';
+import classNames from './style.module.scss';
 
-render(<div>HelloWorld123123</div>, document.getElementById('root'));
+render(
+  <div className={classNames.hello}>HelloWorld123123</div>,
+  document.getElementById('root'),
+);
