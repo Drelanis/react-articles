@@ -1,7 +1,5 @@
 import { render } from 'react-dom';
-import classNames from './style.module.scss';
+import { App } from './components';
+import './index.scss';
 
-render(
-  <div className={classNames.hello}>HelloWorld123123</div>,
-  document.getElementById('root'),
-);
+render(<App />, document.getElementById('root'));
