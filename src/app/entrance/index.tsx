@@ -1,8 +1,8 @@
 import { Suspense } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import { useTheme } from '../providers';
-import { MainLazyPage, AboutLazyPage } from '../../pages';
-import { buildClassNames } from '../../shared';
+import { MainLazyPage, AboutLazyPage } from 'pages';
+import { buildClassNames } from 'shared';
 
 export const App = () => {
   const { theme, toggleTheme } = useTheme();
