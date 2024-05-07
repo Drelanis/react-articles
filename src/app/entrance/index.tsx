@@ -1,8 +1,7 @@
-import { Suspense } from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useTheme } from '../providers';
-import { MainLazyPage, AboutLazyPage } from 'pages';
 import { buildClassNames } from 'shared';
+import { Routes } from '../lib';
 
 export const App = () => {
   const { theme, toggleTheme } = useTheme();
@@ -14,12 +13,7 @@ export const App = () => {
       <button onClick={toggleTheme}>TOGGLE</button>
       <Link to={'/about'}>about</Link>
       <Link to={'/'}>main</Link>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Routes>
-          <Route path="/about" element={<AboutLazyPage />} />
-          <Route path="/" element={<MainLazyPage />} />
-        </Routes>
-      </Suspense>
+      <Routes />
     </div>
   );
 };
