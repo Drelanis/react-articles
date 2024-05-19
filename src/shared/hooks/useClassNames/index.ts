@@ -6,12 +6,12 @@ type Params = {
   additional?: string[];
 };
 
-export const buildClassNames = (params: Params): string => {
+export const useClassNames = (params: Params): string => {
   const { classNames, mods = {}, additional = [] } = params;
 
   return [
     classNames,
-    ...additional,
+    ...additional.filter(Boolean),
     ...Object.entries(mods)
       .filter((field) => Boolean(field[1]))
       .map(([className]) => className),
