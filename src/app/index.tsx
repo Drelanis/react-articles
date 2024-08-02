@@ -1,16 +1,13 @@
 import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider } from 'shared';
-import { App } from './entrance';
+import { App } from './ui';
 import './styles/index.main.scss';
+import { AppProviders } from './lib';
 
 const rootElement = document.getElementById('root');
 
 render(
-  <BrowserRouter>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
-  </BrowserRouter>,
+  <AppProviders>
+    <App />
+  </AppProviders>,
   rootElement,
 );
