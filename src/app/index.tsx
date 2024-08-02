@@ -1,7 +1,7 @@
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from 'shared';
 import { App } from './entrance';
-import { ThemeProvider } from './providers';
 import './styles/index.scss';
 
 const rootElement = document.getElementById('root');
