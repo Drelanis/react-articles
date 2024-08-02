@@ -1,4 +1,4 @@
-import { useClassNames, useTheme } from 'shared';
+import { Button, ButtonVariant, useClassNames, useTheme } from 'shared';
 import { ThemesToggleIcons } from '../constants';
 
 type Props = {
@@ -10,14 +10,28 @@ export const ThemeSwitcher = (props: Props) => {
 
   const { toggleTheme, theme } = useTheme();
 
-  const classNames = useClassNames({
+  const { buttonClassName } = useStyle({ className });
+
+  return (
+    <Button
+      className={buttonClassName}
+      onClick={toggleTheme}
+      variant={ButtonVariant.CLEAR}
+    >
+      {ThemesToggleIcons[theme]}
+    </Button>
+  );
+};
+
+type StyleParams = Pick<Props, 'className'>;
+
+const useStyle = (params: StyleParams) => {
+  const { className } = params;
+
+  const buttonClassName = useClassNames({
     classNames: '',
     additional: [className],
   });
 
-  return (
-    <button className={classNames} onClick={toggleTheme}>
-      {ThemesToggleIcons[theme]}
-    </button>
-  );
+  return { buttonClassName };
 };
