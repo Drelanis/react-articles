@@ -6,7 +6,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 export const buildPlugins = ({
   paths,
 }: BuildOptions): WebpackPluginInstance[] => {
-  return [
+  const plugins: WebpackPluginInstance[] = [
     new HTMLWebpackPlugin({
       template: paths.html,
     }),
@@ -16,4 +16,6 @@ export const buildPlugins = ({
       chunkFilename: 'css/[id].[contenthash].css',
     }),
   ];
+
+  return plugins;
 };
