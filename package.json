@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"webpack serve --env port=3000\" \"npx typed-scss-modules src --watch\"",
+    "start": "concurrently \"webpack serve --env port=3000\" \"npx typed-scss-modules src --watch --ignore **/*.main.scss\"",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development"
   },
