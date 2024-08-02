@@ -1,4 +1,4 @@
-export type BuildMode = 'production' | 'development';
+import { BuildMode } from '../constants';
 
 export type BuildPaths = {
   entry: string;
