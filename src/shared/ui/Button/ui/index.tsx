@@ -27,8 +27,7 @@ const useStyle = (params: StyleParams) => {
 
   const containerClassName = useClassNames({
     classNames: classNames.button,
-    mods: { [classNames[variant]]: true },
-    additional: [className],
+    additional: [className, classNames[variant]],
   });
 
   return { containerClassName };
