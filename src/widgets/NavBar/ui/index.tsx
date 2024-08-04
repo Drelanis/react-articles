@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { AppLinkTheme, Link, useClassNames } from 'shared';
 import classNames from './index.module.scss';
 
@@ -6,12 +7,9 @@ type Props = {
 };
 
 export const NavBar = (props: Props) => {
-  const { className } = props;
+  const { t } = useTranslation();
 
-  const containerClassNames = useClassNames({
-    classNames: classNames.navbar,
-    additional: className,
-  });
+  const { containerClassNames } = useStyles(props);
 
   return (
     <div className={containerClassNames}>
@@ -21,12 +19,25 @@ export const NavBar = (props: Props) => {
           className={[classNames.mainLink]}
           to={'/about'}
         >
-          About
+          {t('About us')}
         </Link>
         <Link theme={AppLinkTheme.SECONDARY} to={'/'}>
-          Main
+          {t('Main')}
         </Link>
       </div>
     </div>
   );
+};
+
+type StyleParams = Pick<Props, 'className'>;
+
+const useStyles = (params: StyleParams) => {
+  const { className } = params;
+
+  const containerClassNames = useClassNames({
+    classNames: classNames.navbar,
+    additional: className,
+  });
+
+  return { containerClassNames };
 };
