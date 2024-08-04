@@ -1,5 +1,10 @@
+import { useTranslation } from 'react-i18next';
+import { TranslationChunks } from 'shared';
+
 const MainPage = () => {
-  return <div>MainPage</div>;
+  const { t } = useTranslation(TranslationChunks.MAIN);
+
+  return <div>{t('Main page')}</div>;
 };
 
 export default MainPage;
