@@ -1,5 +1,5 @@
 import HTMLWebpackPlugin from 'html-webpack-plugin';
-import { ProgressPlugin, WebpackPluginInstance } from 'webpack';
+import { DefinePlugin, ProgressPlugin, WebpackPluginInstance } from 'webpack';
 import { BuildOptions } from '../../types';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
@@ -15,6 +15,9 @@ export const buildPlugins = ({
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',
       chunkFilename: 'css/[id].[contenthash].css',
+    }),
+    new DefinePlugin({
+      __IS_DEV__: JSON.stringify(isDev),
     }),
   ].filter(Boolean);
 
