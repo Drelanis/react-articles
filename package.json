@@ -7,7 +7,9 @@
     "start": "concurrently \"webpack serve --env port=3000\" \"npx typed-scss-modules src --watch --ignore **/*.main.scss\"",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
-    "i18next-resources-for-ts": "i18next-resources-for-ts toc -i ./public/locales/en -o ./@types/resources.ts"
+    "i18next-resources-for-ts": "i18next-resources-for-ts toc -i ./public/locales/en -o ./@types/resources.ts",
+    "husky:install": "husky install",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
@@ -51,7 +53,9 @@
     "eslint-plugin-simple-import-sort": "10.0.0",
     "eslint-plugin-typescript-sort-keys": "3.0.0",
     "webpack": "^5.69.1",
-    "mini-css-extract-plugin": "^2.5.3"
+    "mini-css-extract-plugin": "^2.5.3",
+    "husky": "^9.0.11",
+    "lint-staged": "14.0.1"
   },
   "dependencies": {
     "i18next": "^23.12.2",
@@ -60,5 +64,10 @@
     "react-dom": "^17.0.2",
     "react-i18next": "^15.0.0",
     "react-router-dom": "^6.2.1"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix"
+    ]
   }
 }
