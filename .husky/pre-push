@@ -1,2 +1,3 @@
-npm run lint
+npm run lint:ts
+npm run lint:scss
 echo Pre-push hook ran successfully
