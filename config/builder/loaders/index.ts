@@ -40,5 +40,20 @@ export const buildLoaders = ({ isDev }: BuildOptions): RuleSetRule[] => {
     ],
   };
 
-  return [fileLoader, svgLoader, typescriptLoader, scssLoader];
+  const babelLoader = {
+    test: /\.[jt]sx?$/,
+    exclude: /node_modules/,
+    use: [
+      {
+        loader: require.resolve('babel-loader'),
+        options: {
+          plugins: [isDev && require.resolve('react-refresh/babel')].filter(
+            Boolean,
+          ),
+        },
+      },
+    ],
+  };
+
+  return [fileLoader, svgLoader, babelLoader, typescriptLoader, scssLoader];
 };
