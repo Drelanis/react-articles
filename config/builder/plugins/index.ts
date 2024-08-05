@@ -7,7 +7,7 @@ export const buildPlugins = ({
   paths,
   isDev,
 }: BuildOptions): WebpackPluginInstance[] => {
-  const plugins: WebpackPluginInstance[] = [
+  const plugins = [
     new HTMLWebpackPlugin({
       template: paths.html,
     }),
@@ -19,7 +19,7 @@ export const buildPlugins = ({
     new DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
     }),
-  ].filter(Boolean);
+  ].filter(Boolean) as WebpackPluginInstance[];
 
   return plugins;
 };
