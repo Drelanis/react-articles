@@ -4,7 +4,7 @@ export const useModel = () => {
   const { t, i18n } = useTranslation();
 
   const toggleLanguage = async () => {
-    i18n.changeLanguage(i18n.language === 'ua' ? 'en' : 'ua');
+    await i18n.changeLanguage(i18n.language === 'ua' ? 'en' : 'ua');
   };
 
   return { toggleLanguage, t };

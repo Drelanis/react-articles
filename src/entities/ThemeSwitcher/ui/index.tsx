@@ -1,4 +1,5 @@
 import { Button, ButtonVariant, useClassNames, useTheme } from 'shared';
+
 import { ThemesToggleIcons } from '../constants';
 
 type Props = {

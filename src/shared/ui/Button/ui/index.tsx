@@ -1,6 +1,8 @@
 import { ButtonHTMLAttributes, FC } from 'react';
 import { useClassNames } from 'shared/hooks';
+
 import { ButtonVariant } from '../constants';
+
 import classNames from './index.module.scss';
 
 type Props = {
@@ -19,7 +21,7 @@ export const Button: FC<Props> = (props) => {
   const { containerClassName } = useStyle({ className, variant });
 
   return (
-    <button className={containerClassName} {...otherProps}>
+    <button type="button" className={containerClassName} {...otherProps}>
       {children}
     </button>
   );

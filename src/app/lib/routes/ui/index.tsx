@@ -1,6 +1,8 @@
 import { Suspense } from 'react';
-import { useModel } from '../model';
 import { Routes as ReactRoutes } from 'react-router-dom';
+
+import { useModel } from '../model';
+
 import classNames from './index.module.scss';
 
 export const Routes = () => {

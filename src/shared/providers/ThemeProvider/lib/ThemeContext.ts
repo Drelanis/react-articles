@@ -1,9 +1,10 @@
-import { ThemeVariants } from '../constants';
 import { createContext } from 'react';
 
+import { ThemeVariants } from '../constants';
+
 export type ThemeContextProps = {
-  theme: ThemeVariants;
   setTheme: (theme: ThemeVariants) => void;
+  theme: ThemeVariants;
 };
 
 export const ThemeContext = createContext({} as ThemeContextProps);

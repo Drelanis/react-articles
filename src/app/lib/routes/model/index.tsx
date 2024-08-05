@@ -1,4 +1,5 @@
 import { useRoutes } from 'shared';
+
 import { routeConfig } from '../config';
 
 export const useModel = () => {

@@ -1,14 +1,17 @@
 import { Button, ButtonVariant, useClassNames } from 'shared';
+
 import { useModel } from '../model';
 
-interface LangSwitcherProps {
+type LangSwitcherProps = {
   className?: string;
-}
+};
 
 export const LanguageSwitcher = (props: LangSwitcherProps) => {
+  const { className } = props;
+
   const { t, toggleLanguage } = useModel();
 
-  const { buttonClassNames } = useStyles(props);
+  const { buttonClassNames } = useStyles({ className });
 
   return (
     <Button

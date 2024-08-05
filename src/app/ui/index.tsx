@@ -1,8 +1,10 @@
-import { useClassNames, useTheme } from 'shared';
-import { Routes } from '../lib';
-import { NavBar, Sidebar } from 'widgets';
-import classNames from './index.module.scss';
 import { Suspense } from 'react';
+import { useClassNames, useTheme } from 'shared';
+import { NavBar, Sidebar } from 'widgets';
+
+import { Routes } from '../lib';
+
+import classNames from './index.module.scss';
 
 export const App = () => {
   const { containerClassName } = useStyles();

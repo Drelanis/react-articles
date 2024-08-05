@@ -1,5 +1,7 @@
 import { Configuration } from 'webpack';
+
 import { BuildOptions } from '../types';
+
 import { buildDevServer } from './devServer';
 import { buildLoaders } from './loaders';
 import { buildPlugins } from './plugins';
@@ -9,7 +11,7 @@ export const buildWebpackConfig = (options: BuildOptions): Configuration => {
   const { paths, mode, isDev } = options;
 
   return {
-    mode: mode,
+    mode,
     entry: paths.entry,
     output: {
       filename: '[name].[contenthash].js',

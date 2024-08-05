@@ -1,8 +1,8 @@
 import { BuildMode } from '../constants';
 
 export type BuildPaths = {
-  entry: string;
   build: string;
+  entry: string;
   html: string;
   src: string;
 };
@@ -13,8 +13,8 @@ export type BuildEnv = {
 };
 
 export type BuildOptions = {
+  isDev: boolean;
   mode: BuildMode;
   paths: BuildPaths;
-  isDev: boolean;
   port: number;
 };

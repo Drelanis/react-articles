@@ -1,5 +1,7 @@
 import { useClassNames } from 'shared';
+
 import { useModel } from '../model';
+
 import { Switchers } from './components';
 import classNames from './index.module.scss';
 
@@ -16,7 +18,9 @@ export const Sidebar = (props: Props) => {
 
   return (
     <div className={containerClassName}>
-      <button onClick={onToggle}>toggle</button>
+      <button type="button" onClick={onToggle}>
+        toggle
+      </button>
       <Switchers />
     </div>
   );

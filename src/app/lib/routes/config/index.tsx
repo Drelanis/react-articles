@@ -1,6 +1,6 @@
-import { MainLazyPage, AboutLazyPage } from 'pages';
-
+import { AboutLazyPage, MainLazyPage } from 'pages';
 import { RouteProps } from 'react-router-dom';
+
 import { RoutePath } from '../constants';
 
 export const routeConfig: RouteProps[] = [

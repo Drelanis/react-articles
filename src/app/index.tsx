@@ -1,7 +1,9 @@
 import { render } from 'react-dom';
-import { App } from './ui';
-import './styles/index.main.scss';
+
 import { AppProviders } from './lib';
+import { App } from './ui';
+
+import './styles/index.main.scss';
 
 const rootElement = document.getElementById('root');
 

@@ -2,8 +2,8 @@ type Mods = Record<string, boolean | string>;
 
 type Params = {
   classNames: string;
-  mods?: Mods;
   additional?: string[];
+  mods?: Mods;
 };
 
 export const useClassNames = (params: Params): string => {

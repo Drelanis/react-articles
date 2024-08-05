@@ -1,8 +1,9 @@
-import HTMLWebpackPlugin from 'html-webpack-plugin';
-import { DefinePlugin, ProgressPlugin, WebpackPluginInstance } from 'webpack';
-import { BuildOptions } from '../../types';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import HTMLWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { DefinePlugin, ProgressPlugin, WebpackPluginInstance } from 'webpack';
+
+import { BuildOptions } from '../../types';
 
 export const buildPlugins = ({
   paths,
@@ -18,7 +19,7 @@ export const buildPlugins = ({
       chunkFilename: 'css/[id].[contenthash].css',
     }),
     new DefinePlugin({
-      __IS_DEV__: JSON.stringify(isDev),
+      IS_DEV: JSON.stringify(isDev),
     }),
     isDev && new ReactRefreshWebpackPlugin(),
   ].filter(Boolean) as WebpackPluginInstance[];

@@ -1,4 +1,5 @@
-import { ThemeSwitcher, LanguageSwitcher } from 'entities';
+import { LanguageSwitcher, ThemeSwitcher } from 'entities';
+
 import classNames from './index.module.scss';
 
 export const Switchers = () => {
