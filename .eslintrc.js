@@ -203,6 +203,10 @@ const override = {
   },
 };
 
+const i18nextRules = {
+  'i18next/no-literal-string': [2, { markupOnly: true }],
+};
+
 /**
  * @type {import('eslint').Linter.Config}
  */
@@ -219,6 +223,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-type-checked',
     'plugin:eslint-comments/recommended',
+    'plugin:i18next/recommended',
   ],
   parserOptions: {
     tsconfigRootDir: __dirname,
@@ -235,9 +240,11 @@ module.exports = {
     'simple-import-sort',
     'typescript-sort-keys',
     'react',
+    'i18next',
   ],
   ignorePatterns: ['*.js', 'dist/', 'node_modules/'],
   rules: {
+    ...i18nextRules,
     ...initialRules,
     ...tsRules,
     ...reactRules,

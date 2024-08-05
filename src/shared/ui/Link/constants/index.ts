@@ -2,3 +2,8 @@ export enum AppLinkTheme {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
 }
+
+export const AppRoutes = {
+  MAIN: '/',
+  ABOUT: '/about',
+};

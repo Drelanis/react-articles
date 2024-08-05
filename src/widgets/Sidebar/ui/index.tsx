@@ -1,3 +1,4 @@
+/* eslint-disable i18next/no-literal-string -- test */
 import { useClassNames } from 'shared';
 
 import { useModel } from '../model';
