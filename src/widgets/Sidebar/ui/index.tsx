@@ -27,7 +27,7 @@ type StylesParams = {
 } & Pick<Props, 'className'>;
 
 const useStyles = (props: StylesParams) => {
-  const { className, collapsed } = props;
+  const { className = '', collapsed } = props;
 
   const containerClassName = useClassNames({
     classNames: classNames.container,

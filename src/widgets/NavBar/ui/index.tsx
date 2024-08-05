@@ -19,10 +19,10 @@ export const NavBar = (props: Props) => {
           className={[classNames.mainLink]}
           to={'/about'}
         >
-          {t('About us')}
+          {t('about')}
         </Link>
         <Link theme={AppLinkTheme.SECONDARY} to={'/'}>
-          {t('Main')}
+          {t('main')}
         </Link>
       </div>
     </div>

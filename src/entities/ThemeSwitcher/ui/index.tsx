@@ -26,7 +26,7 @@ export const ThemeSwitcher = (props: Props) => {
 type StyleParams = Pick<Props, 'className'>;
 
 const useStyle = (params: StyleParams) => {
-  const { className } = params;
+  const { className = '' } = params;
 
   const buttonClassName = useClassNames({
     classNames: '',

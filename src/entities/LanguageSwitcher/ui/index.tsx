@@ -16,7 +16,7 @@ export const LanguageSwitcher = (props: LangSwitcherProps) => {
       variant={ButtonVariant.CLEAR}
       onClick={toggleLanguage}
     >
-      {t('Language')}
+      {t('language')}
     </Button>
   );
 };
@@ -24,7 +24,7 @@ export const LanguageSwitcher = (props: LangSwitcherProps) => {
 type StylesParams = Pick<LangSwitcherProps, 'className'>;
 
 const useStyles = (props: StylesParams) => {
-  const { className } = props;
+  const { className = '' } = props;
 
   const buttonClassNames = useClassNames({
     classNames: '',

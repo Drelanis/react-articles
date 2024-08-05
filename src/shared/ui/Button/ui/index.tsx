@@ -9,7 +9,12 @@ type Props = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button: FC<Props> = (props) => {
-  const { className, children, variant, ...otherProps } = props;
+  const {
+    className,
+    children,
+    variant = ButtonVariant.CLEAR,
+    ...otherProps
+  } = props;
 
   const { containerClassName } = useStyle({ className, variant });
 
@@ -23,7 +28,7 @@ export const Button: FC<Props> = (props) => {
 type StyleParams = Pick<Props, 'variant' | 'className'>;
 
 const useStyle = (params: StyleParams) => {
-  const { variant, className } = params;
+  const { variant = ButtonVariant.CLEAR, className = '' } = params;
 
   const containerClassName = useClassNames({
     classNames: classNames.button,
