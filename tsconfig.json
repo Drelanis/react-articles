@@ -45,5 +45,5 @@
       "module": "CommonJS"
     }
   },
-  "include": ["./config", "./src"]
+  "include": ["./config", "./src", "./@types", "./webpack.config.ts"]
 }
