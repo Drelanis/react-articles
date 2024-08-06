@@ -26,7 +26,7 @@ const useStyles = () => {
   const { theme } = useTheme();
 
   const containerClassName = buildClassNames({
-    classNames: classNames.app,
+    classNames: 'app',
     additional: [theme],
   });
 
