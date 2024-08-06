@@ -3,7 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 
-// import path from 'path';
+import path from 'path';
 
 export default {
   clearMocks: true,
@@ -20,6 +20,6 @@ export default {
   modulePaths: ['<rootDir>src'],
   moduleNameMapper: {
     '\\.s?css$': 'identity-obj-proxy',
-    // '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+    '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
   },
 };
