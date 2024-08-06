@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import { Routes as ReactRoutes } from 'react-router-dom';
+import { PageLoader } from 'widgets';
 
 import { useModel } from '../model';
 
@@ -9,7 +10,7 @@ export const Routes = () => {
   const { routes } = useModel();
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<PageLoader />}>
       <div className={classNames.pageWrapper}>
         <ReactRoutes>{routes}</ReactRoutes>
       </div>
