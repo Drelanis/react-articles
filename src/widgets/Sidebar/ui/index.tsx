@@ -18,8 +18,8 @@ export const Sidebar = (props: Props) => {
   const { containerClassName } = useStyles({ className, collapsed });
 
   return (
-    <div className={containerClassName}>
-      <button type="button" onClick={onToggle}>
+    <div data-testid="sidebar" className={containerClassName}>
+      <button data-testid="sidebar-toggle" type="button" onClick={onToggle}>
         toggle
       </button>
       <Switchers />
