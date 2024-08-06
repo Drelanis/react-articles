@@ -3,11 +3,11 @@ import { buildClassNames } from 'shared/hooks';
 
 import classNames from './index.module.scss';
 
-interface LoaderProps {
+interface Props {
   className?: string;
 }
 
-export const Loader: FC<LoaderProps> = (props) => {
+export const Loader: FC<Props> = (props) => {
   const { className } = props;
 
   const { containerClassNames } = useStyles({ className });
@@ -22,7 +22,7 @@ export const Loader: FC<LoaderProps> = (props) => {
   );
 };
 
-type StyleProps = Pick<LoaderProps, 'className'>;
+type StyleProps = Pick<Props, 'className'>;
 
 const useStyles = (params: StyleProps) => {
   const { className = '' } = params;
