@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { buildClassNames } from 'shared/hooks';
+import { buildClassNames } from 'shared/utils';
 
 import classNames from './index.module.scss';
 

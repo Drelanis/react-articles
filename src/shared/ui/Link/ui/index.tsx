@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Link as RRDLink, LinkProps } from 'react-router-dom';
-import { buildClassNames } from 'shared/hooks';
+import { buildClassNames } from 'shared/utils';
 
 import { AppLinkTheme } from '../constants';
 
