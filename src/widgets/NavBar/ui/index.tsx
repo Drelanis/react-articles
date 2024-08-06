@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { AppLinkTheme, AppRoutes, Link, useClassNames } from 'shared';
+import { AppLinkTheme, AppRoutes, buildClassNames, Link } from 'shared';
 
 import classNames from './index.module.scss';
 
@@ -37,7 +37,7 @@ type StyleParams = Pick<Props, 'className'>;
 const useStyles = (params: StyleParams) => {
   const { className } = params;
 
-  const containerClassNames = useClassNames({
+  const containerClassNames = buildClassNames({
     classNames: classNames.navbar,
     additional: className,
   });

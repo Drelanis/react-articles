@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Link as RRDLink, LinkProps } from 'react-router-dom';
-import { useClassNames } from 'shared/hooks';
+import { buildClassNames } from 'shared/hooks';
 
 import { AppLinkTheme } from '../constants';
 
@@ -21,7 +21,7 @@ export const Link: FC<Props> = (props) => {
     ...otherProps
   } = props;
 
-  const linkClassNames = useClassNames({
+  const linkClassNames = buildClassNames({
     classNames: classNames.link,
     additional: [classNames[theme], ...className],
   });

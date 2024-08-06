@@ -1,4 +1,4 @@
-import { Button, ButtonVariant, useClassNames } from 'shared';
+import { buildClassNames, Button, ButtonVariant } from 'shared';
 
 import { useModel } from '../model';
 
@@ -29,7 +29,7 @@ type StylesParams = Pick<LangSwitcherProps, 'className'>;
 const useStyles = (props: StylesParams) => {
   const { className = '' } = props;
 
-  const buttonClassNames = useClassNames({
+  const buttonClassNames = buildClassNames({
     classNames: '',
     additional: [className],
   });

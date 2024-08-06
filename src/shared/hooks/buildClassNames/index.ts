@@ -6,7 +6,7 @@ type Params = {
   mods?: Mods;
 };
 
-export const useClassNames = (params: Params): string => {
+export const buildClassNames = (params: Params): string => {
   const { classNames, mods = {}, additional = [] } = params;
 
   return [

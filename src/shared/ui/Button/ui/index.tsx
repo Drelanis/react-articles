@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, FC } from 'react';
-import { useClassNames } from 'shared/hooks';
+import { buildClassNames } from 'shared/hooks';
 
 import { ButtonVariant } from '../constants';
 
@@ -32,7 +32,7 @@ type StyleParams = Pick<Props, 'variant' | 'className'>;
 const useStyle = (params: StyleParams) => {
   const { variant = ButtonVariant.CLEAR, className = '' } = params;
 
-  const containerClassName = useClassNames({
+  const containerClassName = buildClassNames({
     classNames: classNames.button,
     additional: [className, classNames[variant]],
   });

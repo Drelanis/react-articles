@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { useClassNames, useTheme } from 'shared';
+import { buildClassNames, useTheme } from 'shared';
 import { NavBar, Sidebar } from 'widgets';
 
 import { Routes } from '../lib';
@@ -25,7 +25,7 @@ export const App = () => {
 const useStyles = () => {
   const { theme } = useTheme();
 
-  const containerClassName = useClassNames({
+  const containerClassName = buildClassNames({
     classNames: classNames.app,
     additional: [theme],
   });

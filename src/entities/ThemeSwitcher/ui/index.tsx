@@ -1,4 +1,4 @@
-import { Button, ButtonVariant, useClassNames, useTheme } from 'shared';
+import { buildClassNames, Button, ButtonVariant, useTheme } from 'shared';
 
 import { ThemesToggleIcons } from '../constants';
 
@@ -29,7 +29,7 @@ type StyleParams = Pick<Props, 'className'>;
 const useStyle = (params: StyleParams) => {
   const { className = '' } = params;
 
-  const buttonClassName = useClassNames({
+  const buttonClassName = buildClassNames({
     classNames: '',
     additional: [className],
   });

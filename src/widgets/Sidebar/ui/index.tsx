@@ -1,5 +1,5 @@
-/* eslint-disable i18next/no-literal-string -- test */
-import { useClassNames } from 'shared';
+/* eslint-disable i18next/no-literal-string -- TODO */
+import { buildClassNames } from 'shared';
 
 import { useModel } from '../model';
 
@@ -34,7 +34,7 @@ type StylesParams = {
 const useStyles = (props: StylesParams) => {
   const { className = '', collapsed } = props;
 
-  const containerClassName = useClassNames({
+  const containerClassName = buildClassNames({
     classNames: classNames.container,
     mods: {
       [classNames.collapsed]: collapsed,

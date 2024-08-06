@@ -1,2 +1,2 @@
 export * from './useRoutes';
-export * from './useClassNames';
+export * from './buildClassNames';
