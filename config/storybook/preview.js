@@ -3,6 +3,7 @@ import {
   RouterDecorator,
   ThemeDecorator,
   ThemeVariants,
+  TranslationDecorator,
 } from '../../src/shared';
 import { addDecorator } from '@storybook/react';
 
@@ -15,6 +16,7 @@ export const parameters = {
   },
 };
 
+addDecorator(TranslationDecorator);
 addDecorator(StyleDecorator);
 addDecorator(ThemeDecorator(ThemeVariants.LIGHT));
 addDecorator(RouterDecorator);

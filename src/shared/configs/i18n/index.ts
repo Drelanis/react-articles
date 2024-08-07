@@ -2,6 +2,7 @@ import i18next from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
 
+// TODO update aliases
 import aboutEn from '../../../../public/locales/en/about.json';
 import mainEn from '../../../../public/locales/en/main.json';
 // TODO update aliases

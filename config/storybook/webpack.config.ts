@@ -1,5 +1,5 @@
 import path from 'path';
-import { Configuration } from 'webpack';
+import { Configuration, DefinePlugin } from 'webpack';
 
 import { BuildPaths } from '../webpack';
 
@@ -36,6 +36,14 @@ export default ({ config }: { config: Configuration }) => {
     use: ['@svgr/webpack'],
   });
   config.module.rules.push(buildCssLoader(true));
+
+  // eslint-disable-next-line no-param-reassign -- exception
+  config.plugins = [
+    ...(config.plugins || []),
+    new DefinePlugin({
+      IS_DEV: JSON.stringify(true),
+    }),
+  ];
 
   return config;
 };
