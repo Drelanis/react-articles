@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { buildClassNames, Button } from 'shared';
+import { buildClassNames, Button, ButtonVariant } from 'shared';
 
 import { useModel } from '../model';
 
@@ -22,7 +22,9 @@ export const ErrorCatcher: FC<Props> = (props) => {
   return (
     <div className={containerClassNames}>
       <p>{t('errorCommon')}</p>
-      <Button onClick={reloadPage}>{t('reloadPage')}</Button>
+      <Button variant={ButtonVariant.OUTLINE} onClick={reloadPage}>
+        {t('reloadPage')}
+      </Button>
     </div>
   );
 };
