@@ -1,6 +1,7 @@
 import { buildClassNames, Button, ButtonVariant, useTheme } from 'shared';
+import ThemeIcon from 'shared/assets/icons/theme-toggle-icon.svg';
 
-import { ThemesToggleIcons } from '../constants';
+import classNames from './index.module.scss';
 
 type Props = {
   className?: string;
@@ -9,7 +10,7 @@ type Props = {
 export const ThemeSwitcher = (props: Props) => {
   const { className } = props;
 
-  const { toggleTheme, theme } = useTheme();
+  const { toggleTheme } = useTheme();
 
   const { buttonClassName } = useStyle({ className });
 
@@ -19,7 +20,7 @@ export const ThemeSwitcher = (props: Props) => {
       onClick={toggleTheme}
       variant={ButtonVariant.CLEAR}
     >
-      {ThemesToggleIcons[theme]}
+      <ThemeIcon className={classNames.icon} />
     </Button>
   );
 };
