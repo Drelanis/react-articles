@@ -1,3 +1,11 @@
-npx lint-staged
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
-echo Pre-commit hook ran successfully
+# Run linting
+npx lint-staged
+if [ $? -ne 0 ]; then
+  echo "Lint-staged found errors. Commit aborted."
+  exit 1
+fi
+
+echo "Pre-commit hook ran successfully"

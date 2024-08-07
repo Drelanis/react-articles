@@ -1,3 +1,20 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "Running lint checks..."
+
+# Run TypeScript linting
 npm run lint:ts
+if [ $? -ne 0 ]; then
+  echo "TypeScript linting failed. Push aborted."
+  exit 1
+fi
+
+# Run SCSS linting
 npm run lint:scss
-echo Pre-push hook ran successfully
+if [ $? -ne 0 ]; then
+  echo "SCSS linting failed. Push aborted."
+  exit 1
+fi
+
+echo "Pre-push hook ran successfully"
