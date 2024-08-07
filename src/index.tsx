@@ -1,4 +1,4 @@
 import './shared/configs/i18n';
 
-console.log('1234');
+console.log('12345');
 export * from 'app';
