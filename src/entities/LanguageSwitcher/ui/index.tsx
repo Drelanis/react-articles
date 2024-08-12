@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { buildClassNames, Button, ButtonVariant } from 'shared';
 
 import { useModel } from '../model';
@@ -6,7 +7,7 @@ type LangSwitcherProps = {
   className?: string;
 };
 
-export const LanguageSwitcher = (props: LangSwitcherProps) => {
+export const LanguageSwitcher: FC<LangSwitcherProps> = (props) => {
   const { className } = props;
 
   const { t, toggleLanguage } = useModel();
