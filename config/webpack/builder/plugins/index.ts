@@ -23,9 +23,10 @@ export const buildPlugins = ({
       IS_DEV: JSON.stringify(isDev),
     }),
     isDev && new ReactRefreshWebpackPlugin(),
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false,
-    }),
+    isDev &&
+      new BundleAnalyzerPlugin({
+        openAnalyzer: false,
+      }),
   ].filter(Boolean) as WebpackPluginInstance[];
 
   return plugins;
