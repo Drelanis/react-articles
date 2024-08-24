@@ -1,5 +1,4 @@
-import { LanguageSwitcher } from 'entities/LanguageSwitcher';
-import { ThemeSwitcher } from 'entities/ThemeSwitcher';
+import { LanguageSwitcher, ThemeSwitcher } from 'entities';
 
 import classNames from './index.module.scss';
 

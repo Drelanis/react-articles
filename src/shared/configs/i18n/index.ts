@@ -16,7 +16,7 @@ void i18next
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    debug: IS_DEV || true,
+    debug: IS_DEV,
     fallbackLng: 'en',
     defaultNS: 'translation',
 
