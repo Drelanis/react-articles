@@ -11,12 +11,12 @@ export default {
   coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
   moduleDirectories: ['node_modules', 'src'],
+  rootDir: '../../',
   testMatch: [
     // ! Common regexp for both platforms Mac and Windows
     '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
   ],
   setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
-  rootDir: '../../',
   modulePaths: ['<rootDir>src'],
   moduleNameMapper: {
     '\\.s?css$': 'identity-obj-proxy',
