@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ThemeSwitcher } from '.';
-import { ThemeDecorator, ThemeVariants } from '$shared';
+import { ThemeDecorator, ThemeProvider, ThemeVariants } from '$shared';
 
 export default {
   title: 'entities/ThemeSwitcher',
@@ -12,7 +12,9 @@ export default {
 } as ComponentMeta<typeof ThemeSwitcher>;
 
 const Template: ComponentStory<typeof ThemeSwitcher> = (args) => (
-  <ThemeSwitcher {...args} />
+  <ThemeProvider>
+    <ThemeSwitcher {...args} />
+  </ThemeProvider>
 );
 
 export const Normal = Template.bind({});
