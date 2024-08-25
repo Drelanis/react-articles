@@ -1,10 +1,11 @@
 import { FC, Suspense } from 'react';
-import { buildClassNames, useTheme } from 'shared';
-import { NavBar, Sidebar } from 'widgets';
 
 import { Routes } from '../lib';
 
 import classNames from './index.module.scss';
+
+import { buildClassNames, useTheme } from '$shared';
+import { NavBar, Sidebar } from '$widgets';
 
 export const App: FC = () => {
   const { containerClassName } = useStyles();

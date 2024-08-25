@@ -1,10 +1,11 @@
 import { FC } from 'react';
 import { Link as RRDLink, LinkProps } from 'react-router-dom';
-import { buildClassNames } from 'shared/utils';
 
 import { AppLinkTheme } from '../constants';
 
 import classNames from './index.module.scss';
+
+import { buildClassNames } from '$shared/utils';
 
 type Props = {
   children?: string;

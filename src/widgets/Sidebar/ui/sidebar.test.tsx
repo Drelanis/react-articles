@@ -1,7 +1,7 @@
 import { fireEvent, screen } from '@testing-library/react';
-import { renderWithTranslation } from 'shared';
 
 import { Sidebar } from '.';
+import { renderWithTranslation } from '$shared';
 
 describe('Sidebar', () => {
   test('test render', async () => {

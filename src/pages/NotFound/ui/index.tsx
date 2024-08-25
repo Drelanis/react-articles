@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { buildClassNames } from 'shared';
 
 import classNames from './index.module.scss';
+
+import { buildClassNames } from '$shared';
 
 interface Props {
   className?: string;

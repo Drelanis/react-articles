@@ -1,10 +1,11 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { buildClassNames, Button, ButtonVariant } from 'shared';
 
 import { useModel } from '../model';
 
 import classNames from './index.module.scss';
+
+import { buildClassNames, Button, ButtonVariant } from '$shared';
 
 type Props = {
   className?: string;

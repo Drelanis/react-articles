@@ -1,10 +1,10 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ThemeDecorator } from 'shared/configs';
-import { ThemeVariants } from 'shared/providers';
 
 import { ButtonVariant } from '../constants';
 
 import { Button } from '.';
+import { ThemeDecorator } from '$shared/configs';
+import { ThemeVariants } from '$shared/providers';
 
 export default {
   title: 'shared/Button',

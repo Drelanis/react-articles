@@ -1,7 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ThemeDecorator, ThemeVariants } from 'shared';
 
 import AboutPage from './AboutPage';
+
+import { ThemeDecorator, ThemeVariants } from '$shared';
 
 export default {
   title: 'pages/AboutPage',

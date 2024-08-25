@@ -1,7 +1,8 @@
 import { FC } from 'react';
-import { buildClassNames } from 'shared/utils';
 
 import classNames from './index.module.scss';
+
+import { buildClassNames } from '$shared/utils';
 
 interface Props {
   className?: string;

@@ -1,9 +1,10 @@
 import { ButtonHTMLAttributes, FC } from 'react';
-import { buildClassNames } from 'shared/utils';
 
 import { ButtonVariant } from '../constants';
 
 import classNames from './index.module.scss';
+
+import { buildClassNames } from '$shared/utils';
 
 type Props = {
   className?: string;

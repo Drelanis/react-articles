@@ -1,8 +1,6 @@
-// TODO Fix problem with imports make them with @...
-import { LanguageSwitcher } from 'entities/LanguageSwitcher';
-import { ThemeSwitcher } from 'entities/ThemeSwitcher';
-
 import classNames from './index.module.scss';
+
+import { LanguageSwitcher, ThemeSwitcher } from '$entities';
 
 export const Switchers = () => {
   return (

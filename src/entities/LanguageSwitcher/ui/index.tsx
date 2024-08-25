@@ -1,7 +1,8 @@
 import { FC } from 'react';
-import { buildClassNames, Button, ButtonVariant } from 'shared';
 
 import { useModel } from '../model';
+
+import { buildClassNames, Button, ButtonVariant } from '$shared';
 
 type LangSwitcherProps = {
   className?: string;

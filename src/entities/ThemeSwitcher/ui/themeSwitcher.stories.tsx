@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ThemeDecorator, ThemeVariants } from 'shared';
 
 import { ThemeSwitcher } from '.';
+import { ThemeDecorator, ThemeVariants } from '$shared';
 
 export default {
   title: 'shared/ThemeSwitcher',

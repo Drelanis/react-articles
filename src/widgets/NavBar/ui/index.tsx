@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import { AppLinkTheme, AppRoutes, buildClassNames, Link } from 'shared';
 
 import classNames from './index.module.scss';
+
+import { AppLinkTheme, AppRoutes, buildClassNames, Link } from '$shared';
 
 type Props = {
   className?: string[];

@@ -1,10 +1,10 @@
 /* eslint-disable i18next/no-literal-string -- TODO */
-import { buildClassNames } from 'shared';
-
 import { useModel } from '../model';
 
 import { Switchers } from './components';
 import classNames from './index.module.scss';
+
+import { buildClassNames } from '$shared';
 
 type Props = {
   className?: string;

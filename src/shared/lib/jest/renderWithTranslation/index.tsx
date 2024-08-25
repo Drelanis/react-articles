@@ -2,7 +2,8 @@ import { render } from '@testing-library/react';
 import i18n from 'i18next';
 import { ReactNode } from 'react';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
-import { ThemeProvider } from 'shared/providers';
+
+import { ThemeProvider } from '$shared/providers';
 
 export const renderWithTranslation = async (component: ReactNode) => {
   const i18nForTest = i18n.createInstance();
