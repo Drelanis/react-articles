@@ -10,8 +10,8 @@ export default {
   testEnvironment: 'jsdom',
   coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
-  moduleDirectories: ['node_modules', 'src'],
   rootDir: '../../',
+  moduleDirectories: ['node_modules', 'src'],
   testMatch: [
     // ! Common regexp for both platforms Mac and Windows
     '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
@@ -21,5 +21,7 @@ export default {
   moduleNameMapper: {
     '\\.s?css$': 'identity-obj-proxy',
     '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+    '^\\$shared': '<rootDir>src/shared',
+    '^\\$entities': '<rootDir>src/entities',
   },
 };
