@@ -5,13 +5,14 @@ import { useModel } from '../model';
 import { buildClassNames, Button, ButtonVariant } from '$shared';
 
 type LangSwitcherProps = {
+  isShort: boolean;
   className?: string;
 };
 
 export const LanguageSwitcher: FC<LangSwitcherProps> = (props) => {
-  const { className } = props;
+  const { className, isShort } = props;
 
-  const { t, toggleLanguage } = useModel();
+  const { toggleLanguage, buttonText } = useModel({ isShort });
 
   const { buttonClassNames } = useStyles({ className });
 
@@ -21,7 +22,7 @@ export const LanguageSwitcher: FC<LangSwitcherProps> = (props) => {
       variant={ButtonVariant.CLEAR}
       onClick={toggleLanguage}
     >
-      {t('language')}
+      {buttonText}
     </Button>
   );
 };

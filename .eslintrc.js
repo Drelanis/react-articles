@@ -242,7 +242,7 @@ module.exports = {
     'react',
     'i18next',
   ],
-  ignorePatterns: ['*.js', 'dist/', 'node_modules/'],
+  ignorePatterns: ['*.js', 'dist/', 'node_modules/', '**/*.scss'],
   rules: {
     ...i18nextRules,
     ...initialRules,

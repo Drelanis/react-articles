@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import { Link as RRDLink, LinkProps } from 'react-router-dom';
 
 import { AppLinkTheme } from '../constants';
@@ -8,7 +8,7 @@ import classNames from './index.module.scss';
 import { buildClassNames } from '$shared/utils';
 
 type Props = {
-  children?: string;
+  children?: ReactNode;
   className?: string[];
   theme?: AppLinkTheme;
 } & Pick<LinkProps, 'to'>;

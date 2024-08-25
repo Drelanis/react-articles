@@ -1,8 +1,6 @@
-import { useTranslation } from 'react-i18next';
-
 import classNames from './index.module.scss';
 
-import { AppLinkTheme, AppRoutes, buildClassNames, Link } from '$shared';
+import { buildClassNames } from '$shared';
 
 type Props = {
   className?: string[];
@@ -11,24 +9,11 @@ type Props = {
 export const NavBar = (props: Props) => {
   const { className } = props;
 
-  const { t } = useTranslation();
-
   const { containerClassNames } = useStyles({ className });
 
   return (
     <div className={containerClassNames}>
-      <div className={classNames.links}>
-        <Link
-          theme={AppLinkTheme.SECONDARY}
-          className={[classNames.mainLink]}
-          to={AppRoutes.ABOUT}
-        >
-          {t('about')}
-        </Link>
-        <Link theme={AppLinkTheme.SECONDARY} to={AppRoutes.MAIN}>
-          {t('main')}
-        </Link>
-      </div>
+      <div className={classNames.links}>/</div>
     </div>
   );
 };

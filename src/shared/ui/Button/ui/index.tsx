@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, FC } from 'react';
 
-import { ButtonVariant } from '../constants';
+import { ButtonSize, ButtonVariant } from '../constants';
 
 import classNames from './index.module.scss';
 
@@ -8,6 +8,8 @@ import { buildClassNames } from '$shared/utils';
 
 type Props = {
   className?: string;
+  size?: ButtonSize;
+  square?: boolean;
   variant?: ButtonVariant;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -16,10 +18,12 @@ export const Button: FC<Props> = (props) => {
     className,
     children,
     variant = ButtonVariant.CLEAR,
+    size = ButtonSize.M,
+    square,
     ...otherProps
   } = props;
 
-  const { containerClassName } = useStyle({ className, variant });
+  const { containerClassName } = useStyle({ className, variant, size, square });
 
   return (
     <button type="button" className={containerClassName} {...otherProps}>
@@ -28,14 +32,26 @@ export const Button: FC<Props> = (props) => {
   );
 };
 
-type StyleParams = Pick<Props, 'variant' | 'className'>;
+type StyleParams = Pick<Props, 'variant' | 'className' | 'size' | 'square'>;
 
 const useStyle = (params: StyleParams) => {
-  const { variant = ButtonVariant.CLEAR, className = '' } = params;
+  const {
+    className = '',
+    variant = ButtonVariant.CLEAR,
+    size = ButtonSize.M,
+    square,
+  } = params;
+
+  const mods = {
+    [classNames[variant]]: true,
+    [classNames.square]: square,
+    [classNames[size]]: true,
+  };
 
   const containerClassName = buildClassNames({
     classNames: classNames.button,
     additional: [className, classNames[variant]],
+    mods,
   });
 
   return { containerClassName };
