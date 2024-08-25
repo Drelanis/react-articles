@@ -1,32 +1,64 @@
 name: linting, testing, building
+
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+
 jobs:
-  pipeline:
+  setup:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [18.x]
     steps:
       - uses: actions/checkout@v2
-      - name: Starting Node.js ${{ matrix.node-version }}
+      - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install modules
+      - name: Install modules
         run: npm install
-      - name: build production project
+
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build production project
         run: npm run build:prod
-      - name: linting typescript
+
+  lint-ts:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Linting TypeScript
         run: npm run lint:ts
-      - name: linting css
+
+  lint-css:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Linting CSS
         run: npm run lint:scss
-      - name: unit testing
+
+  test-unit:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Unit testing
         run: npm run test:unit
-      - name: build storybook
+
+  build-storybook:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Storybook
         run: npm run storybook:build
-      - name: screenshot testing
+
+  screenshot-testing:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Screenshot testing
         run: npm run test:ui:ci
