@@ -17,11 +17,22 @@ export default ({ config }: { config: Configuration }) => {
     return config;
   }
 
-  config.resolve.modules?.push(paths.src);
-  config.resolve.extensions?.push('.ts', '.tsx');
+  const updatedConfig = { ...config };
+
+  updatedConfig.resolve!.modules?.push(paths.src);
+  updatedConfig.resolve!.extensions?.push('.ts', '.tsx');
+  updatedConfig.resolve!.alias = {
+    ...config.resolve.alias,
+    $app: path.resolve(__dirname, '/src/app/'),
+    $shared: path.resolve(__dirname, '/src/shared/'),
+    $entities: path.resolve(__dirname, '/src/entities/'),
+    $features: path.resolve(__dirname, '/src/features/'),
+    $pages: path.resolve(__dirname, '/src/pages/'),
+    $widgets: path.resolve(__dirname, '/src/widgets/'),
+  };
 
   // eslint-disable-next-line no-param-reassign -- exception
-  config.module.rules = config?.module?.rules?.map((rule) => {
+  updatedConfig.module!.rules = updatedConfig?.module?.rules?.map((rule) => {
     if (typeof rule === 'object' && rule !== null && 'test' in rule) {
       if (/svg/.test(rule.test as string)) {
         return { ...rule, exclude: /\.svg$/i };
@@ -31,19 +42,19 @@ export default ({ config }: { config: Configuration }) => {
     return rule;
   });
 
-  config.module.rules.push({
+  updatedConfig.module!.rules!.push({
     test: /\.svg$/,
     use: ['@svgr/webpack'],
   });
-  config.module.rules.push(buildCssLoader(true));
+  updatedConfig.module!.rules!.push(buildCssLoader(true));
 
   // eslint-disable-next-line no-param-reassign -- exception
-  config.plugins = [
-    ...(config.plugins || []),
+  updatedConfig.plugins = [
+    ...(updatedConfig.plugins || []),
     new DefinePlugin({
       IS_DEV: JSON.stringify(true),
     }),
   ];
 
-  return config;
+  return updatedConfig;
 };

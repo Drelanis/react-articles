@@ -4,7 +4,7 @@ import { ThemeSwitcher } from '.';
 import { ThemeDecorator, ThemeVariants } from '$shared';
 
 export default {
-  title: 'shared/ThemeSwitcher',
+  title: 'entities/ThemeSwitcher',
   component: ThemeSwitcher,
   argTypes: {
     backgroundColor: { control: 'color' },
