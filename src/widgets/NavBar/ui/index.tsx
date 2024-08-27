@@ -1,6 +1,14 @@
+import { useTranslation } from 'react-i18next';
+
 import classNames from './index.module.scss';
 
-import { buildClassNames } from '$shared';
+import {
+  buildClassNames,
+  Button,
+  ButtonVariant,
+  Modal,
+  useModal,
+} from '$shared';
 
 type Props = {
   className?: string[];
@@ -9,11 +17,24 @@ type Props = {
 export const NavBar = (props: Props) => {
   const { className } = props;
 
+  const { onToggleModal, isModalOpen } = useModal();
+
+  const { t } = useTranslation();
+
   const { containerClassNames } = useStyles({ className });
 
   return (
     <div className={containerClassNames}>
-      <div className={classNames.links}>/</div>
+      <Button
+        variant={ButtonVariant.CLEAR_INVERTED}
+        className={classNames.links}
+        onClick={onToggleModal}
+      >
+        {t('login')}
+      </Button>
+      <Modal isOpen={isModalOpen} onClose={onToggleModal}>
+        {t('login')}
+      </Modal>
     </div>
   );
 };
