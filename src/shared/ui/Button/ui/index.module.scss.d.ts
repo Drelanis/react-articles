@@ -2,6 +2,7 @@ export declare const background: string;
 export declare const backgroundInverted: string;
 export declare const button: string;
 export declare const clear: string;
+export declare const clearInverted: string;
 export declare const outline: string;
 export declare const primary: string;
 export declare const sizeL: string;
