@@ -19,7 +19,7 @@ export const LanguageSwitcher: FC<LangSwitcherProps> = (props) => {
   return (
     <Button
       className={buttonClassNames}
-      variant={ButtonVariant.CLEAR}
+      variant={ButtonVariant.CLEAR_INVERTED}
       onClick={toggleLanguage}
     >
       {buttonText}
