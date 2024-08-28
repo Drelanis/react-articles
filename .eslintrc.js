@@ -154,6 +154,12 @@ const paddingRules = {
 };
 
 const override = {
+  reduxSlices: {
+    files: ['**/slices/**/*.js', '**/slices/**/*.ts', '**/slices/**/*.tsx'],
+    rules: {
+      'no-param-reassign': 'off',
+    },
+  },
   tsFilesOnlyWithExports: {
     files: ['**/index.ts', '**/constants.ts'],
     rules: {
