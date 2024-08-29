@@ -5,3 +5,4 @@ export * from './constants';
 export * from './utils';
 export * from './lib';
 export * from './configs';
+export * from './store';

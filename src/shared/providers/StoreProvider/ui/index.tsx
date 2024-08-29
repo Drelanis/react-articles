@@ -1,15 +1,14 @@
 import { DeepPartial } from '@reduxjs/toolkit';
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import { Provider } from 'react-redux';
 
-import { createReduxStore, StateSchema } from '$app/store';
+import { createReduxStore, StateSchema } from '$shared/store';
 
-type StoreProviderProps = {
-  children?: ReactNode;
+type Props = {
   initialState?: DeepPartial<StateSchema>;
 };
 
-export const StoreProvider: FC<StoreProviderProps> = (props) => {
+export const StoreProvider: FC<Props> = (props) => {
   const { children, initialState } = props;
 
   const store = createReduxStore(initialState as StateSchema);

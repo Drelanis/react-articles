@@ -1,7 +1,7 @@
 import { DeepPartial } from '@reduxjs/toolkit';
 
 import { getCounter } from '.';
-import { StateSchema } from '$app/store';
+import { StateSchema } from '$shared';
 
 describe('getCounter', () => {
   test('should return counter value', () => {

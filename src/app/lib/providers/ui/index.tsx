@@ -1,9 +1,7 @@
 import { FC } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
-import { StoreProvider } from '../components';
-
-import { ErrorBoundary, ThemeProvider } from '$shared';
+import { ErrorBoundary, StoreProvider, ThemeProvider } from '$shared';
 import { ErrorCatcher } from '$widgets';
 
 export const AppProviders: FC = (props) => {

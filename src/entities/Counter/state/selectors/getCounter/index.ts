@@ -1,3 +1,3 @@
-import { StateSchema } from '$app/store';
+import { StateSchema } from '$shared';
 
 export const getCounter = (state: StateSchema) => state.counter;

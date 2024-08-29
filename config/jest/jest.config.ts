@@ -23,5 +23,11 @@ export default {
     '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     '^\\$shared': '<rootDir>src/shared',
     '^\\$entities': '<rootDir>src/entities',
+    '^\\$app': '<rootDir>src/app',
+    '^\\$pages': '<rootDir>src/pages',
+    '^\\$widgets': '<rootDir>src/widgets',
+  },
+  globals: {
+    IS_DEV: true,
   },
 };
