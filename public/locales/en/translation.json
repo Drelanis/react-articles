@@ -7,5 +7,7 @@
   "notFoundPage": "Oops! Page not found!",
   "errorCommon": "Oops! An unexpected error occurred!",
   "reloadPage": "Reload the page",
-  "login": "Login"
+  "login": "Login",
+  "typeUsername": "Enter username",
+  "typePassword": "Enter password"
 }
