@@ -9,6 +9,8 @@
   "reloadPage": "Reload the page",
   "login": "Login",
   "LOGIN_ERROR": "Something went wrong! Please try again!",
+  "USER_NAME_ERROR": "The 'Username' field must not be empty",
+  "PASSWORD_ERROR": "The 'Password' field must not be empty",
   "typeUsername": "Enter username",
   "typePassword": "Enter password"
 }
