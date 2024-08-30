@@ -4,6 +4,7 @@ import {
   ThemeDecorator,
   ThemeVariants,
   TranslationDecorator,
+  StoreDecorator,
 } from '../../src/shared';
 import { addDecorator } from '@storybook/react';
 
