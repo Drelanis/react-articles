@@ -16,17 +16,17 @@ export const NavBar = (props: Props) => {
 
   const { userAuthData } = useModel();
 
-  if (userAuthData) {
+  if (!userAuthData) {
     return (
       <div className={containerClassNames}>
-        <Logout className={classNames.links} />
+        <Auth classNames={classNames.links} />
       </div>
     );
   }
 
   return (
     <div className={containerClassNames}>
-      <Auth classNames={classNames.links} />
+      <Logout className={classNames.links} />
     </div>
   );
 };
