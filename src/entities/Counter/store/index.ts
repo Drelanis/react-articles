@@ -1,3 +1,3 @@
 export * from './slices';
 export * from './selectors';
-export * from './schema';
+export * from './schemes';

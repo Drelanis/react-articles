@@ -1,7 +1,7 @@
 /* eslint-disable i18next/no-literal-string -- TODO */
 import { useDispatch, useSelector } from 'react-redux';
 
-import { counterActions, getCounterValue } from '../state';
+import { counterActions, getCounterValue } from '../store';
 
 import { Button } from '$shared';
 

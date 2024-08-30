@@ -4,6 +4,7 @@ import { MODAL_ANIMATION_DELAY } from '../constants';
 
 type Params = {
   isOpen?: boolean;
+  lazy?: boolean;
   onClose?: () => void;
 };
 
@@ -11,6 +12,8 @@ export const useModel = (params: Params) => {
   const { onClose, isOpen } = params;
 
   const [isClosing, setIsClosing] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
   const closeHandler = useCallback(() => {
@@ -22,6 +25,12 @@ export const useModel = (params: Params) => {
       }, MODAL_ANIMATION_DELAY);
     }
   }, [onClose]);
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsMounted(true);
+    }
+  }, [isOpen]);
 
   const onKeyDown = useCallback(
     (event: KeyboardEvent) => {
@@ -47,5 +56,5 @@ export const useModel = (params: Params) => {
     };
   }, [isOpen, onKeyDown]);
 
-  return { onContentClick, isClosing, closeHandler };
+  return { onContentClick, isClosing, closeHandler, isMounted };
 };

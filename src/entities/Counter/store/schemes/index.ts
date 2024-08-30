@@ -2,6 +2,6 @@ export type CounterSchema = {
   value: number;
 };
 
-export const initialState: CounterSchema = {
+export const counterInitialState: CounterSchema = {
   value: 0,
 };

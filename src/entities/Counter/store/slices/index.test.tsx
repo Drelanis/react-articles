@@ -1,4 +1,4 @@
-import { CounterSchema } from '../schema';
+import { CounterSchema } from '../schemes';
 
 import { counterActions, counterReducer } from '.';
 

@@ -11,18 +11,24 @@ type Props = {
   children?: ReactNode;
   className?: string;
   isOpen?: boolean;
+  lazy?: boolean;
   onClose?: () => void;
 };
 
 export const Modal: FC<Props> = (props) => {
-  const { className, children, isOpen, onClose } = props;
+  const { className, children, isOpen, lazy, onClose } = props;
 
-  const { isClosing, onContentClick, closeHandler } = useModel({
+  const { isClosing, isMounted, onContentClick, closeHandler } = useModel({
     isOpen,
     onClose,
+    lazy,
   });
 
   const { containerClassNames } = useStyles({ isClosing, isOpen, className });
+
+  if (lazy && !isMounted) {
+    return null;
+  }
 
   return (
     <Portal>
