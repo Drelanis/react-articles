@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { LoginForm } from '../components';
+import { LoginFormLazy } from '../components';
 import { useModel } from '../model';
 
 import { Button, ButtonVariant, Modal } from '$shared';
@@ -23,7 +23,7 @@ export const Auth: FC<Props> = (props) => {
         {t('login')}
       </Button>
       <Modal isOpen={isModalOpen} onClose={onToggleModal} lazy>
-        <LoginForm />
+        <LoginFormLazy />
       </Modal>
     </div>
   );

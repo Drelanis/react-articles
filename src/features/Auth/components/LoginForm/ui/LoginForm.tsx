@@ -18,7 +18,7 @@ interface LoginFormProps {
   className?: string;
 }
 
-export const LoginForm: FC<LoginFormProps> = memo((props) => {
+const LoginForm: FC<LoginFormProps> = memo((props) => {
   const { className } = props;
 
   const { t } = useTranslation();
@@ -76,3 +76,5 @@ const useStyles = (params: LoginFormProps) => {
 
   return { containerClassNames };
 };
+
+export default LoginForm;
