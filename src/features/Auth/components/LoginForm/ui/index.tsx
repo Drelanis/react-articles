@@ -37,6 +37,7 @@ export const LoginForm: FC<LoginFormProps> = memo((props) => {
 
   return (
     <div className={containerClassNames}>
+      <Text title={t('loginForm')} />
       {error && <Text text={t(error)} variant={TextVariants.ERROR} />}
       <Input
         autofocus
