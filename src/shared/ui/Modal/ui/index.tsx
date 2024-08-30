@@ -50,13 +50,12 @@ const useStyles = (params: StyleParams) => {
   const mods = {
     [classNames.opened]: isOpen,
     [classNames.isClosing]: isClosing,
-    [theme]: true,
   };
 
   const containerClassNames = buildClassNames({
     classNames: classNames.modal,
     mods,
-    additional: [className],
+    additional: [className, theme],
   });
 
   return { containerClassNames };
