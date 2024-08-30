@@ -2,8 +2,9 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { LoginForm } from '../components';
+import { useModel } from '../model';
 
-import { Button, ButtonVariant, Modal, useModal } from '$shared';
+import { Button, ButtonVariant, Modal } from '$shared';
 
 type Props = {
   classNames?: string;
@@ -12,9 +13,9 @@ type Props = {
 export const Auth: FC<Props> = (props) => {
   const { classNames } = props;
 
-  const { onToggleModal, isModalOpen } = useModal();
-
   const { t } = useTranslation();
+
+  const { onToggleModal, isModalOpen } = useModel();
 
   return (
     <div className={classNames}>

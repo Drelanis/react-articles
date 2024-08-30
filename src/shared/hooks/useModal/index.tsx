@@ -1,11 +1,21 @@
 import { useCallback, useState } from 'react';
 
-export const useModal = () => {
+type Params = {
+  onCloseAction?: () => void;
+};
+
+export const useModal = (params: Params) => {
+  const { onCloseAction } = params;
+
   const [isModalOpen, setIsModalClose] = useState<boolean>(false);
 
   const onToggleModal = useCallback(() => {
     setIsModalClose((prev) => !prev);
-  }, []);
+
+    if (onCloseAction) {
+      onCloseAction();
+    }
+  }, [onCloseAction]);
 
   return { isModalOpen, onToggleModal };
 };
