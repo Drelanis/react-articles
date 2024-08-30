@@ -1,6 +1,8 @@
+import { useModel } from '../model';
+
 import classNames from './index.module.scss';
 
-import { Auth } from '$features';
+import { Auth, Logout } from '$features';
 import { buildClassNames } from '$shared';
 
 type Props = {
@@ -11,6 +13,16 @@ export const NavBar = (props: Props) => {
   const { className } = props;
 
   const { containerClassNames } = useStyles({ className });
+
+  const { userAuthData } = useModel();
+
+  if (userAuthData) {
+    return (
+      <div className={containerClassNames}>
+        <Logout className={classNames.links} />
+      </div>
+    );
+  }
 
   return (
     <div className={containerClassNames}>
