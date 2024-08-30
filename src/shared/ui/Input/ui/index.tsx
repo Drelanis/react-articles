@@ -71,12 +71,12 @@ export const Input: FC<Props> = memo((props) => {
 
 type UseStylesParams = {
   caretPosition: number;
-} & Pick<Props, 'className' | 'value'>;
+} & Pick<Props, 'className'>;
 
 const useStyles = (params: UseStylesParams) => {
   const { caretPosition, className = '' } = params;
 
-  // TODO Fix it
+  // ! Don't use such approach
   const caretIndex = 7;
 
   const containerClassNames = buildClassNames({
