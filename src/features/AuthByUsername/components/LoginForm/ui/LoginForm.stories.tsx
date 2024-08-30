@@ -1,22 +1,22 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ThemeSwitcher } from '.';
+import { LoginForm } from '.';
 import { ThemeDecorator, ThemeVariants } from '$shared';
 
 export default {
-  title: 'shared/ThemeSwitcher',
-  component: ThemeSwitcher,
+  title: 'features/LoginForm',
+  component: LoginForm,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ThemeSwitcher>;
+} as ComponentMeta<typeof LoginForm>;
 
-const Template: ComponentStory<typeof ThemeSwitcher> = (args) => (
-  <ThemeSwitcher {...args} />
+const Template: ComponentStory<typeof LoginForm> = (args) => (
+  <LoginForm {...args} />
 );
 
-export const Normal = Template.bind({});
-Normal.args = {};
+export const Primary = Template.bind({});
+Primary.args = {};
 
 export const Dark = Template.bind({});
 Dark.args = {};
