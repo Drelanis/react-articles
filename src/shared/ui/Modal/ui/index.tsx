@@ -4,7 +4,6 @@ import { useModel } from '../model';
 
 import classNames from './index.module.scss';
 
-import { useTheme } from '$shared/providers';
 import { Portal } from '$shared/ui/Portal';
 import { buildClassNames } from '$shared/utils';
 
@@ -45,8 +44,6 @@ type StyleParams = {
 const useStyles = (params: StyleParams) => {
   const { isClosing, isOpen, className = '' } = params;
 
-  const { theme } = useTheme();
-
   const mods = {
     [classNames.opened]: isOpen,
     [classNames.isClosing]: isClosing,
@@ -55,7 +52,7 @@ const useStyles = (params: StyleParams) => {
   const containerClassNames = buildClassNames({
     classNames: classNames.modal,
     mods,
-    additional: [className, theme],
+    additional: [className],
   });
 
   return { containerClassNames };

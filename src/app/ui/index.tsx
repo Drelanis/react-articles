@@ -26,9 +26,10 @@ export const App: FC = () => {
 const useStyles = () => {
   const { theme } = useTheme();
 
+  document.body.className = theme;
+
   const containerClassName = buildClassNames({
     classNames: 'app',
-    additional: [theme],
   });
 
   return { containerClassName };
