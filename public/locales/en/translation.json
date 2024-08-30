@@ -8,6 +8,7 @@
   "errorCommon": "Oops! An unexpected error occurred!",
   "reloadPage": "Reload the page",
   "login": "Login",
+  "LOGIN_ERROR": "Something went wrong! Please try again!",
   "typeUsername": "Enter username",
   "typePassword": "Enter password"
 }
