@@ -1,2 +1,2 @@
 export * from './ui';
-export * from './store';
+export { loginReducer, LoginSchema, loginActions } from './store';
