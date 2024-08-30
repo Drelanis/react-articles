@@ -1,6 +1,6 @@
 import classNames from './index.module.scss';
 
-import { AuthByUserName } from '$features';
+import { Auth } from '$features';
 import { buildClassNames } from '$shared';
 
 type Props = {
@@ -14,7 +14,7 @@ export const NavBar = (props: Props) => {
 
   return (
     <div className={containerClassNames}>
-      <AuthByUserName classNames={classNames.links} />
+      <Auth classNames={classNames.links} />
     </div>
   );
 };

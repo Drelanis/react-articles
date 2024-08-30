@@ -9,7 +9,7 @@ type Props = {
   classNames?: string;
 };
 
-export const AuthByUserName: FC<Props> = (props) => {
+export const Auth: FC<Props> = (props) => {
   const { classNames } = props;
 
   const { onToggleModal, isModalOpen } = useModal();

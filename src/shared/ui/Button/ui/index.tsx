@@ -8,6 +8,7 @@ import { buildClassNames } from '$shared/utils';
 
 type Props = {
   className?: string;
+  disabled?: boolean;
   size?: ButtonSize;
   square?: boolean;
   variant?: ButtonVariant;
@@ -20,19 +21,34 @@ export const Button: FC<Props> = (props) => {
     variant = ButtonVariant.CLEAR,
     size = ButtonSize.M,
     square,
+    disabled,
     ...otherProps
   } = props;
 
-  const { containerClassName } = useStyle({ className, variant, size, square });
+  const { containerClassName } = useStyle({
+    className,
+    variant,
+    size,
+    square,
+    disabled,
+  });
 
   return (
-    <button type="button" className={containerClassName} {...otherProps}>
+    <button
+      type="button"
+      disabled={disabled}
+      className={containerClassName}
+      {...otherProps}
+    >
       {children}
     </button>
   );
 };
 
-type StyleParams = Pick<Props, 'variant' | 'className' | 'size' | 'square'>;
+type StyleParams = Pick<
+  Props,
+  'variant' | 'className' | 'size' | 'square' | 'disabled'
+>;
 
 const useStyle = (params: StyleParams) => {
   const {
@@ -40,12 +56,14 @@ const useStyle = (params: StyleParams) => {
     variant = ButtonVariant.CLEAR,
     size = ButtonSize.M,
     square,
+    disabled,
   } = params;
 
   const mods = {
     [classNames[variant]]: true,
     [classNames.square]: square,
     [classNames[size]]: true,
+    [classNames.disabled]: disabled,
   };
 
   const containerClassName = buildClassNames({
