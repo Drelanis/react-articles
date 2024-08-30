@@ -26,7 +26,9 @@ export default {
     '^\\$app': '<rootDir>src/app',
     '^\\$pages': '<rootDir>src/pages',
     '^\\$widgets': '<rootDir>src/widgets',
+    '^\\$features': '<rootDir>src/features',
   },
+  transformIgnorePatterns: ['/node_modules/(?!(axios)/)'],
   globals: {
     IS_DEV: true,
   },

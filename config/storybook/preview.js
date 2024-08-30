@@ -21,3 +21,10 @@ addDecorator(ThemeDecorator(ThemeVariants.LIGHT));
 addDecorator(TranslationDecorator);
 addDecorator(StyleDecorator);
 addDecorator(RouterDecorator);
+addDecorator(
+  StoreDecorator({
+    login: {},
+    counter: {},
+    user: {},
+  }),
+);
