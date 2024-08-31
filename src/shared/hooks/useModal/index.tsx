@@ -10,11 +10,11 @@ export const useModal = (params: Params) => {
   const [isModalOpen, setIsModalClose] = useState<boolean>(false);
 
   const onToggleModal = useCallback(() => {
-    setIsModalClose((prev) => !prev);
-
     if (onCloseAction) {
       onCloseAction();
     }
+
+    setIsModalClose((prev) => !prev);
   }, [onCloseAction]);
 
   return { isModalOpen, onToggleModal };
