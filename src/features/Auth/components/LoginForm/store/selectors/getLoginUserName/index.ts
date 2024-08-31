@@ -1,3 +1,4 @@
 import { StateSchema } from '$shared';
 
-export const getLoginUserName = (state: StateSchema) => state.login.userName;
+export const getLoginUserName = (state: StateSchema) =>
+  state.login?.userName || '';

@@ -4,7 +4,7 @@ import { loginByUsername } from '../api';
 import { loginInitialState } from '../schemes';
 
 export const loginSlice = createSlice({
-  name: 'counter',
+  name: 'login',
   initialState: loginInitialState,
   reducers: {
     setUsername: (state, action: PayloadAction<string>) => {
@@ -12,10 +12,6 @@ export const loginSlice = createSlice({
     },
     setPassword: (state, action: PayloadAction<string>) => {
       state.password = action.payload;
-    },
-    resetForm: (state) => {
-      state.password = '';
-      state.userName = '';
     },
   },
   extraReducers: (builder) => {

@@ -1,8 +1,11 @@
+import { DeepPartial, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+
+import { loginReducer, LoginSchema } from '../store';
 
 import LoginForm from './LoginForm';
 
-import { StoreDecorator } from '$shared';
+import { StateSchema, StoreDecorator } from '$shared';
 
 export default {
   title: 'features/LoginForm',
@@ -19,18 +22,38 @@ const Template: ComponentStory<typeof LoginForm> = (args) => (
 export const Primary = Template.bind({});
 Primary.args = {};
 
+const asyncLoginReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
+  // TODO: Research this moment
+  login: loginReducer as Reducer<LoginSchema | undefined>,
+};
+
 export const withError = Template.bind({});
 withError.args = {};
 withError.decorators = [
-  StoreDecorator({
-    login: { userName: '123', password: 'asd', error: 'LOGIN_ERROR' },
-  }),
+  StoreDecorator(
+    {
+      login: {
+        userName: '',
+        password: '',
+        error: 'LOGIN_ERROR',
+        isLoading: false,
+      },
+    },
+    asyncLoginReducers,
+  ),
 ];
 
 export const Loading = Template.bind({});
 Loading.args = {};
 Loading.decorators = [
-  StoreDecorator({
-    login: { isLoading: true },
-  }),
+  StoreDecorator(
+    {
+      login: {
+        isLoading: true,
+        userName: '',
+        password: '',
+      },
+    },
+    asyncLoginReducers,
+  ),
 ];

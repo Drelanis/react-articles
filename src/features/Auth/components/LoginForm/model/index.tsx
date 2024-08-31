@@ -2,8 +2,9 @@ import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
+  getLoginError,
+  getLoginIsLoading,
   getLoginPassword,
-  getLoginStore,
   getLoginUserName,
   loginActions,
   loginByUsername,
@@ -11,6 +12,11 @@ import {
 
 export const useModel = () => {
   const dispatch = useDispatch();
+
+  const isLoading = useSelector(getLoginIsLoading);
+  const error = useSelector(getLoginError);
+  const userName = useSelector(getLoginUserName);
+  const password = useSelector(getLoginPassword);
 
   const onChangeUserName = useCallback(
     (value: string) => {
@@ -25,10 +31,6 @@ export const useModel = () => {
     },
     [dispatch],
   );
-
-  const { isLoading, error } = useSelector(getLoginStore);
-  const userName = useSelector(getLoginUserName);
-  const password = useSelector(getLoginPassword);
 
   const login = useCallback(() => {
     dispatch(loginByUsername({ userName, password }));
