@@ -26,7 +26,7 @@ export const Modal: FC<Props> = (props) => {
 
   const { containerClassNames } = useStyles({ isClosing, isOpen, className });
 
-  if (lazy && !isMounted) {
+  if ((lazy && !isMounted) || !isOpen) {
     return null;
   }
 
