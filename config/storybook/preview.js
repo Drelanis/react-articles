@@ -4,6 +4,7 @@ import {
   ThemeDecorator,
   ThemeVariants,
   TranslationDecorator,
+  StoreDecorator,
 } from '../../src/shared';
 import { addDecorator } from '@storybook/react';
 
@@ -16,7 +17,14 @@ export const parameters = {
   },
 };
 
+addDecorator(ThemeDecorator(ThemeVariants.LIGHT));
 addDecorator(TranslationDecorator);
 addDecorator(StyleDecorator);
-addDecorator(ThemeDecorator(ThemeVariants.LIGHT));
 addDecorator(RouterDecorator);
+addDecorator(
+  StoreDecorator({
+    login: {},
+    counter: {},
+    user: {},
+  }),
+);

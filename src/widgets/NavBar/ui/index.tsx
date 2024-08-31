@@ -1,8 +1,9 @@
-import { useTranslation } from 'react-i18next';
+import { useModel } from '../model';
 
 import classNames from './index.module.scss';
 
-import { AppLinkTheme, AppRoutes, buildClassNames, Link } from '$shared';
+import { Auth, Logout } from '$features';
+import { buildClassNames } from '$shared';
 
 type Props = {
   className?: string[];
@@ -11,24 +12,21 @@ type Props = {
 export const NavBar = (props: Props) => {
   const { className } = props;
 
-  const { t } = useTranslation();
-
   const { containerClassNames } = useStyles({ className });
+
+  const { userAuthData } = useModel();
+
+  if (!userAuthData) {
+    return (
+      <div className={containerClassNames}>
+        <Auth classNames={classNames.links} />
+      </div>
+    );
+  }
 
   return (
     <div className={containerClassNames}>
-      <div className={classNames.links}>
-        <Link
-          theme={AppLinkTheme.SECONDARY}
-          className={[classNames.mainLink]}
-          to={AppRoutes.ABOUT}
-        >
-          {t('about')}
-        </Link>
-        <Link theme={AppLinkTheme.SECONDARY} to={AppRoutes.MAIN}>
-          {t('main')}
-        </Link>
-      </div>
+      <Logout className={classNames.links} />
     </div>
   );
 };

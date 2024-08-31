@@ -23,5 +23,13 @@ export default {
     '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     '^\\$shared': '<rootDir>src/shared',
     '^\\$entities': '<rootDir>src/entities',
+    '^\\$app': '<rootDir>src/app',
+    '^\\$pages': '<rootDir>src/pages',
+    '^\\$widgets': '<rootDir>src/widgets',
+    '^\\$features': '<rootDir>src/features',
+  },
+  transformIgnorePatterns: ['/node_modules/(?!(axios)/)'],
+  globals: {
+    IS_DEV: true,
   },
 };

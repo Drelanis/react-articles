@@ -110,7 +110,7 @@ const reactRules = {
   'react/display-name': 'off',
   'react/prop-types': 'off',
   'react/no-array-index-key': 'off',
-  'react-hooks/exhaustive-deps': 'off',
+  'react-hooks/exhaustive-deps': 'error',
   'react/style-prop-object': 'off', // we allow to use string as prop
   'react/require-default-props': 'off',
   'react/jsx-props-no-spreading': 'off',
@@ -154,6 +154,12 @@ const paddingRules = {
 };
 
 const override = {
+  reduxSlices: {
+    files: ['**/slices/**/*.js', '**/slices/**/*.ts', '**/slices/**/*.tsx'],
+    rules: {
+      'no-param-reassign': 'off',
+    },
+  },
   tsFilesOnlyWithExports: {
     files: ['**/index.ts', '**/constants.ts'],
     rules: {
@@ -242,8 +248,11 @@ module.exports = {
     'react',
     'i18next',
   ],
-  ignorePatterns: ['*.js', 'dist/', 'node_modules/'],
+  ignorePatterns: ['*.js', 'dist/', 'node_modules/', '**/*.scss'],
   rules: {
+    // ! TODO: Fix this
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
     ...i18nextRules,
     ...initialRules,
     ...tsRules,

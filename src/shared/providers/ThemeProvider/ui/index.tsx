@@ -7,8 +7,16 @@ const defaultTheme = localStorage.getItem(
   LOCAL_STORAGE_THEME_KEY,
 ) as ThemeVariants;
 
-export const ThemeProvider: FC = ({ children }) => {
-  const [theme, setTheme] = useState<ThemeVariants>(defaultTheme);
+type Props = {
+  initialTheme?: ThemeVariants;
+};
+
+export const ThemeProvider: FC<Props> = (props) => {
+  const { children, initialTheme } = props;
+
+  const [theme, setTheme] = useState<ThemeVariants>(
+    initialTheme || defaultTheme,
+  );
 
   const defaultProps = useMemo(
     () => ({

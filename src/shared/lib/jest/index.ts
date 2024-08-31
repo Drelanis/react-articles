@@ -1,1 +1,2 @@
-export * from './renderWithTranslation';
+export * from './componentRender';
+export * from './TestAsyncThunk';

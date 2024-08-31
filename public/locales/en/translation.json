@@ -1,9 +1,18 @@
 {
   "translation": "Translation",
   "language": "English",
+  "shortLanguage": "En",
   "main": "Main",
   "about": "About us",
   "notFoundPage": "Oops! Page not found!",
   "errorCommon": "Oops! An unexpected error occurred!",
-  "reloadPage": "Reload the page"
+  "reloadPage": "Reload the page",
+  "login": "Login",
+  "loginForm": "Login form",
+  "LOGIN_ERROR": "You entered an incorrect email or password!",
+  "USER_NAME_ERROR": "The 'Username' field must not be empty",
+  "PASSWORD_ERROR": "The 'Password' field must not be empty",
+  "typeUsername": "Enter username",
+  "typePassword": "Enter password",
+  "logout": "Logout"
 }
