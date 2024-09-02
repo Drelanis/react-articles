@@ -8,11 +8,13 @@ export type BuildPaths = {
 };
 
 export type BuildEnv = {
+  apiUrl: string;
   mode: BuildMode;
   port: number;
 };
 
 export type BuildOptions = {
+  apiUrl: string;
   isDev: boolean;
   mode: BuildMode;
   paths: BuildPaths;

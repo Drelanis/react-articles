@@ -8,14 +8,14 @@ export const AppProviders: FC = (props) => {
   const { children } = props;
 
   return (
-    <StoreProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <StoreProvider>
         <ThemeProvider>
           <ErrorBoundary componentToShow={<ErrorCatcher />}>
             {children}
           </ErrorBoundary>
         </ThemeProvider>
-      </BrowserRouter>
-    </StoreProvider>
+      </StoreProvider>
+    </BrowserRouter>
   );
 };

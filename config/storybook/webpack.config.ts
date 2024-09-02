@@ -52,6 +52,7 @@ export default ({ config }: { config: Configuration }) => {
   updatedConfig.plugins = [
     ...(updatedConfig.plugins || []),
     new DefinePlugin({
+      API: JSON.stringify(''),
       IS_DEV: JSON.stringify(true),
     }),
   ];

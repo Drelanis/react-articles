@@ -30,6 +30,7 @@ export default {
   },
   transformIgnorePatterns: ['/node_modules/(?!(axios)/)'],
   globals: {
+    API: '',
     IS_DEV: true,
   },
 };

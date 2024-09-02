@@ -35,6 +35,8 @@ export const useModel = () => {
   );
 
   const login = useCallback(async () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- TODO Fix it
+    // @ts-expect-error
     await dispatch(loginByUsername({ userName, password }));
   }, [dispatch, userName, password]);
 

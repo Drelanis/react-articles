@@ -9,6 +9,7 @@ import { BuildOptions } from '../../types';
 export const buildPlugins = ({
   paths,
   isDev,
+  apiUrl,
 }: BuildOptions): WebpackPluginInstance[] => {
   const plugins = [
     new HTMLWebpackPlugin({
@@ -20,6 +21,7 @@ export const buildPlugins = ({
       chunkFilename: 'css/[id].[contenthash:8].css',
     }),
     new DefinePlugin({
+      API: JSON.stringify(apiUrl),
       IS_DEV: JSON.stringify(isDev),
     }),
     isDev && new ReactRefreshWebpackPlugin(),

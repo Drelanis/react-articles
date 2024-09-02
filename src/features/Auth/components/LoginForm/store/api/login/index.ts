@@ -1,8 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 
 import { User, userActions } from '$entities';
-import { ErrorHints, ServerEndpoints, USER_LOCAL_STORAGE_KEY } from '$shared';
+import {
+  AppRoutes,
+  ErrorHints,
+  ServerEndpoints,
+  ThunkConfig,
+  USER_LOCAL_STORAGE_KEY,
+} from '$shared';
 
 type Params = {
   password: string;
@@ -12,20 +17,26 @@ type Params = {
 export const loginByUsername = createAsyncThunk<
   User,
   Params,
-  { rejectValue: ErrorHints }
+  ThunkConfig<ErrorHints>
 >('login/loginByUsername', async (authData, thunkAPI) => {
+  const { extra, dispatch, rejectWithValue } = thunkAPI;
   try {
-    const response = await axios.post<User>(ServerEndpoints.LOGIN, authData);
+    const response = await extra.api.post<User>(
+      ServerEndpoints.LOGIN,
+      authData,
+    );
 
     if (!response.data) {
       throw new Error();
     }
 
     localStorage.setItem(USER_LOCAL_STORAGE_KEY, JSON.stringify(response.data));
-    thunkAPI.dispatch(userActions.setAuthData(response.data));
+    dispatch(userActions.setAuthData(response.data));
+
+    extra.navigate(AppRoutes.ABOUT);
 
     return response.data;
   } catch (error) {
-    return thunkAPI.rejectWithValue('LOGIN_ERROR');
+    return rejectWithValue('LOGIN_ERROR');
   }
 });
