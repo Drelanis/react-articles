@@ -20,11 +20,11 @@ export const loginByUsername = createAsyncThunk<
   ThunkConfig<ErrorHints>
 >('login/loginByUsername', async (authData, thunkAPI) => {
   const { extra, dispatch, rejectWithValue } = thunkAPI;
+
+  const { api, navigate } = extra;
+
   try {
-    const response = await extra.api.post<User>(
-      ServerEndpoints.LOGIN,
-      authData,
-    );
+    const response = await api.post<User>(ServerEndpoints.LOGIN, authData);
 
     if (!response.data) {
       throw new Error();
@@ -33,7 +33,9 @@ export const loginByUsername = createAsyncThunk<
     localStorage.setItem(USER_LOCAL_STORAGE_KEY, JSON.stringify(response.data));
     dispatch(userActions.setAuthData(response.data));
 
-    extra.navigate(AppRoutes.ABOUT);
+    if (navigate) {
+      navigate(AppRoutes.ABOUT);
+    }
 
     return response.data;
   } catch (error) {

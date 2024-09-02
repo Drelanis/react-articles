@@ -8,7 +8,7 @@ type Params = {
 export const useModel = (params: Params) => {
   const { autofocus, onChange } = params;
 
-  const ref = useRef<HTMLInputElement>(null);
+  const ref = useRef<HTMLInputElement | null>(null);
   const [isFocused, setIsFocused] = useState(false);
   const [caretPosition, setCaretPosition] = useState(0);
 
