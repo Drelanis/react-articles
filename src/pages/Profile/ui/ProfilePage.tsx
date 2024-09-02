@@ -11,8 +11,6 @@ const ProfilePage: FC = memo(() => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- TODO: Fix it
-    // @ts-expect-error
     void dispatch(fetchProfileData());
   }, [dispatch]);
 
