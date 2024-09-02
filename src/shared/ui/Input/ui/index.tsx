@@ -84,6 +84,7 @@ const useStyles = (params: UseStylesParams) => {
     additional: [className],
   });
 
+  // ! Don't use such approach
   const updatedCaretPosition = {
     left: `${caretPosition * caretIndex}px`,
   };
