@@ -8,10 +8,6 @@ type ActionCreatorType<Return, Arg, RejectedValue> = (
   arg: Arg,
 ) => AsyncThunkAction<Return, Arg, { rejectValue: RejectedValue }>;
 
-jest.mock('axios');
-
-const mockedAxios = jest.mocked(axios, true);
-
 export class TestAsyncThunk<Return, Arg, RejectedValue> {
   dispatch: jest.MockedFn<ThunkDispatch<Return, Arg, Action<unknown>>>;
 
@@ -24,6 +20,10 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
   navigate: jest.MockedFn<NavigateFunction>;
 
   constructor(actionCreator: ActionCreatorType<Return, Arg, RejectedValue>) {
+    jest.mock('axios');
+
+    const mockedAxios = jest.mocked(axios, true);
+
     this.actionCreator = actionCreator;
     this.dispatch = jest.fn();
     this.getState = jest.fn();
