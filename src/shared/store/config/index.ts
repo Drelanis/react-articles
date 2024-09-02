@@ -1,6 +1,8 @@
 import {
+  CombinedState,
   configureStore,
   DeepPartial,
+  Reducer,
   ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { NavigateFunction } from 'react-router-dom';
@@ -31,9 +33,8 @@ export const createReduxStore = (params: Params) => {
   const reducerManager = createReducerManager(rootReducers);
 
   const store = configureStore({
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- TODO: Fix me
-    // @ts-ignore
-    reducer: reducerManager.reduce as ReducersMapObject<StateSchema>,
+    // TODO: Fix me
+    reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
     devTools: IS_DEV,
     preloadedState: initialState as StateSchema,
     middleware: (getDefaultMiddleware) =>
