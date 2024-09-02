@@ -26,5 +26,6 @@ addDecorator(
     login: {},
     counter: {},
     user: {},
+    profile: {},
   }),
 );
