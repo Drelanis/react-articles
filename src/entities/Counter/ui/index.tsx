@@ -1,12 +1,12 @@
 /* eslint-disable i18next/no-literal-string -- TODO */
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { counterActions, getCounterValue } from '../store';
 
-import { Button } from '$shared';
+import { Button, useAppDispatch } from '$shared';
 
 export const Counter = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const value = useSelector(getCounterValue);
 
   const increment = () => dispatch(counterActions.increment());

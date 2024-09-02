@@ -1,10 +1,10 @@
 import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
 
 import { userActions } from '$entities';
+import { useAppDispatch } from '$shared';
 
 export const useModel = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const onLogout = useCallback(() => {
     dispatch(userActions.logout());

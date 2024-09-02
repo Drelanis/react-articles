@@ -41,3 +41,5 @@ export const createReduxStore = (params: Params) => {
 
   return store;
 };
+
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];

@@ -1,17 +1,16 @@
 import { FC, Suspense, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 
 import { Routes } from '../lib';
 
 import classNames from './index.module.scss';
 
 import { userActions } from '$entities';
-import { buildClassNames, useTheme } from '$shared';
+import { buildClassNames, useAppDispatch, useTheme } from '$shared';
 import { NavBar, Sidebar } from '$widgets';
 
 export const App: FC = () => {
   const { containerClassName } = useStyles();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(userActions.initAuthData());
