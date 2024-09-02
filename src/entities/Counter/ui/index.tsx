@@ -2,7 +2,7 @@
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
 
-import { counterActions, getCounterValue } from '../store';
+import { counterActions, getCounterValue } from '../model';
 
 import { Button, useAppDispatch } from '$shared';
 
