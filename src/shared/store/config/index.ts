@@ -33,11 +33,9 @@ export const createReduxStore = (params: Params) => {
   const store = configureStore({
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- TODO: Fix me
     // @ts-ignore
-    reducer: reducerManager.reduce,
+    reducer: reducerManager.reduce as ReducersMapObject<StateSchema>,
     devTools: IS_DEV,
     preloadedState: initialState as StateSchema,
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- TODO: Fix me
-    // @ts-ignore
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         thunk: {
