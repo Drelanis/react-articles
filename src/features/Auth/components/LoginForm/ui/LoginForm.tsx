@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useModel } from '../model';
@@ -25,7 +25,7 @@ type Props = {
   className?: string;
 };
 
-const LoginForm: FC<Props> = memo((props) => {
+const LoginForm: FC<Props> = (props) => {
   const { className } = props;
 
   const { t } = useTranslation();
@@ -73,7 +73,7 @@ const LoginForm: FC<Props> = memo((props) => {
       </div>
     </DynamicModuleLoader>
   );
-});
+};
 
 const useStyles = (params: Props) => {
   const { className = '' } = params;

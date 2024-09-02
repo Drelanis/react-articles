@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { LoginFormLazy } from '../components';
@@ -10,7 +10,7 @@ type Props = {
   classNames?: string;
 };
 
-export const Auth: FC<Props> = (props) => {
+export const Auth: FC<Props> = memo((props) => {
   const { classNames } = props;
 
   const { t } = useTranslation();
@@ -27,4 +27,4 @@ export const Auth: FC<Props> = (props) => {
       </Modal>
     </div>
   );
-};
+});

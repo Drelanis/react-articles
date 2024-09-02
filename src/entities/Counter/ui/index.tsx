@@ -1,11 +1,12 @@
 /* eslint-disable i18next/no-literal-string -- TODO */
+import { memo } from 'react';
 import { useSelector } from 'react-redux';
 
 import { counterActions, getCounterValue } from '../store';
 
 import { Button, useAppDispatch } from '$shared';
 
-export const Counter = () => {
+export const Counter = memo(() => {
   const dispatch = useAppDispatch();
   const value = useSelector(getCounterValue);
 
@@ -23,4 +24,4 @@ export const Counter = () => {
       </Button>
     </div>
   );
-};
+});

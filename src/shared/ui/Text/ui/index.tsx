@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 import { TextVariants } from '../constants';
 
@@ -13,7 +13,7 @@ type Props = {
   variant?: TextVariants;
 };
 
-export const Text: FC<Props> = (props) => {
+export const Text: FC<Props> = memo((props) => {
   const { className, text, title, variant } = props;
 
   const { containerClassNames } = useStyles({ className, variant });
@@ -24,7 +24,7 @@ export const Text: FC<Props> = (props) => {
       {text && <p className={classNames.text}>{text}</p>}
     </div>
   );
-};
+});
 
 type UseStylesParams = Pick<Props, 'variant' | 'className'>;
 

@@ -7,7 +7,7 @@ import {
   ReducersMapObject,
 } from '@reduxjs/toolkit';
 
-import { CounterSchema, UserSchema } from '$entities';
+import { CounterSchema, ProfileSchema, UserSchema } from '$entities';
 import { LoginSchema } from '$features';
 
 export type StateSchema = {
@@ -16,6 +16,7 @@ export type StateSchema = {
 
   // Async reducers
   login?: LoginSchema;
+  profile?: ProfileSchema;
 };
 
 export type StateSchemaKey = keyof StateSchema;

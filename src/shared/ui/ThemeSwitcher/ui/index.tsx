@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import ThemeIcon from 'shared/assets/icons/theme-toggle-icon.svg';
 
 import classNames from './index.module.scss';
@@ -8,7 +9,7 @@ type Props = {
   className?: string;
 };
 
-export const ThemeSwitcher = (props: Props) => {
+export const ThemeSwitcher = memo((props: Props) => {
   const { className } = props;
 
   const { toggleTheme } = useTheme();
@@ -24,7 +25,7 @@ export const ThemeSwitcher = (props: Props) => {
       <ThemeIcon className={classNames.icon} />
     </Button>
   );
-};
+});
 
 type StyleParams = Pick<Props, 'className'>;
 

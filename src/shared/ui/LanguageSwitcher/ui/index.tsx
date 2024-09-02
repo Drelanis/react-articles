@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 import { useModel } from '../model';
 
@@ -9,7 +9,7 @@ type LangSwitcherProps = {
   className?: string;
 };
 
-export const LanguageSwitcher: FC<LangSwitcherProps> = (props) => {
+export const LanguageSwitcher: FC<LangSwitcherProps> = memo((props) => {
   const { className, isShort } = props;
 
   const { toggleLanguage, buttonText } = useModel({ isShort });
@@ -25,7 +25,7 @@ export const LanguageSwitcher: FC<LangSwitcherProps> = (props) => {
       {buttonText}
     </Button>
   );
-};
+});
 
 type StylesParams = Pick<LangSwitcherProps, 'className'>;
 

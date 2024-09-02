@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useModel } from '../model';
@@ -9,7 +9,7 @@ type Props = {
   className?: string;
 };
 
-export const Logout: FC<Props> = (props) => {
+export const Logout: FC<Props> = memo((props) => {
   const { className } = props;
 
   const { t } = useTranslation();
@@ -25,4 +25,4 @@ export const Logout: FC<Props> = (props) => {
       {t('logout')}
     </Button>
   );
-};
+});

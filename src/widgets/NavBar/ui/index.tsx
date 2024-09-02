@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import { useModel } from '../model';
 
 import classNames from './index.module.scss';
@@ -9,7 +11,7 @@ type Props = {
   className?: string[];
 };
 
-export const NavBar = (props: Props) => {
+export const NavBar = memo((props: Props) => {
   const { className } = props;
 
   const { containerClassNames } = useStyles({ className });
@@ -29,7 +31,7 @@ export const NavBar = (props: Props) => {
       <Logout className={classNames.links} />
     </div>
   );
-};
+});
 
 type StyleParams = Pick<Props, 'className'>;
 

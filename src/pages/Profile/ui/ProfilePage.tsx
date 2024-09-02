@@ -1,12 +1,21 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { TranslationChunks } from '$shared';
+import { profileReducer } from '$entities';
+import { DynamicModuleLoader, ReducersList, TranslationChunks } from '$shared';
 
-const ProfilePage: FC = () => {
+const reducers: ReducersList = {
+  profile: profileReducer,
+};
+
+const ProfilePage: FC = memo(() => {
   const { t } = useTranslation(TranslationChunks.PROFILE);
 
-  return <div>{t('profile')}</div>;
-};
+  return (
+    <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+      <div>{t('profile')}</div>
+    </DynamicModuleLoader>
+  );
+});
 
 export default ProfilePage;
