@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import ProfilePage from './ProfilePage';
 
-import { ThemeDecorator, ThemeVariants } from '$shared';
+import { StoreDecorator, ThemeDecorator, ThemeVariants } from '$shared';
 
 export default {
   title: 'pages/ProfilePage',
@@ -21,4 +21,4 @@ Normal.args = {};
 
 export const Dark = Template.bind({});
 Dark.args = {};
-Dark.decorators = [ThemeDecorator(ThemeVariants.DARK)];
+Dark.decorators = [ThemeDecorator(ThemeVariants.DARK), StoreDecorator({})];
