@@ -25,5 +25,14 @@
       "password": "123"
     }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "first": "Denys",
+    "lastName": "Badaka",
+    "age": 100,
+    "currency": "UAH",
+    "country": "Ukraine",
+    "city": "Dnipro",
+    "username": "admin",
+    "avatar": "https://w7.pngwing.com/pngs/798/839/png-transparent-linkin-park-logo-minutes-to-midnight-musical-ensemble-linkin-park-angle-text-trademark-thumbnail.png"
+  }
 }

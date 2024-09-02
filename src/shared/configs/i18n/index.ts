@@ -5,10 +5,12 @@ import { initReactI18next } from 'react-i18next';
 // TODO update aliases
 import aboutEn from '../../../../public/locales/en/about.json';
 import mainEn from '../../../../public/locales/en/main.json';
+import profileEn from '../../../../public/locales/en/profile.json';
 // TODO update aliases
 import translationEn from '../../../../public/locales/en/translation.json';
 import aboutUa from '../../../../public/locales/ua/about.json';
 import mainUa from '../../../../public/locales/ua/main.json';
+import profileUa from '../../../../public/locales/ua/profile.json';
 // TODO update aliases
 import translationUa from '../../../../public/locales/ua/translation.json';
 
@@ -25,11 +27,13 @@ void i18next
         translation: translationEn,
         about: aboutEn,
         main: mainEn,
+        profile: profileEn,
       },
       ua: {
         translation: translationUa,
         about: aboutUa,
         main: mainUa,
+        profile: profileUa,
       },
     },
 
