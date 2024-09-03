@@ -7,3 +7,4 @@ export * from './ThemeSwitcher';
 export * from './Input';
 export * from './Text';
 export * from './Avatar';
+export * from './Select';
