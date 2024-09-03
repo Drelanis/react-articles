@@ -10,5 +10,7 @@
   "city": "City",
   "age": "Age",
   "userName": "User name",
-  "avatar": "Enter your avatar link"
+  "avatar": "Enter your avatar link",
+  "currency": "Currency",
+  "country": "Country"
 }
