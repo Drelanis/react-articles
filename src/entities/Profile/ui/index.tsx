@@ -6,6 +6,8 @@ import { useModel } from '../hooks';
 
 import classNames from './index.module.scss';
 
+import { CountrySelect } from '$entities/CountrySelector';
+import { CurrencySelect } from '$entities/CurrencySelector';
 import {
   Avatar,
   buildClassNames,
@@ -37,6 +39,8 @@ export const ProfileCard = memo((props: Props) => {
     onChangeAge,
     onChangeUserName,
     onChangeAvatar,
+    onChangeCurrency,
+    onChangeCountry,
   } = useModel();
 
   const { containerClassNames, loaderContainer, errorContainer } = useStyles({
@@ -116,6 +120,18 @@ export const ProfileCard = memo((props: Props) => {
           className={classNames.input}
           onChange={onChangeAvatar}
           readOnly={isReadOnly}
+        />
+        <CurrencySelect
+          className={classNames.input}
+          value={data?.currency}
+          onChange={onChangeCurrency}
+          readonly={isReadOnly}
+        />
+        <CountrySelect
+          className={classNames.input}
+          value={data?.country}
+          onChange={onChangeCountry}
+          readonly={isReadOnly}
         />
       </div>
     </>

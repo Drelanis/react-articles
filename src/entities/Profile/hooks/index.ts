@@ -10,7 +10,7 @@ import {
   profileActions,
 } from '../model';
 
-import { useAppDispatch } from '$shared';
+import { Country, Currency, useAppDispatch } from '$shared';
 
 export const useModel = () => {
   const dispatch = useAppDispatch();
@@ -71,19 +71,19 @@ export const useModel = () => {
     [dispatch],
   );
 
-  // const onChangeCurrency = useCallback(
-  //   (currency: Currency) => {
-  //     dispatch(profileActions.updateProfile({ currency }));
-  //   },
-  //   [dispatch],
-  // );
+  const onChangeCurrency = useCallback(
+    (currency: Currency) => {
+      dispatch(profileActions.updateProfile({ currency }));
+    },
+    [dispatch],
+  );
 
-  // const onChangeCountry = useCallback(
-  //   (country: Country) => {
-  //     dispatch(profileActions.updateProfile({ country }));
-  //   },
-  //   [dispatch],
-  // );
+  const onChangeCountry = useCallback(
+    (country: Country) => {
+      dispatch(profileActions.updateProfile({ country }));
+    },
+    [dispatch],
+  );
 
   return {
     data,
@@ -97,5 +97,7 @@ export const useModel = () => {
     onChangeAge,
     onChangeUserName,
     onChangeAvatar,
+    onChangeCurrency,
+    onChangeCountry,
   };
 };

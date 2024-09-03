@@ -39,11 +39,14 @@ export const Select = memo((props: Props) => {
     [options],
   );
 
-  const { containerClassName } = useStyles({ className });
+  const { containerClassName, labelClassNames } = useStyles({
+    className,
+    readonly,
+  });
 
   return (
     <div className={containerClassName}>
-      {label && <span className={classNames.label}>{`${label}>`}</span>}
+      {label && <span className={labelClassNames}>{`${label}>`}</span>}
       <select
         disabled={readonly}
         className={classNames.select}
@@ -56,15 +59,22 @@ export const Select = memo((props: Props) => {
   );
 });
 
-type UseStylesParams = Pick<Props, 'className'>;
+type UseStylesParams = Pick<Props, 'className' | 'readonly'>;
 
 const useStyles = (params: UseStylesParams) => {
-  const { className = '' } = params;
+  const { className = '', readonly } = params;
 
   const containerClassName = buildClassNames({
     classNames: classNames.wrapper,
     additional: [className],
+    mods: {
+      [classNames.readOnly]: readonly,
+    },
   });
 
-  return { containerClassName };
+  const labelClassNames = buildClassNames({
+    classNames: classNames.label,
+  });
+
+  return { containerClassName, labelClassNames };
 };
