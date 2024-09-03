@@ -1,29 +1,28 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { buildClassNames, Currency, Select } from '$shared';
+import { buildClassNames, Country, Select } from '$shared';
 
 type Props = {
   className?: string;
-  onChange?: (value: Currency) => void;
+  onChange?: (value: Country) => void;
   readonly?: boolean;
-  value?: Currency;
+  value?: Country;
 };
 
 const options = [
-  { value: Currency.UAH, content: Currency.UAH },
-  { value: Currency.EUR, content: Currency.EUR },
-  { value: Currency.USD, content: Currency.USD },
+  { value: Country.UKRAINE, content: Country.UKRAINE },
+  { value: Country.POLAND, content: Country.POLAND },
 ];
 
-export const CurrencySelect: FC<Props> = memo((props: Props) => {
+export const CountrySelect: FC<Props> = memo((props: Props) => {
   const { className, value, onChange, readonly } = props;
 
   const { t } = useTranslation('profile');
 
   const onChangeHandler = useCallback(
     (currentValue: string) => {
-      onChange?.(currentValue as Currency);
+      onChange?.(currentValue as Country);
     },
     [onChange],
   );
@@ -33,7 +32,7 @@ export const CurrencySelect: FC<Props> = memo((props: Props) => {
   return (
     <Select
       className={selectClassNames}
-      label={t('currency')}
+      label={t('profile')}
       options={options}
       value={value}
       onChange={onChangeHandler}
