@@ -1,5 +1,7 @@
 .profileCard {
   display: flex;
+  flex-direction: column;
+  width: 100%;
   padding: 20px;
   border: 2px solid var(--inverted-bg-color);
 }
@@ -26,7 +28,6 @@
 
 .avatarWrapper {
   display: flex;
-  width: 100%;
   justify-content: center;
 }
 

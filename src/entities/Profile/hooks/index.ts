@@ -64,12 +64,12 @@ export const useModel = () => {
     [dispatch],
   );
 
-  // const onChangeAvatar = useCallback(
-  //   (value?: string) => {
-  //     dispatch(profileActions.updateProfile({ avatar: value || '' }));
-  //   },
-  //   [dispatch],
-  // );
+  const onChangeAvatar = useCallback(
+    (value?: string) => {
+      dispatch(profileActions.updateProfile({ avatar: value || '' }));
+    },
+    [dispatch],
+  );
 
   // const onChangeCurrency = useCallback(
   //   (currency: Currency) => {
@@ -96,5 +96,6 @@ export const useModel = () => {
     onChangeCity,
     onChangeAge,
     onChangeUserName,
+    onChangeAvatar,
   };
 };

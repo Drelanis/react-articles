@@ -7,6 +7,7 @@ import { useModel } from '../hooks';
 import classNames from './index.module.scss';
 
 import {
+  Avatar,
   buildClassNames,
   Input,
   Loader,
@@ -35,9 +36,11 @@ export const ProfileCard = memo((props: Props) => {
     onChangeCity,
     onChangeAge,
     onChangeUserName,
+    onChangeAvatar,
   } = useModel();
 
   const { containerClassNames, loaderContainer, errorContainer } = useStyles({
+    isReadOnly,
     className,
     isLoading: isLoading || !isProfileInitialized,
   });
@@ -67,43 +70,53 @@ export const ProfileCard = memo((props: Props) => {
     <>
       <ProfileHeader />
       <div className={containerClassNames}>
-        <div>
-          <Input
-            readOnly={isReadOnly}
-            value={data?.firstName || ''}
-            placeholder={t('firstName')}
-            className={classNames.input}
-            onChange={onChangeFirstName}
-          />
-          <Input
-            readOnly={isReadOnly}
-            value={data?.lastName}
-            placeholder={t('lastName')}
-            className={classNames.input}
-            onChange={onChangeLastName}
-          />
-          <Input
-            value={String(data?.age)}
-            placeholder={t('age')}
-            className={classNames.input}
-            onChange={onChangeAge}
-            readOnly={isReadOnly}
-          />
-          <Input
-            value={data?.city}
-            placeholder={t('city')}
-            className={classNames.input}
-            onChange={onChangeCity}
-            readOnly={isReadOnly}
-          />
-          <Input
-            value={data?.userName}
-            placeholder={t('userName')}
-            className={classNames.input}
-            onChange={onChangeUserName}
-            readOnly={isReadOnly}
-          />
-        </div>
+        {data?.avatar && (
+          <div className={classNames.avatarWrapper}>
+            <Avatar src={data?.avatar} />
+          </div>
+        )}
+        <Input
+          readOnly={isReadOnly}
+          value={data?.firstName || ''}
+          placeholder={t('firstName')}
+          className={classNames.input}
+          onChange={onChangeFirstName}
+        />
+        <Input
+          readOnly={isReadOnly}
+          value={data?.lastName}
+          placeholder={t('lastName')}
+          className={classNames.input}
+          onChange={onChangeLastName}
+        />
+        <Input
+          value={String(data?.age)}
+          placeholder={t('age')}
+          className={classNames.input}
+          onChange={onChangeAge}
+          readOnly={isReadOnly}
+        />
+        <Input
+          value={data?.city}
+          placeholder={t('city')}
+          className={classNames.input}
+          onChange={onChangeCity}
+          readOnly={isReadOnly}
+        />
+        <Input
+          value={data?.userName}
+          placeholder={t('userName')}
+          className={classNames.input}
+          onChange={onChangeUserName}
+          readOnly={isReadOnly}
+        />
+        <Input
+          value={data?.avatar}
+          placeholder={t('avatar')}
+          className={classNames.input}
+          onChange={onChangeAvatar}
+          readOnly={isReadOnly}
+        />
       </div>
     </>
   );
@@ -111,10 +124,11 @@ export const ProfileCard = memo((props: Props) => {
 
 type UseStylesParams = Props & {
   isLoading?: boolean;
+  isReadOnly?: boolean;
 };
 
 const useStyles = (params: UseStylesParams) => {
-  const { className = '', isLoading } = params;
+  const { className = '', isLoading, isReadOnly } = params;
 
   const loaderContainer = buildClassNames({
     classNames: classNames.profileCard,
@@ -132,6 +146,9 @@ const useStyles = (params: UseStylesParams) => {
   const containerClassNames = buildClassNames({
     classNames: classNames.profileCard,
     additional: [className],
+    mods: {
+      [classNames.editing]: !isReadOnly,
+    },
   });
 
   return { containerClassNames, loaderContainer, errorContainer };
