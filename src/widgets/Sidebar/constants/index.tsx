@@ -11,6 +11,7 @@ export type SidebarItemType = {
   path: string;
   text: TranslationPagesKeys;
   translation: TranslationChunks;
+  authOnly?: boolean;
 };
 
 export const SidebarItemsList: SidebarItemType[] = [
@@ -31,5 +32,6 @@ export const SidebarItemsList: SidebarItemType[] = [
     icon: ProfileIcon,
     translation: TranslationChunks.PROFILE,
     text: 'profile',
+    authOnly: true,
   },
 ];

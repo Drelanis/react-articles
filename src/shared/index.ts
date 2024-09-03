@@ -7,3 +7,4 @@ export * from './lib';
 export * from './configs';
 export * from './store';
 export * from './api';
+export * from './types';

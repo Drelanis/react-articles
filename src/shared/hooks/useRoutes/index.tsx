@@ -1,12 +1,18 @@
 import { useMemo } from 'react';
-import { Route, RouteProps } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
-export const useRoutes = (params: RouteProps[]) => {
+import { AppRoutesProps } from '$shared/types';
+
+export const useRoutes = (params: AppRoutesProps[], isAuth?: boolean) => {
   const routes = useMemo(() => {
-    return params.map(({ element, path }) => {
+    return params.map(({ element, path, authOnly }) => {
+      if (authOnly && !isAuth) {
+        return;
+      }
+
       return <Route key={path} path={path} element={element} />;
     });
-  }, [params]);
+  }, [params, isAuth]);
 
   return { routes };
 };
