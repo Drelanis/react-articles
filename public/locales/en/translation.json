@@ -14,5 +14,6 @@
   "PASSWORD_ERROR": "The 'Password' field must not be empty",
   "typeUsername": "Enter username",
   "typePassword": "Enter password",
-  "logout": "Logout"
+  "logout": "Logout",
+  "COMMON_ERROR": "Oops! Something went wrong!"
 }

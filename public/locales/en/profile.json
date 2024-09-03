@@ -4,5 +4,10 @@
   "lastName": "Last name",
   "edit": "Edit",
   "profileLoadingError": "An error occurred while loading the profile",
-  "profileReload": "Try refreshing the page"
+  "profileReload": "Try refreshing the page",
+  "save": "Save",
+  "cancel": "Cancel",
+  "city": "City",
+  "age": "Age",
+  "userName": "User name"
 }
