@@ -1,8 +1,7 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 
 import {
-  fetchProfileData,
   getProfileError,
   getProfileForm,
   getProfileIsLoading,
@@ -20,14 +19,6 @@ export const useModel = () => {
   const data = useSelector(getProfileForm);
   const isLoading = useSelector(getProfileIsLoading);
   const error = useSelector(getProfileError);
-
-  const isProfileInitialized = !!data;
-
-  useEffect(() => {
-    if (!isProfileInitialized && !isLoading) {
-      void dispatch(fetchProfileData());
-    }
-  }, [dispatch, isLoading, isProfileInitialized]);
 
   const isReadOnly = useSelector(getProfileReadonly);
 
@@ -91,7 +82,6 @@ export const useModel = () => {
     data,
     isLoading,
     error,
-    isProfileInitialized,
     isReadOnly,
     onChangeFirstName,
     onChangeLastName,

@@ -17,9 +17,9 @@ import {
   TextVariants,
 } from '$shared';
 
-interface Props {
+type Props = {
   className?: string;
-}
+};
 
 export const ProfileCard = memo((props: Props) => {
   const { className } = props;
@@ -29,7 +29,6 @@ export const ProfileCard = memo((props: Props) => {
   const {
     data,
     isLoading,
-    isProfileInitialized,
     error,
     isReadOnly,
     onChangeFirstName,
@@ -45,10 +44,10 @@ export const ProfileCard = memo((props: Props) => {
   const { containerClassNames, loaderContainer, errorContainer } = useStyles({
     isReadOnly,
     className,
-    isLoading: isLoading || !isProfileInitialized,
+    isLoading,
   });
 
-  if (isLoading || !isProfileInitialized) {
+  if (isLoading) {
     return (
       <div className={loaderContainer}>
         <Loader />
