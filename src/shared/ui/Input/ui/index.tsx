@@ -76,17 +76,13 @@ type UseStylesParams = {
 const useStyles = (params: UseStylesParams) => {
   const { caretPosition, className = '' } = params;
 
-  // ! Don't use such approach
-  const caretIndex = 7;
-
   const containerClassNames = buildClassNames({
     classNames: classNames.inputWrapper,
     additional: [className],
   });
 
-  // ! Don't use such approach
   const updatedCaretPosition = {
-    left: `${caretPosition * caretIndex}px`,
+    left: `${caretPosition}px`,
   };
 
   return { containerClassNames, updatedCaretPosition };
