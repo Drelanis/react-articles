@@ -12,8 +12,6 @@ export const useModel = () => {
 
   const onSave = useCallback(async () => {
     await dispatch(updateProfileData());
-
-    dispatch(profileActions.setReadonly(true));
   }, [dispatch]);
 
   return { onSave, onCancelEdit };
