@@ -1,4 +1,5 @@
-import { Country, Currency } from '$shared';
+import { Country } from '$entities/CountrySelector';
+import { Currency } from '$entities/CurrencySelector';
 
 export type Profile = {
   age?: number;

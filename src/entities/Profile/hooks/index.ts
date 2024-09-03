@@ -10,7 +10,9 @@ import {
   profileActions,
 } from '../model';
 
-import { Country, Currency, useAppDispatch } from '$shared';
+import { Country } from '$entities/CountrySelector';
+import { Currency } from '$entities/CurrencySelector';
+import { useAppDispatch } from '$shared';
 
 export const useModel = () => {
   const dispatch = useAppDispatch();

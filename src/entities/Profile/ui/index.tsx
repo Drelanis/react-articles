@@ -6,8 +6,7 @@ import { useModel } from '../hooks';
 
 import classNames from './index.module.scss';
 
-import { CountrySelect } from '$entities/CountrySelector';
-import { CurrencySelect } from '$entities/CurrencySelector';
+import { CountrySelect, CurrencySelect } from '$entities';
 import {
   Avatar,
   buildClassNames,
