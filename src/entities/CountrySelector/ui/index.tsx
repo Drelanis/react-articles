@@ -1,7 +1,9 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { buildClassNames, Country, Select } from '$shared';
+import { Country } from '../constants';
+
+import { buildClassNames, Select } from '$shared';
 
 type Props = {
   className?: string;
