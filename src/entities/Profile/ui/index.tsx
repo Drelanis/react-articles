@@ -1,55 +1,138 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { ProfileHeader } from '../components';
 import { useModel } from '../hooks';
 
 import classNames from './index.module.scss';
 
-import { buildClassNames, Button, ButtonVariant, Input, Text } from '$shared';
+import {
+  buildClassNames,
+  Input,
+  Loader,
+  Text,
+  TextAlign,
+  TextVariants,
+} from '$shared';
 
 interface Props {
   className?: string;
 }
 
-export const ProfileCard = (props: Props) => {
+export const ProfileCard = memo((props: Props) => {
   const { className } = props;
 
   const { t } = useTranslation('profile');
 
-  const { containerClassNames } = useStyles({ className });
+  const {
+    data,
+    isLoading,
+    isProfileInitialized,
+    error,
+    isReadOnly,
+    onChangeFirstName,
+    onChangeLastName,
+    onChangeCity,
+    onChangeAge,
+    onChangeUserName,
+  } = useModel();
 
-  const { data } = useModel();
+  const { containerClassNames, loaderContainer, errorContainer } = useStyles({
+    className,
+    isLoading: isLoading || !isProfileInitialized,
+  });
+
+  if (isLoading || !isProfileInitialized) {
+    return (
+      <div className={loaderContainer}>
+        <Loader />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={errorContainer}>
+        <Text
+          variant={TextVariants.ERROR}
+          title={t('profileLoadingError')}
+          text={t('profileReload')}
+          align={TextAlign.CENTER}
+        />
+      </div>
+    );
+  }
 
   return (
-    <div className={containerClassNames}>
-      <div className={classNames.header}>
-        <Text title={t('profile')} />
-        <Button className={classNames.editBtn} variant={ButtonVariant.OUTLINE}>
-          {t('edit')}
-        </Button>
+    <>
+      <ProfileHeader />
+      <div className={containerClassNames}>
+        <div>
+          <Input
+            readOnly={isReadOnly}
+            value={data?.firstName || ''}
+            placeholder={t('firstName')}
+            className={classNames.input}
+            onChange={onChangeFirstName}
+          />
+          <Input
+            readOnly={isReadOnly}
+            value={data?.lastName}
+            placeholder={t('lastName')}
+            className={classNames.input}
+            onChange={onChangeLastName}
+          />
+          <Input
+            value={String(data?.age)}
+            placeholder={t('age')}
+            className={classNames.input}
+            onChange={onChangeAge}
+            readOnly={isReadOnly}
+          />
+          <Input
+            value={data?.city}
+            placeholder={t('city')}
+            className={classNames.input}
+            onChange={onChangeCity}
+            readOnly={isReadOnly}
+          />
+          <Input
+            value={data?.userName}
+            placeholder={t('userName')}
+            className={classNames.input}
+            onChange={onChangeUserName}
+            readOnly={isReadOnly}
+          />
+        </div>
       </div>
-      <div className={classNames.data}>
-        <Input
-          value={data?.firstName}
-          placeholder={t('firstName')}
-          className={classNames.input}
-        />
-        <Input
-          value={data?.lastName}
-          placeholder={t('lastName')}
-          className={classNames.input}
-        />
-      </div>
-    </div>
+    </>
   );
+});
+
+type UseStylesParams = Props & {
+  isLoading?: boolean;
 };
 
-const useStyles = (params: Props) => {
-  const { className = '' } = params;
+const useStyles = (params: UseStylesParams) => {
+  const { className = '', isLoading } = params;
+
+  const loaderContainer = buildClassNames({
+    classNames: classNames.profileCard,
+    mods: {
+      [classNames.loading]: isLoading,
+    },
+    additional: [className],
+  });
+
+  const errorContainer = buildClassNames({
+    classNames: classNames.profileCard,
+    additional: [className, classNames.error],
+  });
 
   const containerClassNames = buildClassNames({
     classNames: classNames.profileCard,
     additional: [className],
   });
 
-  return { containerClassNames };
+  return { containerClassNames, loaderContainer, errorContainer };
 };

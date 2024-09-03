@@ -2,23 +2,19 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { Profile } from '../../types';
 
-import { ErrorHints, ServerEndpoints, ThunkConfig } from '$shared';
+import { ErrorHints, ThunkConfig } from '$shared';
 
 export const fetchProfileData = createAsyncThunk<
   Profile,
   void,
   ThunkConfig<ErrorHints>
->('profile/fetchProfileData', async (_, thunkAPI) => {
-  const { extra, rejectWithValue } = thunkAPI;
+>('profile/fetchProfileData', async (_, thunkApi) => {
+  const { extra, rejectWithValue } = thunkApi;
   try {
-    const response = await extra.api.get<Profile>(ServerEndpoints.PROFILE);
-
-    if (!response.data) {
-      throw new Error();
-    }
+    const response = await extra.api.get<Profile>('/profile');
 
     return response.data;
-  } catch (error) {
-    return rejectWithValue('LOGIN_ERROR');
+  } catch {
+    return rejectWithValue('COMMON_ERROR');
   }
 });

@@ -5,4 +5,5 @@ export const profileInitialState: ProfileSchema = {
   isLoading: false,
   error: undefined,
   data: undefined,
+  form: undefined,
 };
