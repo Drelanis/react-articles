@@ -8,13 +8,14 @@ import { buildClassNames } from '$shared/utils';
 
 type HTMLInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  'value' | 'onChange'
+  'value' | 'onChange' | 'readOnly'
 >;
 
 interface Props extends HTMLInputProps {
   autofocus?: boolean;
   className?: string;
   onChange?: (value: string) => void;
+  readOnly?: boolean;
   value?: string;
 }
 
@@ -26,6 +27,7 @@ export const Input: FC<Props> = memo((props) => {
     type = 'text',
     placeholder,
     autofocus,
+    readOnly,
     ...otherProps
   } = props;
 
@@ -39,9 +41,12 @@ export const Input: FC<Props> = memo((props) => {
     onSelect,
   } = useModel({ autofocus, onChange });
 
+  const isCaretVisible = isFocused && !readOnly;
+
   const { containerClassNames, updatedCaretPosition } = useStyles({
     className,
     caretPosition,
+    readOnly,
   });
 
   return (
@@ -61,7 +66,7 @@ export const Input: FC<Props> = memo((props) => {
           onSelect={onSelect}
           {...otherProps}
         />
-        {isFocused && (
+        {isCaretVisible && isFocused && (
           <span className={classNames.caret} style={updatedCaretPosition} />
         )}
       </div>
@@ -71,14 +76,17 @@ export const Input: FC<Props> = memo((props) => {
 
 type UseStylesParams = {
   caretPosition: number;
-} & Pick<Props, 'className'>;
+} & Pick<Props, 'className' | 'readOnly'>;
 
 const useStyles = (params: UseStylesParams) => {
-  const { caretPosition, className = '' } = params;
+  const { caretPosition, className = '', readOnly } = params;
 
   const containerClassNames = buildClassNames({
     classNames: classNames.inputWrapper,
     additional: [className],
+    mods: {
+      [classNames.readOnly]: readOnly,
+    },
   });
 
   const updatedCaretPosition = {
