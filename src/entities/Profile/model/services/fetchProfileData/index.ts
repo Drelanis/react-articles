@@ -18,6 +18,10 @@ export const fetchProfileData = createAsyncThunk<
       },
     });
 
+    if (!response.data) {
+      throw new Error();
+    }
+
     return response.data;
   } catch {
     return rejectWithValue('COMMON_ERROR');
