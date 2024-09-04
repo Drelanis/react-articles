@@ -32,5 +32,6 @@ export default {
   globals: {
     API: '',
     IS_DEV: true,
+    PROJECT: 'jest',
   },
 };

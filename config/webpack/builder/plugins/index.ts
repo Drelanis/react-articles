@@ -10,6 +10,7 @@ export const buildPlugins = ({
   paths,
   isDev,
   apiUrl,
+  project,
 }: BuildOptions): WebpackPluginInstance[] => {
   const plugins = [
     new HTMLWebpackPlugin({
@@ -23,6 +24,7 @@ export const buildPlugins = ({
     new DefinePlugin({
       API: JSON.stringify(apiUrl),
       IS_DEV: JSON.stringify(isDev),
+      PROJECT: JSON.stringify(project),
     }),
     isDev && new ReactRefreshWebpackPlugin(),
     // * For analyzing bundles

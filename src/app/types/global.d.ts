@@ -12,3 +12,4 @@ declare module '*.svg' {
 
 declare const IS_DEV: boolean;
 declare const API: string;
+declare const PROJECT: 'storybook' | 'jest' | 'frontend';

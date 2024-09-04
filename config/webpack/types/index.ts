@@ -19,4 +19,5 @@ export type BuildOptions = {
   mode: BuildMode;
   paths: BuildPaths;
   port: number;
+  project: 'storybook' | 'frontend' | 'jest';
 };
