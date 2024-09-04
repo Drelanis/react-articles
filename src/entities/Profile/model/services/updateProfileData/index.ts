@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { getProfileForm } from '../../selectors';
 import { Profile } from '../../types';
+import { validateProfileData } from '../validateProfileData';
 
 import { ErrorHints, ThunkConfig } from '$shared';
 
@@ -12,13 +13,19 @@ export const updateProfileData = createAsyncThunk<
 >('profile/updateProfileData', async (_, thunkApi) => {
   const { extra, rejectWithValue, getState } = thunkApi;
 
-  const formData = getProfileForm(getState());
-
   try {
+    const formData = getProfileForm(getState());
+
+    const errors = validateProfileData(formData);
+
+    if (errors.length) {
+      return rejectWithValue(errors[0]);
+    }
+
     const response = await extra.api.put<Profile>('/profile', formData);
 
     return response.data;
   } catch {
-    return rejectWithValue('COMMON_ERROR');
+    return rejectWithValue('INCORRECT_USER_DATA');
   }
 });

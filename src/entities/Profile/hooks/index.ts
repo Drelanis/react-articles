@@ -11,7 +11,7 @@ import {
 
 import { Country } from '$entities/CountrySelector';
 import { Currency } from '$entities/CurrencySelector';
-import { useAppDispatch } from '$shared';
+import { ErrorHints, useAppDispatch } from '$shared';
 
 export const useModel = () => {
   const dispatch = useAppDispatch();
@@ -81,7 +81,7 @@ export const useModel = () => {
   return {
     data,
     isLoading,
-    error,
+    error: (error || '') as ErrorHints,
     isReadOnly,
     onChangeFirstName,
     onChangeLastName,

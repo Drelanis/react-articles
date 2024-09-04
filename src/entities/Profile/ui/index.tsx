@@ -25,6 +25,7 @@ export const ProfileCard = memo((props: Props) => {
   const { className } = props;
 
   const { t } = useTranslation('profile');
+  const { t: mainT } = useTranslation();
 
   const {
     data,
@@ -41,7 +42,7 @@ export const ProfileCard = memo((props: Props) => {
     onChangeCountry,
   } = useModel();
 
-  const { containerClassNames, loaderContainer, errorContainer } = useStyles({
+  const { containerClassNames, loaderContainer } = useStyles({
     isReadOnly,
     className,
     isLoading,
@@ -55,19 +56,6 @@ export const ProfileCard = memo((props: Props) => {
     );
   }
 
-  if (error) {
-    return (
-      <div className={errorContainer}>
-        <Text
-          variant={TextVariants.ERROR}
-          title={t('profileLoadingError')}
-          text={t('profileReload')}
-          align={TextAlign.CENTER}
-        />
-      </div>
-    );
-  }
-
   return (
     <>
       <ProfileHeader />
@@ -76,6 +64,13 @@ export const ProfileCard = memo((props: Props) => {
           <div className={classNames.avatarWrapper}>
             <Avatar src={data?.avatar} />
           </div>
+        )}
+        {error && (
+          <Text
+            variant={TextVariants.ERROR}
+            text={mainT(error)}
+            align={TextAlign.CENTER}
+          />
         )}
         <Input
           readOnly={isReadOnly}
@@ -152,11 +147,6 @@ const useStyles = (params: UseStylesParams) => {
     additional: [className],
   });
 
-  const errorContainer = buildClassNames({
-    classNames: classNames.profileCard,
-    additional: [className, classNames.error],
-  });
-
   const containerClassNames = buildClassNames({
     classNames: classNames.profileCard,
     additional: [className],
@@ -165,5 +155,5 @@ const useStyles = (params: UseStylesParams) => {
     },
   });
 
-  return { containerClassNames, loaderContainer, errorContainer };
+  return { containerClassNames, loaderContainer };
 };
