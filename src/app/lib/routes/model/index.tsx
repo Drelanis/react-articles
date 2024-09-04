@@ -1,14 +1,18 @@
 import { useSelector } from 'react-redux';
 
+import { RequireAuth } from '../components';
 import { routeConfig } from '../config';
 
-import { getUserAuthData } from '$entities';
+import { getUserMounted } from '$entities';
 import { useRoutes } from '$shared';
 
 export const useModel = () => {
-  const isAuth = useSelector(getUserAuthData);
+  const isUserMounted = useSelector(getUserMounted);
 
-  const { routes } = useRoutes(routeConfig, Boolean(isAuth));
+  const { routes } = useRoutes({
+    params: routeConfig,
+    AuthWrapper: RequireAuth,
+  });
 
-  return { routes };
+  return { routes, isUserMounted };
 };

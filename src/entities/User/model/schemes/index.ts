@@ -4,7 +4,10 @@ export type User = {
 };
 
 export type UserSchema = {
+  isMounted: boolean;
   authData?: User;
 };
 
-export const userInitialState: UserSchema = {};
+export const userInitialState: UserSchema = {
+  isMounted: false,
+};
