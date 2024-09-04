@@ -7,4 +7,5 @@ export const AppRoutes = {
   MAIN: '/',
   ABOUT: '/about',
   PROFILE: '/profile',
+  ARTICLES: '/articles',
 };

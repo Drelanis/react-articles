@@ -4,11 +4,13 @@ import { initReactI18next } from 'react-i18next';
 
 // TODO update aliases
 import aboutEn from '../../../../public/locales/en/about.json';
+import articlesEn from '../../../../public/locales/en/articles.json';
 import mainEn from '../../../../public/locales/en/main.json';
 import profileEn from '../../../../public/locales/en/profile.json';
 import translationEn from '../../../../public/locales/en/translation.json';
 // TODO update aliases
 import aboutUa from '../../../../public/locales/ua/about.json';
+import articlesUa from '../../../../public/locales/ua/articles.json';
 import mainUa from '../../../../public/locales/ua/main.json';
 import profileUa from '../../../../public/locales/ua/profile.json';
 import translationUa from '../../../../public/locales/ua/translation.json';
@@ -16,7 +18,8 @@ import translationUa from '../../../../public/locales/ua/translation.json';
 export type TranslationPagesKeys =
   | keyof typeof aboutEn
   | keyof typeof mainEn
-  | keyof typeof profileEn;
+  | keyof typeof profileEn
+  | keyof typeof articlesEn;
 
 void i18next
   .use(LanguageDetector)
@@ -32,12 +35,14 @@ void i18next
         about: aboutEn,
         main: mainEn,
         profile: profileEn,
+        articles: articlesEn,
       },
       ua: {
         translation: translationUa,
         about: aboutUa,
         main: mainUa,
         profile: profileUa,
+        articles: articlesUa,
       },
     },
 

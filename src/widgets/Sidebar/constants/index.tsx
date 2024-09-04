@@ -2,6 +2,7 @@ import React from 'react';
 
 import { AppRoutes, TranslationChunks } from '$shared';
 import AboutIcon from '$shared/assets/icons/about-20-20.svg';
+import ArticleIcon from '$shared/assets/icons/article-20-20.svg';
 import MainIcon from '$shared/assets/icons/main-20-20.svg';
 import ProfileIcon from '$shared/assets/icons/profile-20-20.svg';
 import { TranslationPagesKeys } from '$shared/configs/i18n';
@@ -32,6 +33,13 @@ export const SidebarItemsList: SidebarItemType[] = [
     icon: ProfileIcon,
     translation: TranslationChunks.PROFILE,
     text: 'profile',
+    authOnly: true,
+  },
+  {
+    translation: TranslationChunks.ARTICLES,
+    path: AppRoutes.ARTICLES,
+    icon: ArticleIcon,
+    text: 'articlesPageTitle',
     authOnly: true,
   },
 ];
