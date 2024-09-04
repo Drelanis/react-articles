@@ -14,5 +14,10 @@
   "PASSWORD_ERROR": "The 'Password' field must not be empty",
   "typeUsername": "Enter username",
   "typePassword": "Enter password",
-  "logout": "Logout"
+  "logout": "Logout",
+  "COMMON_ERROR": "Oops! Something went wrong!",
+  "INCORRECT_USER_DATA": "Incorrect user data! Try again!",
+  "INCORRECT_AGE": "Incorrect user age!",
+  "INCORRECT_COUNTRY": "Incorrect user country!",
+  "NO_DATA": "Incorrect user data! Try again!"
 }

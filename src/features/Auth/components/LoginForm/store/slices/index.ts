@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { loginByUsername } from '../api';
 import { loginInitialState } from '../schemes';
+import { loginByUsername } from '../services';
 
 export const loginSlice = createSlice({
   name: 'login',
@@ -18,7 +18,7 @@ export const loginSlice = createSlice({
     builder
       .addCase(loginByUsername.pending, (state) => {
         state.error = undefined;
-        state.isLoading = true;
+        // state.isLoading = true;
       })
       .addCase(loginByUsername.fulfilled, (state) => {
         state.userName = '';

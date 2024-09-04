@@ -55,5 +55,5 @@ server.use(router);
 
 // * Run server
 server.listen(8000, () => {
-  console.log('server is running on http://localhost:8000/');
+  console.log('server is running on http://localhost:8000');
 });

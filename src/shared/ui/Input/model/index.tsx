@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
+import { getInputFont, getTextWidth } from '../utils';
+
 type Params = {
   autofocus?: boolean;
   onChange?: (value: string) => void;
@@ -8,7 +10,7 @@ type Params = {
 export const useModel = (params: Params) => {
   const { autofocus, onChange } = params;
 
-  const ref = useRef<HTMLInputElement>(null);
+  const ref = useRef<HTMLInputElement | null>(null);
   const [isFocused, setIsFocused] = useState(false);
   const [caretPosition, setCaretPosition] = useState(0);
 
@@ -19,9 +21,14 @@ export const useModel = (params: Params) => {
     }
   }, [autofocus]);
 
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e.target.value);
-    setCaretPosition(e.target.value.length);
+  const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const inputElement = ref.current;
+
+    const font = getInputFont(inputElement!);
+    const width = getTextWidth(event.target.value, font);
+
+    onChange?.(event.target.value);
+    setCaretPosition(width);
   };
 
   const onBlur = () => {
@@ -32,8 +39,21 @@ export const useModel = (params: Params) => {
     setIsFocused(true);
   };
 
-  const onSelect = (event: React.SyntheticEvent<HTMLInputElement>) => {
-    setCaretPosition(event.currentTarget.selectionStart || 0);
+  const onSelect = (event: React.SyntheticEvent<HTMLDivElement, Event>) => {
+    if (event.target instanceof HTMLInputElement) {
+      const inputElement = event.target;
+      const { selectionStart } = inputElement;
+
+      const textBeforeCaret = inputElement.value.substring(
+        0,
+        selectionStart || 0,
+      );
+
+      const font = getInputFont(inputElement);
+      const width = getTextWidth(textBeforeCaret, font);
+
+      setCaretPosition(width);
+    }
   };
 
   return {

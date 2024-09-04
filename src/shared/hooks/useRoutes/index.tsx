@@ -1,12 +1,27 @@
 import { useMemo } from 'react';
-import { Route, RouteProps } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
-export const useRoutes = (params: RouteProps[]) => {
+import { AppRoutesProps } from '$shared/types';
+
+type Props = {
+  AuthWrapper: ({ children }: { children: JSX.Element }) => JSX.Element;
+  params: AppRoutesProps[];
+};
+
+export const useRoutes = (props: Props) => {
+  const { AuthWrapper, params } = props;
+
   const routes = useMemo(() => {
-    return params.map(({ element, path }) => {
-      return <Route key={path} path={path} element={element} />;
+    return params.map(({ element, path, authOnly }) => {
+      const routeElement = authOnly ? (
+        <AuthWrapper>{element as JSX.Element}</AuthWrapper>
+      ) : (
+        element
+      );
+
+      return <Route key={path} path={path} element={routeElement} />;
     });
-  }, [params]);
+  }, [params, AuthWrapper]);
 
   return { routes };
 };

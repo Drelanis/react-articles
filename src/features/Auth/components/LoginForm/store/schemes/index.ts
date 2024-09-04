@@ -2,7 +2,7 @@ import { LoginSchema } from '../types';
 
 export const loginInitialState: LoginSchema = {
   isLoading: false,
-  password: '',
-  userName: '',
+  password: '123',
+  userName: 'admin',
   error: '',
 };

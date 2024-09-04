@@ -5,6 +5,7 @@ export declare const clear: string;
 export declare const clearInverted: string;
 export declare const disabled: string;
 export declare const outline: string;
+export declare const outlineRed: string;
 export declare const primary: string;
 export declare const sizeL: string;
 export declare const sizeM: string;

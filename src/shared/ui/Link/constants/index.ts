@@ -6,4 +6,5 @@ export enum AppLinkTheme {
 export const AppRoutes = {
   MAIN: '/',
   ABOUT: '/about',
+  PROFILE: '/profile',
 };

@@ -20,11 +20,13 @@ export const parameters = {
 addDecorator(ThemeDecorator(ThemeVariants.LIGHT));
 addDecorator(TranslationDecorator);
 addDecorator(StyleDecorator);
-addDecorator(RouterDecorator);
+// ! StoreDecorator must be before RouterDecorator
 addDecorator(
   StoreDecorator({
     login: {},
     counter: {},
     user: {},
+    profile: {},
   }),
 );
+addDecorator(RouterDecorator);

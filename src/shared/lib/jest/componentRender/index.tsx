@@ -37,12 +37,12 @@ export const componentRender = async (params: Params) => {
   });
 
   return render(
-    <StoreProvider initialState={initialState}>
-      <I18nextProvider i18n={i18nForTests}>
-        <MemoryRouter initialEntries={[route]}>
+    <MemoryRouter initialEntries={[route]}>
+      <StoreProvider initialState={initialState}>
+        <I18nextProvider i18n={i18nForTests}>
           <ThemeProvider>{component}</ThemeProvider>
-        </MemoryRouter>
-      </I18nextProvider>
-    </StoreProvider>,
+        </I18nextProvider>
+      </StoreProvider>
+    </MemoryRouter>,
   );
 };

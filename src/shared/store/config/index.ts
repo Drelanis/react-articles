@@ -1,8 +1,11 @@
 import {
+  CombinedState,
   configureStore,
   DeepPartial,
+  Reducer,
   ReducersMapObject,
 } from '@reduxjs/toolkit';
+import { NavigateFunction } from 'react-router-dom';
 
 import { StateSchema } from '../types';
 
@@ -10,14 +13,16 @@ import { createReducerManager } from './reducerManager';
 
 // TODO Fix it!
 import { counterReducer, userReducer } from '$entities';
+import { $api } from '$shared/api';
 
 type Params = {
   asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>;
   initialState?: DeepPartial<StateSchema>;
+  navigate?: NavigateFunction;
 };
 
 export const createReduxStore = (params: Params) => {
-  const { initialState, asyncReducers } = params;
+  const { initialState, asyncReducers, navigate } = params;
 
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
@@ -27,12 +32,20 @@ export const createReduxStore = (params: Params) => {
 
   const reducerManager = createReducerManager(rootReducers);
 
-  const store = configureStore<StateSchema>({
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- TODO: Fix me
-    // @ts-ignore
-    reducer: reducerManager.reduce,
+  const store = configureStore({
+    // TODO: Fix me
+    reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
     devTools: IS_DEV,
     preloadedState: initialState as StateSchema,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        thunk: {
+          extraArgument: {
+            api: $api,
+            navigate,
+          },
+        },
+      }),
   });
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- TODO Fix me
@@ -41,3 +54,5 @@ export const createReduxStore = (params: Params) => {
 
   return store;
 };
+
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];

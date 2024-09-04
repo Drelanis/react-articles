@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 
 import { LOCAL_STORAGE_THEME_KEY, ThemeVariants } from '../constants';
 import { ThemeContext } from '../lib';
@@ -6,14 +6,24 @@ import { ThemeContext } from '../lib';
 export const useTheme = () => {
   const { theme, setTheme } = useContext(ThemeContext);
 
-  const toggleTheme = useCallback(() => {
-    const newTheme =
-      theme === ThemeVariants.LIGHT ? ThemeVariants.DARK : ThemeVariants.LIGHT;
-
-    setTheme(newTheme);
-
+  const toggleTheme = () => {
+    let newTheme: ThemeVariants;
+    switch (theme) {
+      case ThemeVariants.DARK:
+        newTheme = ThemeVariants.LIGHT;
+        break;
+      case ThemeVariants.LIGHT:
+        newTheme = ThemeVariants.ORANGE;
+        break;
+      case ThemeVariants.ORANGE:
+        newTheme = ThemeVariants.DARK;
+        break;
+      default:
+        newTheme = ThemeVariants.LIGHT;
+    }
+    setTheme?.(newTheme);
     localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
-  }, [theme, setTheme]);
+  };
 
   useEffect(() => {
     const isThemeSet = localStorage.getItem('theme');

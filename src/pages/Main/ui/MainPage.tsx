@@ -1,12 +1,12 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { TranslationChunks } from '$shared';
 
-const MainPage: FC = () => {
+const MainPage: FC = memo(() => {
   const { t } = useTranslation(TranslationChunks.MAIN);
 
   return <div>{t('mainPage')}</div>;
-};
+});
 
 export default MainPage;

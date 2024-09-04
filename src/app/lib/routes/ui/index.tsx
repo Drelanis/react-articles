@@ -8,7 +8,11 @@ import classNames from './index.module.scss';
 import { PageLoader } from '$widgets';
 
 export const Routes: FC = () => {
-  const { routes } = useModel();
+  const { routes, isUserMounted } = useModel();
+
+  if (!isUserMounted) {
+    return null;
+  }
 
   return (
     <Suspense fallback={<PageLoader />}>

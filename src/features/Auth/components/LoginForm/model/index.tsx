@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import {
   getLoginError,
@@ -10,8 +10,10 @@ import {
   loginByUsername,
 } from '../store';
 
+import { useAppDispatch } from '$shared';
+
 export const useModel = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const isLoading = useSelector(getLoginIsLoading);
   const error = useSelector(getLoginError);
@@ -32,8 +34,8 @@ export const useModel = () => {
     [dispatch],
   );
 
-  const login = useCallback(() => {
-    dispatch(loginByUsername({ userName, password }));
+  const login = useCallback(async () => {
+    await dispatch(loginByUsername({ userName, password }));
   }, [dispatch, userName, password]);
 
   return {
