@@ -1,5 +1,6 @@
 import { Country } from '$entities/CountrySelector';
 import { Currency } from '$entities/CurrencySelector';
+import { ValidateErrorHintKeys } from '$shared';
 
 export type Profile = {
   age?: number;
@@ -18,4 +19,5 @@ export type ProfileSchema = {
   data?: Profile;
   error?: string;
   form?: Profile;
+  validationError?: ValidateErrorHintKeys[];
 };

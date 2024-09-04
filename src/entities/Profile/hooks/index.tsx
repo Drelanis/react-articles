@@ -1,4 +1,5 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import {
@@ -6,19 +7,23 @@ import {
   getProfileForm,
   getProfileIsLoading,
   getProfileReadonly,
+  getProfileValidateErrors,
   profileActions,
 } from '../model';
 
 import { Country } from '$entities/CountrySelector';
 import { Currency } from '$entities/CurrencySelector';
-import { ErrorHints, useAppDispatch } from '$shared';
+import { Text, TextAlign, TextVariants, useAppDispatch } from '$shared';
 
 export const useModel = () => {
   const dispatch = useAppDispatch();
 
+  const { t } = useTranslation();
+
   const data = useSelector(getProfileForm);
   const isLoading = useSelector(getProfileIsLoading);
   const error = useSelector(getProfileError);
+  const validationErrors = useSelector(getProfileValidateErrors);
 
   const isReadOnly = useSelector(getProfileReadonly);
 
@@ -78,11 +83,31 @@ export const useModel = () => {
     [dispatch],
   );
 
+  const validationErrorComponent = useMemo(() => {
+    if (!validationErrors) {
+      return null;
+    }
+
+    const errors = validationErrors.map((validateError) => {
+      return (
+        <Text
+          key={validateError}
+          variant={TextVariants.ERROR}
+          text={t(validateError)}
+          align={TextAlign.CENTER}
+        />
+      );
+    });
+
+    return errors;
+  }, [t, validationErrors]);
+
   return {
     data,
     isLoading,
-    error: (error || '') as ErrorHints,
+    error,
     isReadOnly,
+    validationErrorComponent,
     onChangeFirstName,
     onChangeLastName,
     onChangeCity,

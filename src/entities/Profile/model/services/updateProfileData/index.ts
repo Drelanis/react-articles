@@ -4,12 +4,12 @@ import { getProfileForm } from '../../selectors';
 import { Profile } from '../../types';
 import { validateProfileData } from '../validateProfileData';
 
-import { ErrorHints, ThunkConfig } from '$shared';
+import { ErrorHints, ThunkConfig, ValidateErrorHintKeys } from '$shared';
 
 export const updateProfileData = createAsyncThunk<
   Profile,
   void,
-  ThunkConfig<ErrorHints>
+  ThunkConfig<ErrorHints | ValidateErrorHintKeys[]>
 >('profile/updateProfileData', async (_, thunkApi) => {
   const { extra, rejectWithValue, getState } = thunkApi;
 
@@ -19,13 +19,13 @@ export const updateProfileData = createAsyncThunk<
     const errors = validateProfileData(formData);
 
     if (errors.length) {
-      return rejectWithValue(errors[0]);
+      return rejectWithValue(errors);
     }
 
     const response = await extra.api.put<Profile>('/profile', formData);
 
     return response.data;
   } catch {
-    return rejectWithValue('INCORRECT_USER_DATA');
+    return rejectWithValue('COMMON_ERROR');
   }
 });

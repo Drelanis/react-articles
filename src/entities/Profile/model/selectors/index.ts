@@ -3,3 +3,4 @@ export * from './getProfileError';
 export * from './getProfileIsLoading';
 export * from './getProfileForm';
 export * from './getProfileReadonly';
+export * from './getProfileValidateErrors';
