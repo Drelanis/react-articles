@@ -13,6 +13,8 @@ const data = {
   currency: Currency.USD,
 };
 
+jest.mock('axios');
+
 describe('updateProfileData.test', () => {
   test('success', async () => {
     const thunk = new TestAsyncThunk(updateProfileData, {
