@@ -5,27 +5,27 @@ export type ArticleBlockBase = {
   type: ArticleBlockVariant;
 };
 
-export interface ArticleCodeBlock extends ArticleBlockBase {
+export interface ArticleCodeBlockType extends ArticleBlockBase {
   code: string;
   type: ArticleBlockVariant.CODE;
 }
 
-export interface ArticleImageBlock extends ArticleBlockBase {
+export interface ArticleImageBlockType extends ArticleBlockBase {
   src: string;
   title: string;
   type: ArticleBlockVariant.IMAGE;
 }
 
-export interface ArticleTextBlock extends ArticleBlockBase {
+export interface ArticleTextBlockType extends ArticleBlockBase {
   paragraphs: string[];
   type: ArticleBlockVariant.TEXT;
   title?: string;
 }
 
 export type ArticleBlock =
-  | ArticleCodeBlock
-  | ArticleImageBlock
-  | ArticleTextBlock;
+  | ArticleCodeBlockType
+  | ArticleImageBlockType
+  | ArticleTextBlockType;
 
 export type Article = {
   blocks: ArticleBlock[];

@@ -2,15 +2,15 @@ import { memo } from 'react';
 
 import classNames from './index.module.scss';
 
-import { ArticleImageBlock } from '$entities/ArticleDetails/model';
+import { ArticleImageBlockType } from '$entities/ArticleDetails/model';
 import { buildClassNames, Text, TextAlign } from '$shared';
 
 type Props = {
-  block: ArticleImageBlock;
+  block: ArticleImageBlockType;
   className?: string;
 };
 
-export const ArticleImageBlockComponent = memo((props: Props) => {
+export const ArticleImageBlock = memo((props: Props) => {
   const { className, block } = props;
 
   const { containerClassNames } = useStyles({ className });

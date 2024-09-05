@@ -28,7 +28,7 @@ export const ArticleDetails: FC<Props> = memo((props) => {
 
   const { containerClassNames } = useStyles({ className });
 
-  const { isLoading, error, article } = useModel();
+  const { isLoading, error, article, ArticleContent } = useModel();
 
   if (isLoading) {
     return (
@@ -77,6 +77,7 @@ export const ArticleDetails: FC<Props> = memo((props) => {
         <Icon className={classNames.icon} Svg={CalendarIcon} />
         <Text text={article?.createdAt} />
       </div>
+      {ArticleContent}
     </div>
   );
 });
