@@ -115,15 +115,17 @@
   "users": [
     {
       "id": "1",
-      "username": "admin",
+      "userName": "admin",
       "password": "123",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "avatar": "https://seeklogo.com/images/L/linkin-park-band-logo-3F627013D0-seeklogo.com.png"
     },
     {
       "id": "2",
-      "username": "user",
+      "userName": "user",
       "password": "123",
-      "role": "USER"
+      "role": "USER",
+      "avatar": "https://seeklogo.com/images/L/linkin-park-band-logo-3F627013D0-seeklogo.com.png"
     }
   ]
 }
