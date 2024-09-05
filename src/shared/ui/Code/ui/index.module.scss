@@ -10,6 +10,10 @@
   position: absolute;
   right: 20px;
   top: 20px;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .copyIcon path {
