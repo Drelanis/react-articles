@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { getArticleDetailsError, getArticleDetailsIsLoading } from '../model';
 
-import { Text, TextAlign, TextVariants } from '$shared';
+import { Skeleton, Text, TextAlign, TextVariants } from '$shared';
 
 export const ArticleDetails = memo(() => {
   const { t } = useTranslation();
@@ -26,5 +26,5 @@ export const ArticleDetails = memo(() => {
     );
   }
 
-  return <p>123</p>;
+  return <Skeleton width={100} height={100} />;
 });
