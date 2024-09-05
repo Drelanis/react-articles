@@ -9,3 +9,4 @@ export * from './Text';
 export * from './Avatar';
 export * from './Select';
 export * from './Skeleton';
+export * from './Code';
