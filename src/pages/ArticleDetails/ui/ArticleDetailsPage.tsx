@@ -1,21 +1,25 @@
 import { FC, memo } from 'react';
 
 import { useModel } from '../model';
+import { articleDetailsCommentsReducer } from '../model/slices';
 
-import { ArticleDetails, articleDetailsReducer } from '$entities';
+import { ArticleDetails, Comments } from '$entities';
 import { DynamicModuleLoader, ReducersList } from '$shared';
 
 const reducers: ReducersList = {
-  articleDetails: articleDetailsReducer,
+  articleDetailsComments: articleDetailsCommentsReducer,
 };
 
 const ArticleDetailsPage: FC = memo(() => {
-  useModel();
+  const { comments, isCommentsLoading } = useModel();
 
   return (
-    <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+    <>
       <ArticleDetails />
-    </DynamicModuleLoader>
+      <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+        <Comments comments={comments} isLoading={isCommentsLoading} />
+      </DynamicModuleLoader>
+    </>
   );
 });
 

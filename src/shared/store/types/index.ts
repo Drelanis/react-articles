@@ -16,6 +16,7 @@ import {
   UserSchema,
 } from '$entities';
 import { LoginSchema } from '$features';
+import { ArticleDetailsCommentsSchema } from '$pages';
 
 export type StateSchema = {
   counter: CounterSchema;
@@ -23,6 +24,7 @@ export type StateSchema = {
 
   // Async reducers
   articleDetails?: ArticleDetailsSchema;
+  articleDetailsComments?: ArticleDetailsCommentsSchema;
   login?: LoginSchema;
   profile?: ProfileSchema;
 };

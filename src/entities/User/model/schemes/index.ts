@@ -1,6 +1,7 @@
 export type User = {
   id: string;
   userName: string;
+  avatar?: string;
 };
 
 export type UserSchema = {

@@ -1,19 +1,25 @@
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { fetchArticleById } from '$entities';
-import { useAppDispatch } from '$shared';
+import { getArticleCommentsIsLoading } from './selectors';
+import { fetchCommentsByArticleId } from './services';
+import { getArticleComments } from './slices';
+
+import { useAppDispatch, useInitialEffect } from '$shared';
 
 export const useModel = () => {
   const { id } = useParams<{ id: string }>();
 
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    if (PROJECT === 'storybook') {
-      return;
-    }
+  const comments = useSelector(getArticleComments.selectAll);
+  const isCommentsLoading = useSelector(getArticleCommentsIsLoading);
 
-    void dispatch(fetchArticleById(id));
-  }, [dispatch, id]);
+  useInitialEffect(() => {
+    void dispatch(fetchCommentsByArticleId(id));
+  });
+
+  return { comments, isCommentsLoading };
 };
+
+export { ArticleDetailsCommentsSchema } from './types';
