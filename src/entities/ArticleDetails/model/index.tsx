@@ -74,8 +74,9 @@ export {
   ArticleCodeBlockType,
   ArticleImageBlockType,
   ArticleTextBlockType,
+  Article,
 } from './types';
-export { ArticleBlockVariant } from './constants';
+export { ArticleBlockVariant, ArticleVariant } from './constants';
 export { articleDetailsReducer } from './slices';
 export { fetchArticleById } from './services';
 export * from './selectors';
