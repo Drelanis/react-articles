@@ -10,3 +10,4 @@ export * from './Avatar';
 export * from './Select';
 export * from './Skeleton';
 export * from './Code';
+export * from './Icon';
