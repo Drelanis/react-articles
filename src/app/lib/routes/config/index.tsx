@@ -30,7 +30,7 @@ export const routeConfig: AppRoutesProps[] = [
     authOnly: true,
   },
   {
-    path: `${RoutePath['article-details']}:id`,
+    path: `${RoutePath.article}:id`,
     element: <ArticleDetailsLazyPage />,
     authOnly: true,
   },
