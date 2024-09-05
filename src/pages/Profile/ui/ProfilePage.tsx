@@ -19,7 +19,7 @@ const ProfilePage: FC = memo(() => {
   }, [dispatch]);
 
   return (
-    <DynamicModuleLoader reducers={reducers}>
+    <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <ProfileCard />
     </DynamicModuleLoader>
   );

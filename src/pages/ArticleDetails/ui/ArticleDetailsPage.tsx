@@ -1,20 +1,31 @@
-import { memo } from 'react';
-import { useTranslation } from 'react-i18next';
+import { FC, memo } from 'react';
 
-import { buildClassNames } from '$shared';
+import { useModel } from '../model';
+
+import { ArticleDetails, articleDetailsReducer } from '$entities';
+import { buildClassNames, DynamicModuleLoader, ReducersList } from '$shared';
 
 type Props = {
   className?: string;
 };
 
-const ArticleDetailsPage = memo((props: Props) => {
+const reducers: ReducersList = {
+  articleDetails: articleDetailsReducer,
+};
+
+const ArticleDetailsPage: FC<Props> = memo((props) => {
   const { className } = props;
-  const { t } = useTranslation('articles');
 
   const { containerClassNames } = useStyles({ className });
 
+  useModel();
+
   return (
-    <div className={containerClassNames}>{t('articlePageDetailsTitle')}</div>
+    <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+      <div className={containerClassNames}>
+        <ArticleDetails />
+      </div>
+    </DynamicModuleLoader>
   );
 });
 

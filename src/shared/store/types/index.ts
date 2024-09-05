@@ -9,7 +9,12 @@ import {
 import { AxiosInstance } from 'axios';
 import { NavigateFunction } from 'react-router-dom';
 
-import { CounterSchema, ProfileSchema, UserSchema } from '$entities';
+import {
+  ArticleDetailsSchema,
+  CounterSchema,
+  ProfileSchema,
+  UserSchema,
+} from '$entities';
 import { LoginSchema } from '$features';
 
 export type StateSchema = {
@@ -17,6 +22,7 @@ export type StateSchema = {
   user: UserSchema;
 
   // Async reducers
+  articleDetails?: ArticleDetailsSchema;
   login?: LoginSchema;
   profile?: ProfileSchema;
 };
