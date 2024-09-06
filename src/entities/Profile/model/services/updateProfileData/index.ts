@@ -10,7 +10,7 @@ export const updateProfileData = createAsyncThunk<
   Profile,
   void,
   ThunkConfig<ErrorHints | ValidateErrorHintKeys[]>
->('profile/updateProfileData', async (_, thunkApi) => {
+>('profile/updateProfileData', async (profileId, thunkApi) => {
   const { extra, rejectWithValue, getState } = thunkApi;
 
   try {

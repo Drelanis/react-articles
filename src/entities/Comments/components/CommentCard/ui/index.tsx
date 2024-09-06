@@ -3,7 +3,7 @@ import { FC, memo } from 'react';
 import classNames from './index.module.scss';
 
 import { CommentType } from '$entities/Comments/model';
-import { Avatar, buildClassNames, Text } from '$shared';
+import { AppRoutes, Avatar, buildClassNames, Link, Text } from '$shared';
 
 type Props = {
   comment: CommentType;
@@ -19,7 +19,9 @@ export const CommentCard: FC<Props> = memo((props) => {
     <div className={containerClassNames}>
       <div className={classNames.header}>
         {comment.user.avatar && <Avatar size={30} src={comment.user.avatar} />}
-        <Text className={classNames.username} title={comment.user.userName} />
+        <Link to={`${AppRoutes.PROFILE}/${comment.user.id}`}>
+          <Text className={classNames.username} title={comment.user.userName} />
+        </Link>
       </div>
       <Text className={classNames.text} text={comment.text} />
     </div>

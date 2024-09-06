@@ -13,12 +13,12 @@ export const useModel = () => {
     setIsCollapsed((prev) => !prev);
   };
 
-  const isAuth = useSelector(getUserAuthData);
+  const authData = useSelector(getUserAuthData);
 
   const itemsList = useMemo(
     () =>
       SidebarItemsList.map((item) => {
-        if (item.authOnly && !isAuth) {
+        if (item.authOnly && !authData) {
           return;
         }
 
@@ -26,7 +26,7 @@ export const useModel = () => {
           <SidebarItem item={item} isCollapsed={isCollapsed} key={item.path} />
         );
       }),
-    [isCollapsed, isAuth],
+    [isCollapsed, authData],
   );
 
   return { onToggle, isCollapsed, itemsList };

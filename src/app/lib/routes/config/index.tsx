@@ -20,7 +20,7 @@ export const routeConfig: AppRoutesProps[] = [
     element: <AboutLazyPage />,
   },
   {
-    path: RoutePath.profile,
+    path: `${RoutePath.profile}:id`,
     element: <ProfileLazyPage />,
     authOnly: true,
   },

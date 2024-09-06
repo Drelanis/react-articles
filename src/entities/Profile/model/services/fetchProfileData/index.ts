@@ -6,13 +6,12 @@ import { ErrorHints, ThunkConfig, USER_LOCAL_STORAGE_KEY } from '$shared';
 
 export const fetchProfileData = createAsyncThunk<
   Profile,
-  void,
+  string,
   ThunkConfig<ErrorHints>
->('profile/fetchProfileData', async (_, thunkApi) => {
+>('profile/fetchProfileData', async (profileId, thunkApi) => {
   const { extra, rejectWithValue } = thunkApi;
   try {
-    const response = await extra.api.get<Profile>('/profile', {
-      // TODO: Fix me
+    const response = await extra.api.get<Profile>(`/profile/${profileId}`, {
       headers: {
         Authorization: localStorage.getItem(USER_LOCAL_STORAGE_KEY) || '',
       },
