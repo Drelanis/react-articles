@@ -4,7 +4,12 @@ import { getProfileForm } from '../../selectors';
 import { Profile } from '../../types';
 import { validateProfileData } from '../validateProfileData';
 
-import { ErrorHints, ThunkConfig, ValidateErrorHintKeys } from '$shared';
+import {
+  AppRoutes,
+  ErrorHints,
+  ThunkConfig,
+  ValidateErrorHintKeys,
+} from '$shared';
 
 export const updateProfileData = createAsyncThunk<
   Profile,
@@ -22,7 +27,10 @@ export const updateProfileData = createAsyncThunk<
       return rejectWithValue(errors);
     }
 
-    const response = await extra.api.put<Profile>('/profile', formData);
+    const response = await extra.api.put<Profile>(
+      `${AppRoutes.PROFILE}/${formData?.id}`,
+      formData,
+    );
 
     if (!response.data) {
       throw new Error();

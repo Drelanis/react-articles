@@ -14,7 +14,7 @@
   "profile": [
     {
       "id": "1",
-      "firstName": "Denys 1",
+      "firstName": "Denys Test",
       "lastName": "Badaka 1",
       "age": 100,
       "currency": "EUR",
@@ -43,7 +43,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
