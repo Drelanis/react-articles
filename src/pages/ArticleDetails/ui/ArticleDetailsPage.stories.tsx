@@ -167,3 +167,23 @@ Normal.decorators = [
     asyncArticleReducer,
   ),
 ];
+
+export const Loading = Template.bind({});
+Loading.args = {};
+Loading.decorators = [
+  StoreDecorator(
+    {
+      articleDetails: {
+        isLoading: true,
+        data: article,
+      },
+      articleDetailsComments: {
+        ids,
+        entities,
+        isLoading: true,
+        error: '',
+      },
+    },
+    asyncArticleReducer,
+  ),
+];
