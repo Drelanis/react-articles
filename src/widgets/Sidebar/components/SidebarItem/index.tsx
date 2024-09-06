@@ -9,18 +9,21 @@ import { SidebarItemType } from '$widgets/Sidebar';
 type Props = {
   isCollapsed: boolean;
   item: SidebarItemType;
+  queryParameter?: string;
 };
 
 export const SidebarItem: FC<Props> = memo((props) => {
-  const { item, isCollapsed } = props;
+  const { item, isCollapsed, queryParameter } = props;
 
   const { t } = useTranslation(item.translation);
+
+  const currentQueryParameter = queryParameter ? `/${queryParameter}` : '';
 
   return (
     <Link
       theme={AppLinkTheme.SECONDARY}
       className={[classNames.item]}
-      to={item.path}
+      to={`${item.path}${currentQueryParameter}`}
     >
       <item.icon className={classNames.icon} />
       {!isCollapsed && <span className={classNames.link}>{t(item.text)}</span>}

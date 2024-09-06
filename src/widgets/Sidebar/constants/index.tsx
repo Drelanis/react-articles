@@ -13,6 +13,7 @@ export type SidebarItemType = {
   text: TranslationPagesKeys;
   translation: TranslationChunks;
   authOnly?: boolean;
+  isUserId?: boolean;
 };
 
 export const SidebarItemsList: SidebarItemType[] = [
@@ -34,6 +35,7 @@ export const SidebarItemsList: SidebarItemType[] = [
     translation: TranslationChunks.PROFILE,
     text: 'profile',
     authOnly: true,
+    isUserId: true,
   },
   {
     translation: TranslationChunks.ARTICLES,

@@ -22,8 +22,15 @@ export const useModel = () => {
           return;
         }
 
+        const userId = item.isUserId ? authData?.id : '';
+
         return (
-          <SidebarItem item={item} isCollapsed={isCollapsed} key={item.path} />
+          <SidebarItem
+            queryParameter={userId}
+            item={item}
+            isCollapsed={isCollapsed}
+            key={item.path}
+          />
         );
       }),
     [isCollapsed, authData],
