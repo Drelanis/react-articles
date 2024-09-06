@@ -2,7 +2,8 @@ import { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { SidebarItem } from '../components';
-import { SidebarItemsList } from '../constants';
+
+import { getSidebarItems } from './selectors';
 
 import { getUserAuthData } from '$entities';
 
@@ -14,27 +15,23 @@ export const useModel = () => {
   };
 
   const authData = useSelector(getUserAuthData);
+  const sidebarItems = useSelector(getSidebarItems);
 
   const itemsList = useMemo(
     () =>
-      SidebarItemsList.map((item) => {
+      sidebarItems.map((item) => {
         if (item.authOnly && !authData) {
           return;
         }
 
-        const userId = item.isUserId ? authData?.id : '';
-
         return (
-          <SidebarItem
-            queryParameter={userId}
-            item={item}
-            isCollapsed={isCollapsed}
-            key={item.path}
-          />
+          <SidebarItem item={item} isCollapsed={isCollapsed} key={item.path} />
         );
       }),
-    [isCollapsed, authData],
+    [isCollapsed, authData, sidebarItems],
   );
 
   return { onToggle, isCollapsed, itemsList };
 };
+
+export * from './types';
