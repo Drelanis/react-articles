@@ -31,3 +31,4 @@ export const useModel = () => {
 };
 
 export { ArticleDetailsCommentsSchema } from './types';
+export { articleDetailsCommentsReducer } from './slices';
