@@ -9,6 +9,7 @@ export type Profile = {
   country?: Country;
   currency?: Currency;
   firstName?: string;
+  id?: string;
   lastName?: string;
   userName?: string;
 };

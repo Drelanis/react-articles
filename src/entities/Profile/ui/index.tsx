@@ -31,7 +31,8 @@ export const ProfileCard = memo((props: Props) => {
     isLoading,
     error,
     isReadOnly,
-    validationErrorComponent,
+    canEdit,
+    ValidationErrorComponent,
     onChangeFirstName,
     onChangeLastName,
     onChangeCity,
@@ -71,14 +72,14 @@ export const ProfileCard = memo((props: Props) => {
 
   return (
     <>
-      <ProfileHeader />
+      <ProfileHeader canEdit={canEdit} />
       <div className={containerClassNames}>
         {data?.avatar && (
           <div className={classNames.avatarWrapper}>
             <Avatar src={data?.avatar} />
           </div>
         )}
-        {validationErrorComponent}
+        {ValidationErrorComponent}
         <Input
           readOnly={isReadOnly}
           value={data?.firstName || ''}
