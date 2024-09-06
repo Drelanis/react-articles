@@ -1,25 +1,31 @@
 import { FC, memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { useModel } from '../model';
 import { articleDetailsCommentsReducer } from '../model/slices';
 
+import classNames from './index.module.scss';
+
 import { ArticleDetails, Comments } from '$entities';
-import { DynamicModuleLoader, ReducersList } from '$shared';
+import { AddCommentFormLazy } from '$features';
+import { DynamicModuleLoader, ReducersList, Text } from '$shared';
 
 const reducers: ReducersList = {
   articleDetailsComments: articleDetailsCommentsReducer,
 };
 
 const ArticleDetailsPage: FC = memo(() => {
-  const { comments, isCommentsLoading } = useModel();
+  const { comments, isCommentsLoading, onSendComment } = useModel();
+
+  const { t } = useTranslation();
 
   return (
-    <>
+    <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <ArticleDetails />
-      <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-        <Comments comments={comments} isLoading={isCommentsLoading} />
-      </DynamicModuleLoader>
-    </>
+      <Text className={classNames.commentTitle} title={t('comments')} />
+      <AddCommentFormLazy onSendComment={onSendComment} />
+      <Comments comments={comments} isLoading={isCommentsLoading} />
+    </DynamicModuleLoader>
   );
 });
 

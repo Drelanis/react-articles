@@ -15,7 +15,7 @@ import {
   ProfileSchema,
   UserSchema,
 } from '$entities';
-import { LoginSchema } from '$features';
+import { AddCommentFormSchema, LoginSchema } from '$features';
 import { ArticleDetailsCommentsSchema } from '$pages';
 
 export type StateSchema = {
@@ -23,6 +23,7 @@ export type StateSchema = {
   user: UserSchema;
 
   // Async reducers
+  addCommentForm?: AddCommentFormSchema;
   articleDetails?: ArticleDetailsSchema;
   articleDetailsComments?: ArticleDetailsCommentsSchema;
   login?: LoginSchema;

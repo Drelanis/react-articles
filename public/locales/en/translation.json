@@ -20,5 +20,8 @@
   "INCORRECT_AGE": "Incorrect user age!",
   "INCORRECT_COUNTRY": "Incorrect user country!",
   "NO_DATA": "Incorrect user data! Try again!",
-  "noComments": "There are no comments"
+  "comments": "Comments",
+  "noComments": "There are no comments",
+  "enterTextComment": "Enter comment text",
+  "sendTextComment": "Send comment"
 }

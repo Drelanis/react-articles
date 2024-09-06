@@ -8,4 +8,5 @@ export const AppRoutes = {
   ABOUT: '/about',
   PROFILE: '/profile',
   ARTICLES: '/articles',
+  COMMENTS: '/comments',
 };
