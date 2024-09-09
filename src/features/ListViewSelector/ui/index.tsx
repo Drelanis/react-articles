@@ -45,7 +45,7 @@ const useStyles = (params: UseStylesParams) => {
       const iconClassNames = buildClassNames({
         classNames: '',
         mods: {
-          [classNames.notSelected]: iconViewValue === view,
+          [classNames.notSelected]: iconViewValue !== view,
         },
       });
 
