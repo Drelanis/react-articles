@@ -14,8 +14,7 @@ export const useHover = () => {
   return useMemo(() => {
     return {
       isHover,
-      onMouseEnter,
-      onMouseLeave,
+      bindHover: { onMouseEnter, onMouseLeave },
     };
   }, [isHover, onMouseEnter, onMouseLeave]);
 };
