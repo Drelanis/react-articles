@@ -16,7 +16,7 @@ import {
   UserSchema,
 } from '$entities';
 import { AddCommentFormSchema, LoginSchema } from '$features';
-import { ArticleDetailsCommentsSchema } from '$pages';
+import { ArticleDetailsCommentsSchema, ArticlesListSchemaType } from '$pages';
 
 export type StateSchema = {
   counter: CounterSchema;
@@ -26,6 +26,7 @@ export type StateSchema = {
   addCommentForm?: AddCommentFormSchema;
   articleDetails?: ArticleDetailsSchema;
   articleDetailsComments?: ArticleDetailsCommentsSchema;
+  articlesList?: ArticlesListSchemaType;
   login?: LoginSchema;
   profile?: ProfileSchema;
 };

@@ -1,17 +1,18 @@
 import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { getArticleCommentsIsLoading } from './selectors';
 import { addCommentForArticle, fetchCommentsByArticleId } from './services';
 import { getArticleComments } from './slices';
 
-import { useAppDispatch, useInitialEffect } from '$shared';
+import { AppRoutes, useAppDispatch, useInitialEffect } from '$shared';
 
 export const useModel = () => {
   const { id } = useParams<{ id: string }>();
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const comments = useSelector(getArticleComments.selectAll);
   const isCommentsLoading = useSelector(getArticleCommentsIsLoading);
@@ -27,7 +28,11 @@ export const useModel = () => {
     void dispatch(fetchCommentsByArticleId(id));
   });
 
-  return { comments, isCommentsLoading, onSendComment };
+  const onBackToList = useCallback(() => {
+    navigate(AppRoutes.ARTICLES);
+  }, [navigate]);
+
+  return { comments, isCommentsLoading, onSendComment, onBackToList };
 };
 
 export { ArticleDetailsCommentsSchema } from './types';

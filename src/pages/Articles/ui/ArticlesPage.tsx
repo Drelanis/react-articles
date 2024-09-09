@@ -1,8 +1,22 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { ArticlesList, ArticleView } from '$entities';
-import { buildClassNames, Text, TextAlign } from '$shared';
+import { useModel } from '../model';
+import { articlesListReducer } from '../model/slices';
+
+import { ArticlesList } from '$entities';
+import { ArticleViewSelector } from '$features';
+import {
+  buildClassNames,
+  DynamicModuleLoader,
+  ReducersList,
+  Text,
+  TextAlign,
+} from '$shared';
+
+const reducers: ReducersList = {
+  articlesList: articlesListReducer,
+};
 
 type Props = {
   className?: string;
@@ -14,11 +28,23 @@ const ArticlesPage = memo((props: Props) => {
 
   const { containerClassNames } = useStyles({ className });
 
+  const { isLoading, articles, articlesListView, onChangeView } = useModel();
+
   return (
-    <div className={containerClassNames}>
-      <Text align={TextAlign.CENTER} title={t('articlesPageTitle')} />
-      <ArticlesList articles={[]} isLoading view={ArticleView.TILE} />
-    </div>
+    <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+      <div className={containerClassNames}>
+        <Text align={TextAlign.CENTER} title={t('articlesPageTitle')} />
+        <ArticleViewSelector
+          view={articlesListView}
+          onViewClick={onChangeView}
+        />
+        <ArticlesList
+          articles={articles}
+          isLoading={isLoading}
+          view={articlesListView}
+        />
+      </div>
+    </DynamicModuleLoader>
   );
 });
 

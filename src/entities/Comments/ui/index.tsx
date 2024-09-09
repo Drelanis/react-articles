@@ -21,7 +21,7 @@ export const Comments: FC<Props> = memo((props) => {
 
   const { isComments, CommentsList } = useModel({ comments });
 
-  if (isLoading || !isComments) {
+  if (isLoading) {
     return (
       <div className={containerClassNames}>
         <div className={classNames.header}>
