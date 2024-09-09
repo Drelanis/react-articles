@@ -1,7 +1,6 @@
-import { FC, memo, useCallback } from 'react';
+import { FC, memo } from 'react';
 
-import { ArticleListItem } from '../../ArticleListItem';
-import { ArticlesListSkeleton } from '../../ArticlesListSkeleton';
+import { useModel } from '../model';
 
 import classNames from './index.module.scss';
 
@@ -16,51 +15,21 @@ type Props = {
   view?: ArticleView;
 };
 
-const getSkeletons = (view: ArticleView) => {
-  const articlesNumberInSmallView = 3;
-  const bigArticleNumberInBigView = 9;
-
-  return new Array(
-    view === ArticleView.SMALL
-      ? bigArticleNumberInBigView
-      : articlesNumberInSmallView,
-  )
-    .fill(0)
-    .map((_, index) => (
-      <ArticlesListSkeleton
-        className={classNames.card}
-        key={index}
-        view={view}
-      />
-    ));
-};
-
 export const ArticlesList: FC<Props> = memo((props) => {
   const { className, articles, view = ArticleView.SMALL, isLoading } = props;
 
   const { containerClassNames } = useStyles({ view, className });
 
-  const Articles = useCallback(
-    (article: Article) => (
-      <ArticleListItem
-        article={article}
-        view={view}
-        className={classNames.card}
-        key={article.id}
-      />
-    ),
-    [view],
-  );
+  const { articlesSkeleton, Articles, isArticles } = useModel({
+    view,
+    articles,
+  });
 
   if (isLoading) {
-    return <div className={containerClassNames}>{getSkeletons(view)}</div>;
+    return <div className={containerClassNames}>{articlesSkeleton}</div>;
   }
 
-  return (
-    <div className={containerClassNames}>
-      {articles.length > 0 ? articles.map(Articles) : null}
-    </div>
-  );
+  return <div className={containerClassNames}>{isArticles && Articles}</div>;
 });
 
 type UseStylesParams = Pick<Props, 'className' | 'view'>;
