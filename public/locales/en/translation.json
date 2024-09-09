@@ -23,5 +23,6 @@
   "comments": "Comments",
   "noComments": "There are no comments",
   "enterTextComment": "Enter comment text",
-  "sendTextComment": "Send comment"
+  "sendTextComment": "Send comment",
+  "goBack": "Go back"
 }
