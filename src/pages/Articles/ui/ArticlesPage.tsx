@@ -1,7 +1,8 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { buildClassNames } from '$shared';
+import { ArticlesList, ArticleView } from '$entities';
+import { buildClassNames, Text, TextAlign } from '$shared';
 
 type Props = {
   className?: string;
@@ -13,7 +14,12 @@ const ArticlesPage = memo((props: Props) => {
 
   const { containerClassNames } = useStyles({ className });
 
-  return <div className={containerClassNames}>{t('articlesPageTitle')}</div>;
+  return (
+    <div className={containerClassNames}>
+      <Text align={TextAlign.CENTER} title={t('articlesPageTitle')} />
+      <ArticlesList articles={[]} isLoading view={ArticleView.BIG} />
+    </div>
+  );
 });
 
 const useStyles = (params: Props) => {

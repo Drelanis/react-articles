@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import classNames from './index.module.scss';
 
-import { ArticleImageBlockType } from '$entities/ArticleDetails/model';
+import { ArticleImageBlockType } from '$entities/Article/model';
 import { buildClassNames, Text, TextAlign } from '$shared';
 
 type Props = {

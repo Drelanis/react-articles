@@ -1,78 +1,24 @@
-import {
-  Action,
-  DeepPartial,
-  Dictionary,
-  Reducer,
-  ReducersMapObject,
-} from '@reduxjs/toolkit';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import {
-  articleDetailsCommentsReducer,
-  ArticleDetailsCommentsSchema,
-} from '../model';
-
-import ArticleDetailsPage from './ArticleDetailsPage';
-
+import { ArticleListItem } from '.';
+import { ArticleView } from '$entities/Article/constants';
 import {
   Article,
   ArticleBlockVariant,
-  articleDetailsReducer,
-  ArticleDetailsSchema,
   ArticleVariant,
-  CommentType,
-} from '$entities';
-import { StateSchema, StoreDecorator } from '$shared';
+} from '$entities/Article/model';
 
 export default {
-  title: 'pages/ArticleDetailsPage',
-  component: ArticleDetailsPage,
+  title: 'entities/Article/ArticleListItem',
+  component: ArticleListItem,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ArticleDetailsPage>;
+} as ComponentMeta<typeof ArticleListItem>;
 
-const comments = [
-  {
-    id: '1',
-    text: 'Comment 1',
-    user: {
-      id: '1',
-      userName: 'admin',
-      avatar:
-        'https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png',
-    },
-  },
-  {
-    id: '2',
-    text: 'Comment 2',
-    user: {
-      id: '1',
-      userName: 'admin',
-      avatar:
-        'https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png',
-    },
-  },
-];
-
-const entities = comments.reduce((acc, comment) => {
-  acc[comment.id] = comment;
-
-  return acc;
-}, {} as Dictionary<CommentType>);
-
-const ids = comments.map((comment) => comment.id);
-
-const asyncArticleReducer: DeepPartial<ReducersMapObject<StateSchema>> = {
-  articleDetails: articleDetailsReducer as Reducer<
-    ArticleDetailsSchema | undefined,
-    Action<unknown>
-  >,
-  articleDetailsComments: articleDetailsCommentsReducer as Reducer<
-    ArticleDetailsCommentsSchema | undefined,
-    Action<unknown>
-  >,
-};
+const Template: ComponentStory<typeof ArticleListItem> = (args) => (
+  <ArticleListItem {...args} />
+);
 
 const article: Article = {
   id: '1',
@@ -148,46 +94,14 @@ const article: Article = {
   ],
 };
 
-const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => (
-  <ArticleDetailsPage {...args} />
-);
+export const Big = Template.bind({});
+Big.args = {
+  view: ArticleView.BIG,
+  article,
+};
 
-export const Normal = Template.bind({});
-Normal.args = {};
-Normal.decorators = [
-  StoreDecorator(
-    {
-      articleDetails: {
-        isLoading: false,
-        data: article,
-      },
-      articleDetailsComments: {
-        ids,
-        entities,
-        isLoading: false,
-        error: '',
-      },
-    },
-    asyncArticleReducer,
-  ),
-];
-
-export const Loading = Template.bind({});
-Loading.args = {};
-Loading.decorators = [
-  StoreDecorator(
-    {
-      articleDetails: {
-        isLoading: true,
-        data: article,
-      },
-      articleDetailsComments: {
-        ids,
-        entities,
-        isLoading: true,
-        error: '',
-      },
-    },
-    asyncArticleReducer,
-  ),
-];
+export const Small = Template.bind({});
+Small.args = {
+  view: ArticleView.SMALL,
+  article,
+};

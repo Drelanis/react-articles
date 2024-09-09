@@ -1,18 +1,10 @@
 import {
   Action,
   DeepPartial,
-  Dictionary,
   Reducer,
   ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-
-import {
-  articleDetailsCommentsReducer,
-  ArticleDetailsCommentsSchema,
-} from '../model';
-
-import ArticleDetailsPage from './ArticleDetailsPage';
 
 import {
   Article,
@@ -20,59 +12,89 @@ import {
   articleDetailsReducer,
   ArticleDetailsSchema,
   ArticleVariant,
-  CommentType,
-} from '$entities';
-import { StateSchema, StoreDecorator } from '$shared';
+} from '../model';
+
+import { ArticleDetails } from '.';
+import {
+  StateSchema,
+  StoreDecorator,
+  ThemeDecorator,
+  ThemeVariants,
+} from '$shared';
 
 export default {
-  title: 'pages/ArticleDetailsPage',
-  component: ArticleDetailsPage,
+  title: 'entities/Article/ArticleDetails',
+  component: ArticleDetails,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ArticleDetailsPage>;
+} as ComponentMeta<typeof ArticleDetails>;
 
-const comments = [
-  {
-    id: '1',
-    text: 'Comment 1',
-    user: {
-      id: '1',
-      userName: 'admin',
-      avatar:
-        'https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png',
-    },
-  },
-  {
-    id: '2',
-    text: 'Comment 2',
-    user: {
-      id: '1',
-      userName: 'admin',
-      avatar:
-        'https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png',
-    },
-  },
-];
-
-const entities = comments.reduce((acc, comment) => {
-  acc[comment.id] = comment;
-
-  return acc;
-}, {} as Dictionary<CommentType>);
-
-const ids = comments.map((comment) => comment.id);
+const Template: ComponentStory<typeof ArticleDetails> = (args) => (
+  <ArticleDetails {...args} />
+);
 
 const asyncArticleReducer: DeepPartial<ReducersMapObject<StateSchema>> = {
   articleDetails: articleDetailsReducer as Reducer<
     ArticleDetailsSchema | undefined,
     Action<unknown>
   >,
-  articleDetailsComments: articleDetailsCommentsReducer as Reducer<
-    ArticleDetailsCommentsSchema | undefined,
-    Action<unknown>
-  >,
 };
+
+export const LoadingNormal = Template.bind({});
+LoadingNormal.args = {};
+LoadingNormal.decorators = [
+  StoreDecorator(
+    {
+      articleDetails: {
+        isLoading: true,
+      },
+    },
+    asyncArticleReducer,
+  ),
+];
+
+export const LoadingDark = Template.bind({});
+LoadingDark.args = {};
+LoadingDark.decorators = [
+  StoreDecorator(
+    {
+      articleDetails: {
+        isLoading: true,
+      },
+    },
+    asyncArticleReducer,
+  ),
+  ThemeDecorator(ThemeVariants.DARK),
+];
+
+export const LoadingOrange = Template.bind({});
+LoadingOrange.args = {};
+LoadingOrange.decorators = [
+  StoreDecorator(
+    {
+      articleDetails: {
+        isLoading: true,
+      },
+    },
+    asyncArticleReducer,
+  ),
+  ThemeDecorator(ThemeVariants.ORANGE),
+];
+
+export const Error = Template.bind({});
+Error.args = {};
+Error.decorators = [
+  StoreDecorator(
+    {
+      articleDetails: {
+        isLoading: false,
+        error: 'Something went wrong!',
+      },
+    },
+    asyncArticleReducer,
+  ),
+];
 
 const article: Article = {
   id: '1',
@@ -148,46 +170,46 @@ const article: Article = {
   ],
 };
 
-const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => (
-  <ArticleDetailsPage {...args} />
-);
-
-export const Normal = Template.bind({});
-Normal.args = {};
-Normal.decorators = [
+export const NormalContent = Template.bind({});
+NormalContent.args = {};
+NormalContent.decorators = [
   StoreDecorator(
     {
       articleDetails: {
         isLoading: false,
         data: article,
-      },
-      articleDetailsComments: {
-        ids,
-        entities,
-        isLoading: false,
-        error: '',
       },
     },
     asyncArticleReducer,
   ),
 ];
 
-export const Loading = Template.bind({});
-Loading.args = {};
-Loading.decorators = [
+export const DarkContent = Template.bind({});
+DarkContent.args = {};
+DarkContent.decorators = [
   StoreDecorator(
     {
       articleDetails: {
-        isLoading: true,
+        isLoading: false,
         data: article,
-      },
-      articleDetailsComments: {
-        ids,
-        entities,
-        isLoading: true,
-        error: '',
       },
     },
     asyncArticleReducer,
   ),
+  ThemeDecorator(ThemeVariants.DARK),
+];
+
+export const OrangeContent = Template.bind({});
+OrangeContent.args = {};
+OrangeContent.decorators = [
+  StoreDecorator(
+    {
+      articleDetails: {
+        isLoading: false,
+        data: article,
+      },
+    },
+    asyncArticleReducer,
+  ),
+  ThemeDecorator(ThemeVariants.ORANGE),
 ];

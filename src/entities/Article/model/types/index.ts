@@ -1,5 +1,7 @@
 import { ArticleBlockVariant, ArticleVariant } from '../constants';
 
+import { User } from '$entities/User';
+
 export type ArticleBlockBase = {
   id: string;
   type: ArticleBlockVariant;
@@ -35,6 +37,7 @@ export type Article = {
   subtitle: string;
   title: string;
   type: ArticleVariant[];
+  user: User;
   views: number;
 };
 

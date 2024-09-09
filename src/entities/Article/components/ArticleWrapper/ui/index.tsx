@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import {
   articleDetailsReducer,
   fetchArticleById,
-} from '$entities/ArticleDetails/model';
+} from '$entities/Article/model';
 import {
   DynamicModuleLoader,
   ReducersList,

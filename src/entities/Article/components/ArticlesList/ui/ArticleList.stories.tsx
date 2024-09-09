@@ -1,103 +1,33 @@
-import {
-  Action,
-  DeepPartial,
-  Reducer,
-  ReducersMapObject,
-} from '@reduxjs/toolkit';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
+import { ArticlesList } from '.';
+import { ArticleView } from '$entities/Article/constants';
 import {
   Article,
   ArticleBlockVariant,
-  articleDetailsReducer,
-  ArticleDetailsSchema,
   ArticleVariant,
-} from '../model';
-
-import { ArticleDetails } from '.';
-import {
-  StateSchema,
-  StoreDecorator,
-  ThemeDecorator,
-  ThemeVariants,
-} from '$shared';
+} from '$entities/Article/model';
 
 export default {
-  title: 'entities/ArticleDetails',
-  component: ArticleDetails,
+  title: 'entities/Article/ArticlesList',
+  component: ArticlesList,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ArticleDetails>;
+} as ComponentMeta<typeof ArticlesList>;
 
-const Template: ComponentStory<typeof ArticleDetails> = (args) => (
-  <ArticleDetails {...args} />
+const Template: ComponentStory<typeof ArticlesList> = (args) => (
+  <ArticlesList {...args} />
 );
 
-const asyncArticleReducer: DeepPartial<ReducersMapObject<StateSchema>> = {
-  articleDetails: articleDetailsReducer as Reducer<
-    ArticleDetailsSchema | undefined,
-    Action<unknown>
-  >,
-};
-
-export const LoadingNormal = Template.bind({});
-LoadingNormal.args = {};
-LoadingNormal.decorators = [
-  StoreDecorator(
-    {
-      articleDetails: {
-        isLoading: true,
-      },
-    },
-    asyncArticleReducer,
-  ),
-];
-
-export const LoadingDark = Template.bind({});
-LoadingDark.args = {};
-LoadingDark.decorators = [
-  StoreDecorator(
-    {
-      articleDetails: {
-        isLoading: true,
-      },
-    },
-    asyncArticleReducer,
-  ),
-  ThemeDecorator(ThemeVariants.DARK),
-];
-
-export const LoadingOrange = Template.bind({});
-LoadingOrange.args = {};
-LoadingOrange.decorators = [
-  StoreDecorator(
-    {
-      articleDetails: {
-        isLoading: true,
-      },
-    },
-    asyncArticleReducer,
-  ),
-  ThemeDecorator(ThemeVariants.ORANGE),
-];
-
-export const Error = Template.bind({});
-Error.args = {};
-Error.decorators = [
-  StoreDecorator(
-    {
-      articleDetails: {
-        isLoading: false,
-        error: 'Something went wrong!',
-      },
-    },
-    asyncArticleReducer,
-  ),
-];
+const bigArticleNumberInBigView = 9;
 
 const article: Article = {
   id: '1',
+  user: {
+    id: '1',
+    userName: 'admin',
+  },
   title: 'Javascript news',
   subtitle: 'Що нового у JS за 2022 рік?',
   img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
@@ -166,46 +96,36 @@ const article: Article = {
   ],
 };
 
-export const NormalContent = Template.bind({});
-NormalContent.args = {};
-NormalContent.decorators = [
-  StoreDecorator(
-    {
-      articleDetails: {
-        isLoading: false,
-        data: article,
-      },
-    },
-    asyncArticleReducer,
-  ),
-];
+export const LoadingBig = Template.bind({});
+LoadingBig.args = {
+  articles: [],
+  isLoading: true,
+  view: ArticleView.BIG,
+};
 
-export const DarkContent = Template.bind({});
-DarkContent.args = {};
-DarkContent.decorators = [
-  StoreDecorator(
-    {
-      articleDetails: {
-        isLoading: false,
-        data: article,
-      },
-    },
-    asyncArticleReducer,
-  ),
-  ThemeDecorator(ThemeVariants.DARK),
-];
+export const LoadingSmall = Template.bind({});
+LoadingSmall.args = {
+  articles: [],
+  isLoading: true,
+  view: ArticleView.SMALL,
+};
 
-export const OrangeContent = Template.bind({});
-OrangeContent.args = {};
-OrangeContent.decorators = [
-  StoreDecorator(
-    {
-      articleDetails: {
-        isLoading: false,
-        data: article,
-      },
-    },
-    asyncArticleReducer,
-  ),
-  ThemeDecorator(ThemeVariants.ORANGE),
-];
+export const ListSmall = Template.bind({});
+ListSmall.args = {
+  articles: new Array(bigArticleNumberInBigView).fill(0).map((item, index) => ({
+    ...article,
+    id: String(index),
+  })),
+  isLoading: false,
+  view: ArticleView.SMALL,
+};
+
+export const ListBig = Template.bind({});
+ListBig.args = {
+  articles: new Array(bigArticleNumberInBigView).fill(0).map((item, index) => ({
+    ...article,
+    id: String(index),
+  })),
+  isLoading: false,
+  view: ArticleView.BIG,
+};

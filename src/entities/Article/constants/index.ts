@@ -10,3 +10,8 @@ export const ArticleBlockHints = {
   [ArticleBlockVariant.IMAGE]: ArticleImageBlock,
   [ArticleBlockVariant.TEXT]: ArticleTextBlock,
 };
+
+export enum ArticleView {
+  BIG = 'big',
+  SMALL = 'small',
+}
