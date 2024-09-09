@@ -1,19 +1,14 @@
-import { FC, memo, useCallback, useMemo } from 'react';
+import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
 import { ArticleTextBlock } from '../../ArticleTextBlock';
+import { useModel } from '../model';
 
 import classNames from './index.module.scss';
 
 import { ArticleView } from '$entities/Article/constants';
+import { Article } from '$entities/Article/model';
 import {
-  Article,
-  ArticleBlockVariant,
-  ArticleTextBlockType,
-} from '$entities/Article/model';
-import {
-  AppRoutes,
   Avatar,
   buildClassNames,
   Button,
@@ -33,13 +28,10 @@ type Props = {
 export const ArticleListItem: FC<Props> = memo((props) => {
   const { className, article, view } = props;
   const { t } = useTranslation('articles');
-  const navigate = useNavigate();
-
-  const onOpenArticle = useCallback(() => {
-    navigate(AppRoutes.ARTICLES + article.id);
-  }, [article.id, navigate]);
 
   const { containerClassNames } = useStyles({ className, view });
+
+  const { textBlock, onOpenArticle } = useModel({ article });
 
   const types = (
     <Text text={article.type.join(', ')} className={classNames.types} />
@@ -50,14 +42,6 @@ export const ArticleListItem: FC<Props> = memo((props) => {
       <Text text={String(article.views)} className={classNames.views} />
       <Icon Svg={EyeIcon} />
     </>
-  );
-
-  const textBlock = useMemo(
-    () =>
-      article.blocks.find(
-        (block) => block.type === ArticleBlockVariant.TEXT,
-      ) as ArticleTextBlockType,
-    [article.blocks],
   );
 
   if (view === ArticleView.BIG) {
