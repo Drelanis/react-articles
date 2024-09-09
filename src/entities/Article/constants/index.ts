@@ -12,6 +12,6 @@ export const ArticleBlockHints = {
 };
 
 export enum ArticleView {
-  BIG = 'big',
-  SMALL = 'small',
+  LIST = 'list',
+  TILE = 'tile',
 }

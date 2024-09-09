@@ -17,7 +17,7 @@ const ArticlesPage = memo((props: Props) => {
   return (
     <div className={containerClassNames}>
       <Text align={TextAlign.CENTER} title={t('articlesPageTitle')} />
-      <ArticlesList articles={[]} isLoading view={ArticleView.BIG} />
+      <ArticlesList articles={[]} isLoading view={ArticleView.TILE} />
     </div>
   );
 });

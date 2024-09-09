@@ -16,7 +16,7 @@ type Props = {
 };
 
 export const ArticlesList: FC<Props> = memo((props) => {
-  const { className, articles, view = ArticleView.SMALL, isLoading } = props;
+  const { className, articles, view = ArticleView.TILE, isLoading } = props;
 
   const { containerClassNames } = useStyles({ view, className });
 
@@ -35,7 +35,7 @@ export const ArticlesList: FC<Props> = memo((props) => {
 type UseStylesParams = Pick<Props, 'className' | 'view'>;
 
 const useStyles = (params: UseStylesParams) => {
-  const { className = '', view = ArticleView.SMALL } = params;
+  const { className = '', view = ArticleView.TILE } = params;
 
   const containerClassNames = buildClassNames({
     classNames: '',

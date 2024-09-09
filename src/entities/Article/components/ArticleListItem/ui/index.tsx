@@ -44,7 +44,7 @@ export const ArticleListItem: FC<Props> = memo((props) => {
     </>
   );
 
-  if (view === ArticleView.BIG) {
+  if (view === ArticleView.LIST) {
     return (
       <div className={containerClassNames}>
         <Card>

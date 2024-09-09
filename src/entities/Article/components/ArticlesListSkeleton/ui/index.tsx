@@ -15,7 +15,7 @@ export const ArticlesListSkeleton: FC<Props> = memo((props: Props) => {
 
   const { containerClassNames } = useStyles({ className, view });
 
-  if (view === ArticleView.BIG) {
+  if (view === ArticleView.LIST) {
     return (
       <div className={containerClassNames}>
         <Card>

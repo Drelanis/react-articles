@@ -16,13 +16,13 @@ export const useModel = (params: Params) => {
   const { view, articles } = params;
 
   const articlesSkeleton = useMemo(() => {
-    const articlesNumberInSmallView = 3;
-    const bigArticleNumberInBigView = 9;
+    const articlesNumberInTileView = 3;
+    const bigArticleNumberInListView = 9;
 
     return new Array(
-      view === ArticleView.SMALL
-        ? bigArticleNumberInBigView
-        : articlesNumberInSmallView,
+      view === ArticleView.TILE
+        ? bigArticleNumberInListView
+        : articlesNumberInTileView,
     )
       .fill(0)
       .map((_, index) => (

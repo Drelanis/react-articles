@@ -100,14 +100,14 @@ export const LoadingBig = Template.bind({});
 LoadingBig.args = {
   articles: [],
   isLoading: true,
-  view: ArticleView.BIG,
+  view: ArticleView.LIST,
 };
 
 export const LoadingSmall = Template.bind({});
 LoadingSmall.args = {
   articles: [],
   isLoading: true,
-  view: ArticleView.SMALL,
+  view: ArticleView.TILE,
 };
 
 export const ListSmall = Template.bind({});
@@ -117,15 +117,15 @@ ListSmall.args = {
     id: String(index),
   })),
   isLoading: false,
-  view: ArticleView.SMALL,
+  view: ArticleView.TILE,
 };
 
 export const ListBig = Template.bind({});
 ListBig.args = {
-  articles: new Array(bigArticleNumberInBigView).fill(0).map((item, index) => ({
+  articles: new Array(bigArticleNumberInBigView).fill(0).map((_, index) => ({
     ...article,
     id: String(index),
   })),
   isLoading: false,
-  view: ArticleView.BIG,
+  view: ArticleView.LIST,
 };
