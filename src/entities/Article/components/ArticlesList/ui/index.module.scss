@@ -5,11 +5,13 @@
 }
 
 .tile {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
 
   .card {
-    margin-right: 30px;
-    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
   }
 }
