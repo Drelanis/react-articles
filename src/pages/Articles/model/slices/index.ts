@@ -4,11 +4,16 @@ import {
   PayloadAction,
 } from '@reduxjs/toolkit';
 
+import { ArticlesPageLimits } from '../constants';
 import { fetchArticlesList } from '../services';
 import { ArticlesListSchemaType } from '../types';
 
 import { Article, ArticleView } from '$entities';
-import { LOCAL_STORAGE_ARTICLES_VIEW, StateSchema } from '$shared';
+import {
+  ARTICLES_TILE_ITEMS_LIMIT,
+  LOCAL_STORAGE_ARTICLES_VIEW,
+  StateSchema,
+} from '$shared';
 
 const articlesAdapter = createEntityAdapter<Article>({
   selectId: (article) => article.id,
@@ -26,6 +31,9 @@ const articlesSlice = createSlice({
     isLoading: false,
     error: '',
     view: ArticleView.LIST,
+    hasMore: true,
+    limit: ARTICLES_TILE_ITEMS_LIMIT,
+    page: 1,
   }),
   reducers: {
     setView: (state, action: PayloadAction<ArticleView>) => {
@@ -33,9 +41,21 @@ const articlesSlice = createSlice({
       localStorage.setItem(LOCAL_STORAGE_ARTICLES_VIEW, action.payload);
     },
     initState: (state) => {
-      state.view =
+      const view =
         (localStorage.getItem(LOCAL_STORAGE_ARTICLES_VIEW) as ArticleView) ||
         ArticleView.TILE;
+
+      state.view = view;
+      state.limit = ArticlesPageLimits[view];
+    },
+    setPage: (state, action: PayloadAction<number>) => {
+      state.page = action.payload;
+    },
+    setLimit: (state, action: PayloadAction<number>) => {
+      state.limit = action.payload;
+    },
+    setHasMore: (state, action: PayloadAction<boolean>) => {
+      state.hasMore = action.payload;
     },
   },
   extraReducers: (builder) => {

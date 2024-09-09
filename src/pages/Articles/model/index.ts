@@ -26,8 +26,9 @@ export const useModel = () => {
   );
 
   useInitialEffect(() => {
-    void dispatch(fetchArticlesList());
     dispatch(articlesListActions.initState());
+
+    void dispatch(fetchArticlesList({ page: 1 }));
   });
 
   return { articles, isLoading, errorMessage, articlesListView, onChangeView };
