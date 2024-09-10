@@ -1,12 +1,12 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ArticlesList } from '.';
-import { ArticleView } from '$entities';
 import {
   Article,
   ArticleBlockVariant,
   ArticleVariant,
 } from '$entities/Article/model';
+import { ListView } from '$shared';
 
 export default {
   title: 'entities/Article/ArticlesList',
@@ -100,14 +100,14 @@ export const LoadingBig = Template.bind({});
 LoadingBig.args = {
   articles: [],
   isLoading: true,
-  view: ArticleView.LIST,
+  view: ListView.LIST,
 };
 
 export const LoadingSmall = Template.bind({});
 LoadingSmall.args = {
   articles: [],
   isLoading: true,
-  view: ArticleView.TILE,
+  view: ListView.TILE,
 };
 
 export const ListSmall = Template.bind({});
@@ -117,7 +117,7 @@ ListSmall.args = {
     id: String(index),
   })),
   isLoading: false,
-  view: ArticleView.TILE,
+  view: ListView.TILE,
 };
 
 export const ListBig = Template.bind({});
@@ -127,5 +127,5 @@ ListBig.args = {
     id: String(index),
   })),
   isLoading: false,
-  view: ArticleView.LIST,
+  view: ListView.LIST,
 };

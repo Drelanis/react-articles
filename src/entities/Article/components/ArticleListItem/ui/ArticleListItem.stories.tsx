@@ -1,12 +1,12 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ArticleListItem } from '.';
-import { ArticleView } from '$entities';
 import {
   Article,
   ArticleBlockVariant,
   ArticleVariant,
 } from '$entities/Article/model';
+import { ListView } from '$shared';
 
 export default {
   title: 'entities/Article/ArticleListItem',
@@ -96,12 +96,12 @@ const article: Article = {
 
 export const Big = Template.bind({});
 Big.args = {
-  view: ArticleView.LIST,
+  view: ListView.LIST,
   article,
 };
 
 export const Small = Template.bind({});
 Small.args = {
-  view: ArticleView.TILE,
+  view: ListView.TILE,
   article,
 };

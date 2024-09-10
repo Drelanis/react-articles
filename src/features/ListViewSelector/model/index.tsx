@@ -2,19 +2,18 @@ import { useCallback, useMemo } from 'react';
 
 import { viewTypes } from '../constants';
 
-import { ArticleView } from '$entities';
-import { Button, ButtonVariant, Icon } from '$shared';
+import { Button, ButtonVariant, Icon, ListView } from '$shared';
 
 type Params = {
-  getIconClassNames: (iconViewValue: ArticleView) => string;
-  onViewClick?: (view: ArticleView) => void;
+  getIconClassNames: (iconViewValue: ListView) => string;
+  onViewClick?: (view: ListView) => void;
 };
 
 export const useModel = (params: Params) => {
   const { onViewClick, getIconClassNames } = params;
 
   const onClick = useCallback(
-    (newView: ArticleView) => () => {
+    (newView: ListView) => () => {
       onViewClick?.(newView);
     },
     [onViewClick],

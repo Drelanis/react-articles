@@ -10,8 +10,8 @@ import {
 import { fetchNextArticlesPage, initArticlesPage } from './services';
 import { articlesListActions, getArticlesList } from './slices';
 
-import { ArticleType, ArticleView } from '$entities';
-import { TabItem, useAppDispatch, useInitialEffect } from '$shared';
+import { ArticleType } from '$entities';
+import { ListView, TabItem, useAppDispatch, useInitialEffect } from '$shared';
 
 export const useModel = () => {
   const { t } = useTranslation();
@@ -24,7 +24,7 @@ export const useModel = () => {
   const articlesListView = useSelector(getArticlesListView);
 
   const onChangeView = useCallback(
-    (view: ArticleView) => dispatch(articlesListActions.setView(view)),
+    (view: ListView) => dispatch(articlesListActions.setView(view)),
     [dispatch],
   );
 

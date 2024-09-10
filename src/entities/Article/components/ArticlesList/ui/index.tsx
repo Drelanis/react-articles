@@ -5,11 +5,11 @@ import { useModel } from '../model';
 
 import classNames from './index.module.scss';
 
-import { ArticleView } from '$entities/Article/constants';
 import { Article } from '$entities/Article/model';
 import {
   buildClassNames,
   ErrorHints,
+  ListView,
   Text,
   TextAlign,
   TextVariants,
@@ -20,14 +20,14 @@ type Props = {
   className?: string;
   errorMessage?: ErrorHints;
   isLoading?: boolean;
-  view?: ArticleView;
+  view?: ListView;
 };
 
 export const ArticlesList: FC<Props> = memo((props) => {
   const {
     className,
     articles,
-    view = ArticleView.TILE,
+    view = ListView.TILE,
     isLoading,
     errorMessage,
   } = props;
@@ -59,7 +59,7 @@ export const ArticlesList: FC<Props> = memo((props) => {
 type UseStylesParams = Pick<Props, 'className' | 'view'>;
 
 const useStyles = (params: UseStylesParams) => {
-  const { className = '', view = ArticleView.TILE } = params;
+  const { className = '', view = ListView.TILE } = params;
 
   const containerClassNames = buildClassNames({
     classNames: '',

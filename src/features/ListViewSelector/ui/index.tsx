@@ -4,17 +4,16 @@ import { useModel } from '../model';
 
 import classNames from './index.module.scss';
 
-import { ArticleView } from '$entities';
-import { buildClassNames } from '$shared';
+import { buildClassNames, ListView } from '$shared';
 
 type Props = {
   className?: string;
-  onViewClick?: (view: ArticleView) => void;
-  view?: ArticleView;
+  onViewClick?: (view: ListView) => void;
+  view?: ListView;
 };
 
 export const ArticleViewSelector: FC<Props> = memo((props) => {
-  const { className, view = ArticleView.TILE, onViewClick } = props;
+  const { className, view = ListView.TILE, onViewClick } = props;
 
   const { containerClassNames, getIconClassNames } = useStyles({
     view,
@@ -41,7 +40,7 @@ const useStyles = (params: UseStylesParams) => {
   );
 
   const getIconClassNames = useCallback(
-    (iconViewValue: ArticleView) => {
+    (iconViewValue: ListView) => {
       const iconClassNames = buildClassNames({
         classNames: '',
         mods: {

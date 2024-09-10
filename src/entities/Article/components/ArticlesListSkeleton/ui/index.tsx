@@ -2,11 +2,10 @@ import { FC, memo } from 'react';
 
 import classNames from './index.module.scss';
 
-import { ArticleView } from '$entities/Article/constants';
-import { buildClassNames, Card, Skeleton } from '$shared';
+import { buildClassNames, Card, ListView, Skeleton } from '$shared';
 
 type Props = {
-  view: ArticleView;
+  view: ListView;
   className?: string;
 };
 
@@ -15,7 +14,7 @@ export const ArticlesListSkeleton: FC<Props> = memo((props: Props) => {
 
   const { containerClassNames } = useStyles({ className, view });
 
-  if (view === ArticleView.LIST) {
+  if (view === ListView.LIST) {
     return (
       <Card className={containerClassNames}>
         <div className={classNames.header}>

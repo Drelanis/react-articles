@@ -4,12 +4,12 @@ import { ArticleListItem } from '../../ArticleListItem';
 import { ArticlesListSkeleton } from '../../ArticlesListSkeleton';
 import classNames from '../ui/index.module.scss';
 
-import { ArticleView } from '$entities/Article/constants';
 import { Article } from '$entities/Article/model';
+import { ListView } from '$shared';
 
 type Params = {
   articles: Article[];
-  view: ArticleView;
+  view: ListView;
 };
 
 export const useModel = (params: Params) => {
@@ -20,7 +20,7 @@ export const useModel = (params: Params) => {
     const bigArticleNumberInListView = 9;
 
     return new Array(
-      view === ArticleView.TILE
+      view === ListView.TILE
         ? bigArticleNumberInListView
         : articlesNumberInTileView,
     )

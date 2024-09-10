@@ -6,7 +6,6 @@ import { useModel } from '../model';
 
 import classNames from './index.module.scss';
 
-import { ArticleView } from '$entities/Article/constants';
 import { Article } from '$entities/Article/model';
 import {
   Avatar,
@@ -15,13 +14,14 @@ import {
   ButtonVariant,
   Card,
   Icon,
+  ListView,
   Text,
 } from '$shared';
 import EyeIcon from '$shared/assets/icons/eye-20-20.svg';
 
 type Props = {
   article: Article;
-  view: ArticleView;
+  view: ListView;
   className?: string;
 };
 
@@ -44,7 +44,7 @@ export const ArticleListItem: FC<Props> = memo((props) => {
     </>
   );
 
-  if (view === ArticleView.LIST) {
+  if (view === ListView.LIST) {
     return (
       <div className={containerClassNames}>
         <Card>

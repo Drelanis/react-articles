@@ -8,9 +8,10 @@ import { ArticleSortField, ArticlesPageLimits } from '../constants';
 import { fetchArticlesList } from '../services';
 import { ArticlesListSchemaType } from '../types';
 
-import { Article, ArticleView } from '$entities';
+import { Article } from '$entities';
 import {
   ARTICLES_TILE_ITEMS_LIMIT,
+  ListView,
   LOCAL_STORAGE_ARTICLES_VIEW,
   SortOrderType,
   StateSchema,
@@ -34,20 +35,20 @@ const articlesSlice = createSlice({
     entities: {},
     isLoading: false,
     error: '',
-    view: ArticleView.LIST,
+    view: ListView.LIST,
     hasMore: true,
     limit: ARTICLES_TILE_ITEMS_LIMIT,
     page: 1,
   }),
   reducers: {
-    setView: (state, action: PayloadAction<ArticleView>) => {
+    setView: (state, action: PayloadAction<ListView>) => {
       state.view = action.payload;
       localStorage.setItem(LOCAL_STORAGE_ARTICLES_VIEW, action.payload);
     },
     initState: (state) => {
       const view =
-        (localStorage.getItem(LOCAL_STORAGE_ARTICLES_VIEW) as ArticleView) ||
-        ArticleView.TILE;
+        (localStorage.getItem(LOCAL_STORAGE_ARTICLES_VIEW) as ListView) ||
+        ListView.TILE;
 
       state.view = view;
       state.limit = ArticlesPageLimits[view];
