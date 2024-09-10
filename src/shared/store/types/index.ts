@@ -15,11 +15,16 @@ import {
   ProfileSchema,
   UserSchema,
 } from '$entities';
-import { AddCommentFormSchema, LoginSchema } from '$features';
+import {
+  AddCommentFormSchema,
+  LoginSchema,
+  ScrollRestorationType,
+} from '$features';
 import { ArticleDetailsCommentsSchema, ArticlesListSchemaType } from '$pages';
 
 export type StateSchema = {
   counter: CounterSchema;
+  scrollRestoration: ScrollRestorationType;
   user: UserSchema;
 
   // Async reducers

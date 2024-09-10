@@ -12,6 +12,7 @@ import { createReducerManager } from './reducerManager';
 
 // TODO Fix it!
 import { counterReducer, userReducer } from '$entities';
+import { scrollRestorationReducer } from '$features/ScrollRestoration';
 import { $api } from '$shared/api';
 
 type Params = {
@@ -26,6 +27,7 @@ export const createReduxStore = (params: Params) => {
     ...asyncReducers,
     counter: counterReducer,
     user: userReducer,
+    scrollRestoration: scrollRestorationReducer,
   };
 
   const reducerManager = createReducerManager(rootReducers);

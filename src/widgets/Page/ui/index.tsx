@@ -1,8 +1,18 @@
-import { memo, MutableRefObject, ReactNode, useRef } from 'react';
+import { memo, MutableRefObject, ReactNode, UIEvent, useRef } from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 import classNames from './index.module.scss';
 
-import { useInfiniteScroll } from '$shared/hooks';
+import { scrollRestorationActions } from '$features';
+import { getScrollRestorationByPath } from '$features/ScrollRestoration/model/selectors';
+import { SCROLL_SAVE_DELAY, StateSchema } from '$shared';
+import {
+  useAppDispatch,
+  useInfiniteScroll,
+  useInitialEffect,
+  useThrottle,
+} from '$shared/hooks';
 import { buildClassNames } from '$shared/utils';
 
 type Props = {
@@ -13,8 +23,18 @@ type Props = {
 
 export const Page = memo((props: Props) => {
   const { className, children, onScrollEnd } = props;
+
+  const { containerClassNames } = useStyles({ className });
+
   const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
   const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
+
+  const dispatch = useAppDispatch();
+  const { pathname } = useLocation();
+
+  const scrollPosition = useSelector((state: StateSchema) =>
+    getScrollRestorationByPath(state, pathname),
+  );
 
   useInfiniteScroll({
     triggerRef,
@@ -22,10 +42,27 @@ export const Page = memo((props: Props) => {
     callback: onScrollEnd,
   });
 
-  const { containerClassNames } = useStyles({ className });
+  const onScroll = useThrottle((event: UIEvent<HTMLDivElement>) => {
+    const scrollNumber = event.currentTarget.scrollTop ?? 0;
+
+    dispatch(
+      scrollRestorationActions.setScrollPosition({
+        path: pathname,
+        position: scrollNumber,
+      }),
+    );
+  }, SCROLL_SAVE_DELAY);
+
+  useInitialEffect(() => {
+    wrapperRef.current.scrollTop = scrollPosition;
+  });
 
   return (
-    <section ref={wrapperRef} className={containerClassNames}>
+    <section
+      ref={wrapperRef}
+      className={containerClassNames}
+      onScroll={onScroll}
+    >
       {children}
       <div ref={triggerRef} />
     </section>
