@@ -1,5 +1,7 @@
 import { FC, HTMLAttributes, memo, ReactNode } from 'react';
 
+import { CardVariant } from '../constants';
+
 import classNames from './index.module.scss';
 
 import { buildClassNames } from '$shared/utils';
@@ -7,12 +9,13 @@ import { buildClassNames } from '$shared/utils';
 interface Props extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   className?: string;
+  variant?: CardVariant;
 }
 
 export const Card: FC<Props> = memo((props) => {
-  const { className, children, ...otherProps } = props;
+  const { className, children, variant, ...otherProps } = props;
 
-  const { containerClassNames } = useStyles({ className });
+  const { containerClassNames } = useStyles({ className, variant });
 
   return (
     <div className={containerClassNames} {...otherProps}>
@@ -21,14 +24,14 @@ export const Card: FC<Props> = memo((props) => {
   );
 });
 
-type UseStylesParams = Pick<Props, 'className'>;
+type UseStylesParams = Pick<Props, 'className' | 'variant'>;
 
 const useStyles = (params: UseStylesParams) => {
-  const { className = '' } = params;
+  const { className = '', variant = CardVariant.NORMAL } = params;
 
   const containerClassNames = buildClassNames({
     classNames: classNames.card,
-    additional: [className],
+    additional: [className, classNames[variant]],
   });
 
   return { containerClassNames };
