@@ -1,3 +1,4 @@
+import { ArticleSortField } from '../../constants';
 import { fetchArticlesList } from '../fetchArticlesList';
 
 import { initArticlesPage } from '.';
@@ -10,6 +11,9 @@ describe('fetchNextArticlesPage.test', () => {
   test('initialized', async () => {
     const thunk = new TestAsyncThunk(initArticlesPage, {
       articlesList: {
+        search: '',
+        sort: ArticleSortField.CREATED,
+        order: 'ask',
         _isInitialized: false,
         page: 2,
         ids: [],
@@ -28,6 +32,9 @@ describe('fetchNextArticlesPage.test', () => {
   test('don`t initialized', async () => {
     const thunk = new TestAsyncThunk(initArticlesPage, {
       articlesList: {
+        search: '',
+        sort: ArticleSortField.CREATED,
+        order: 'ask',
         _isInitialized: true,
         page: 2,
         ids: [],

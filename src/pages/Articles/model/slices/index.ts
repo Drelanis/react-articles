@@ -4,7 +4,7 @@ import {
   PayloadAction,
 } from '@reduxjs/toolkit';
 
-import { ArticlesPageLimits } from '../constants';
+import { ArticleSortField, ArticlesPageLimits } from '../constants';
 import { fetchArticlesList } from '../services';
 import { ArticlesListSchemaType } from '../types';
 
@@ -12,6 +12,7 @@ import { Article, ArticleView } from '$entities';
 import {
   ARTICLES_TILE_ITEMS_LIMIT,
   LOCAL_STORAGE_ARTICLES_VIEW,
+  SortOrderType,
   StateSchema,
 } from '$shared';
 
@@ -26,6 +27,9 @@ export const getArticlesList = articlesAdapter.getSelectors<StateSchema>(
 const articlesSlice = createSlice({
   name: 'articlesSlice',
   initialState: articlesAdapter.getInitialState<ArticlesListSchemaType>({
+    search: '',
+    sort: ArticleSortField.CREATED,
+    order: 'ask',
     ids: [],
     entities: {},
     isLoading: false,
@@ -57,6 +61,15 @@ const articlesSlice = createSlice({
     },
     setHasMore: (state, action: PayloadAction<boolean>) => {
       state.hasMore = action.payload;
+    },
+    setOrder: (state, action: PayloadAction<SortOrderType>) => {
+      state.order = action.payload;
+    },
+    setSort: (state, action: PayloadAction<ArticleSortField>) => {
+      state.sort = action.payload;
+    },
+    setSearch: (state, action: PayloadAction<string>) => {
+      state.search = action.payload;
     },
   },
   extraReducers: (builder) => {

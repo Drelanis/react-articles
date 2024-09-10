@@ -1,7 +1,6 @@
 import { ArticleBlockVariant, ArticleVariant } from '../constants';
 
 import { User } from '$entities/User';
-import { SortOrderType } from '$shared';
 
 export enum ArticleSortField {
   VIEWS = 'views',
@@ -41,9 +40,7 @@ export type Article = {
   createdAt: string;
   id: string;
   img: string;
-  order: SortOrderType;
-  search: string;
-  sort: ArticleSortField;
+
   subtitle: string;
   title: string;
   type: ArticleVariant[];

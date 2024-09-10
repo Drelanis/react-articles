@@ -19,7 +19,6 @@ import {
   ArticleBlockVariant,
   articleDetailsReducer,
   ArticleDetailsSchema,
-  ArticleSortField,
   ArticleVariant,
   CommentType,
 } from '$entities';
@@ -77,9 +76,6 @@ const asyncArticleReducer: DeepPartial<ReducersMapObject<StateSchema>> = {
 
 const article: Article = {
   id: '1',
-  search: '',
-  sort: ArticleSortField.CREATED,
-  order: 'ask',
   user: {
     id: '1',
     userName: 'admin',

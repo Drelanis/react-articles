@@ -1,3 +1,4 @@
+import { ArticleSortField } from '../../constants';
 import { fetchArticlesList } from '../fetchArticlesList';
 
 import { fetchNextArticlesPage } from '.';
@@ -9,6 +10,9 @@ describe('fetchNextArticlesPage.test', () => {
   test('success', async () => {
     const thunk = new TestAsyncThunk(fetchNextArticlesPage, {
       articlesList: {
+        search: '',
+        sort: ArticleSortField.CREATED,
+        order: 'ask',
         page: 2,
         ids: [],
         entities: {},
@@ -28,6 +32,9 @@ describe('fetchNextArticlesPage.test', () => {
   test('fetchArticleList not called', async () => {
     const thunk = new TestAsyncThunk(fetchNextArticlesPage, {
       articlesList: {
+        search: '',
+        sort: ArticleSortField.CREATED,
+        order: 'ask',
         page: 2,
         ids: [],
         entities: {},
