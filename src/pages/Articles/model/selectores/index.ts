@@ -18,3 +18,6 @@ export const getArticlesListLimit = (state: StateSchema) =>
 
 export const getArticlesListHasMore = (state: StateSchema) =>
   state.articlesList?.hasMore || false;
+
+export const getArticlesListIsInitialized = (state: StateSchema) =>
+  state.articlesList?._isInitialized || false;

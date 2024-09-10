@@ -47,6 +47,7 @@ const articlesSlice = createSlice({
 
       state.view = view;
       state.limit = ArticlesPageLimits[view];
+      state._isInitialized = true;
     },
     setPage: (state, action: PayloadAction<number>) => {
       state.page = action.payload;

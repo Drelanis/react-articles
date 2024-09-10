@@ -39,7 +39,7 @@ const ArticlesPage = memo((props: Props) => {
   } = useModel();
 
   return (
-    <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+    <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
       <Page className={containerClassNames} onScrollEnd={onLoadNextPage}>
         <Text align={TextAlign.CENTER} title={t('articlesPageTitle')} />
         <ArticleViewSelector

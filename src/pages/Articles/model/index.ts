@@ -6,7 +6,7 @@ import {
   getArticlesListIsLoading,
   getArticlesListView,
 } from './selectores';
-import { fetchArticlesList, fetchNextArticlesPage } from './services';
+import { fetchNextArticlesPage, initArticlesPage } from './services';
 import { articlesListActions, getArticlesList } from './slices';
 
 import { ArticleView } from '$entities';
@@ -30,9 +30,7 @@ export const useModel = () => {
   }, [dispatch]);
 
   useInitialEffect(() => {
-    dispatch(articlesListActions.initState());
-
-    void dispatch(fetchArticlesList({ page: 1 }));
+    void dispatch(initArticlesPage());
   });
 
   return {
