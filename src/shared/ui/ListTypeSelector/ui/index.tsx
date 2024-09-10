@@ -1,10 +1,9 @@
 import { FC, memo, useCallback } from 'react';
 
-import { ArticleType } from '$entities';
 import { buildClassNames, TabItem, Tabs } from '$shared';
 
 type Props = {
-  onChangeType: (type: ArticleType) => void;
+  onChangeType: (type: string) => void;
   typeTabs: TabItem[];
   value: string;
   className?: string;
@@ -17,7 +16,7 @@ export const ListTypeSelector: FC<Props> = memo((props) => {
 
   const onTabClick = useCallback(
     (tab: TabItem) => {
-      onChangeType(tab.value as ArticleType);
+      onChangeType(tab.value);
     },
     [onChangeType],
   );

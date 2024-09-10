@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Search } from '.';
 
 export default {
-  title: 'features/Search',
+  title: 'shared/Search',
   component: Search,
   argTypes: {
     backgroundColor: { control: 'color' },

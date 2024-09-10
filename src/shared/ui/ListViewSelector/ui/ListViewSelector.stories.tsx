@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ArticleViewSelector } from '.';
 
 export default {
-  title: 'features/ListViewSelector',
+  title: 'shared/ListViewSelector',
   component: ArticleViewSelector,
   argTypes: {
     backgroundColor: { control: 'color' },

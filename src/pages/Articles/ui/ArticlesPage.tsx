@@ -5,8 +5,8 @@ import { useModel } from '../model';
 import { articlesListReducer } from '../model/slices';
 
 import { ArticlesList } from '$entities';
-import { ArticleViewSelector } from '$features';
 import {
+  ArticleViewSelector,
   buildClassNames,
   DynamicModuleLoader,
   ReducersList,

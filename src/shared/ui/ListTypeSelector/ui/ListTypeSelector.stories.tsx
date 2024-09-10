@@ -4,7 +4,7 @@ import { ListTypeSelector } from '.';
 import { ArticleType } from '$entities';
 
 export default {
-  title: 'features/ListTypeSelector',
+  title: 'shared/ListTypeSelector',
   component: ListTypeSelector,
   argTypes: {
     backgroundColor: { control: 'color' },
