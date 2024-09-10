@@ -24,5 +24,9 @@
   "noComments": "There are no comments",
   "enterTextComment": "Enter comment text",
   "sendTextComment": "Send comment",
-  "goBack": "Go back"
+  "goBack": "Go back",
+  "all": "All",
+  "it": "IT",
+  "economics": "Economic",
+  "science": "Science"
 }

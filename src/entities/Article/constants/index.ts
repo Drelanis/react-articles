@@ -15,3 +15,10 @@ export enum ArticleView {
   LIST = 'list',
   TILE = 'tile',
 }
+
+export enum ArticleType {
+  ALL = 'ALL',
+  IT = 'IT',
+  SCIENCE = 'SCIENCE',
+  ECONOMICS = 'ECONOMICS',
+}

@@ -1,4 +1,4 @@
 export * from './ui';
 export * from './model';
 export { ArticlesList } from './components';
-export { ArticleView } from './constants';
+export { ArticleView, ArticleType } from './constants';
