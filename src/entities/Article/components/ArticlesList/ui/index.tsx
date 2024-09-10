@@ -1,4 +1,5 @@
 import { FC, memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { useModel } from '../model';
 
@@ -6,17 +7,32 @@ import classNames from './index.module.scss';
 
 import { ArticleView } from '$entities/Article/constants';
 import { Article } from '$entities/Article/model';
-import { buildClassNames } from '$shared';
+import {
+  buildClassNames,
+  ErrorHints,
+  Text,
+  TextAlign,
+  TextVariants,
+} from '$shared';
 
 type Props = {
   articles: Article[];
   className?: string;
+  errorMessage?: ErrorHints;
   isLoading?: boolean;
   view?: ArticleView;
 };
 
 export const ArticlesList: FC<Props> = memo((props) => {
-  const { className, articles, view = ArticleView.TILE, isLoading } = props;
+  const {
+    className,
+    articles,
+    view = ArticleView.TILE,
+    isLoading,
+    errorMessage,
+  } = props;
+
+  const { t } = useTranslation();
 
   const { containerClassNames } = useStyles({ view, className });
 
@@ -25,11 +41,19 @@ export const ArticlesList: FC<Props> = memo((props) => {
     articles,
   });
 
-  if (isLoading) {
-    return <div className={containerClassNames}>{articlesSkeleton}</div>;
-  }
-
-  return <div className={containerClassNames}>{isArticles && Articles}</div>;
+  return (
+    <div className={containerClassNames}>
+      {isArticles && Articles}
+      {isLoading && articlesSkeleton}
+      {errorMessage && (
+        <Text
+          align={TextAlign.CENTER}
+          variant={TextVariants.ERROR}
+          title={t(errorMessage)}
+        />
+      )}
+    </div>
+  );
 });
 
 type UseStylesParams = Pick<Props, 'className' | 'view'>;

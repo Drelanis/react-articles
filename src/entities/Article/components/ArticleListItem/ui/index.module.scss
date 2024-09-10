@@ -1,4 +1,7 @@
 .list {
+  background-color: var(--card-background);
+  border-radius: var(--card-border-radius);
+
   .views {
     margin-left: auto;
   }
@@ -43,6 +46,8 @@
   width: 230px;
   transition: 0.2s;
   cursor: pointer;
+  background-color: var(--card-background);
+  border-radius: var(--card-border-radius);
 
   .date {
     position: absolute;

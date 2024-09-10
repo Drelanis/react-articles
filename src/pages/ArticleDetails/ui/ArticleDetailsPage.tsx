@@ -12,6 +12,7 @@ import {
   Button,
   ButtonVariant,
   DynamicModuleLoader,
+  Page,
   ReducersList,
   Text,
 } from '$shared';
@@ -27,19 +28,21 @@ const ArticleDetailsPage: FC = memo(() => {
   const { t } = useTranslation();
 
   return (
-    <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <Button variant={ButtonVariant.OUTLINE} onClick={onBackToList}>
-        {t('goBack')}
-      </Button>
-      <ArticleDetails />
-      {!isCommentsLoading && (
-        <Text className={classNames.commentTitle} title={t('comments')} />
-      )}
-      {!isCommentsLoading && (
-        <AddCommentFormLazy onSendComment={onSendComment} />
-      )}
-      <Comments comments={comments} isLoading={isCommentsLoading} />
-    </DynamicModuleLoader>
+    <Page>
+      <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+        <Button variant={ButtonVariant.OUTLINE} onClick={onBackToList}>
+          {t('goBack')}
+        </Button>
+        <ArticleDetails />
+        {!isCommentsLoading && (
+          <Text className={classNames.commentTitle} title={t('comments')} />
+        )}
+        {!isCommentsLoading && (
+          <AddCommentFormLazy onSendComment={onSendComment} />
+        )}
+        <Comments comments={comments} isLoading={isCommentsLoading} />
+      </DynamicModuleLoader>
+    </Page>
   );
 });
 

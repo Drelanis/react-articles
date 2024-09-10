@@ -9,6 +9,7 @@ import { ArticleViewSelector } from '$features';
 import {
   buildClassNames,
   DynamicModuleLoader,
+  Page,
   ReducersList,
   Text,
   TextAlign,
@@ -28,11 +29,18 @@ const ArticlesPage = memo((props: Props) => {
 
   const { containerClassNames } = useStyles({ className });
 
-  const { isLoading, articles, articlesListView, onChangeView } = useModel();
+  const {
+    isLoading,
+    articles,
+    articlesListView,
+    onChangeView,
+    onLoadNextPage,
+    errorMessage,
+  } = useModel();
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <div className={containerClassNames}>
+      <Page className={containerClassNames} onScrollEnd={onLoadNextPage}>
         <Text align={TextAlign.CENTER} title={t('articlesPageTitle')} />
         <ArticleViewSelector
           view={articlesListView}
@@ -42,8 +50,9 @@ const ArticlesPage = memo((props: Props) => {
           articles={articles}
           isLoading={isLoading}
           view={articlesListView}
+          errorMessage={errorMessage}
         />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 });

@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { fetchProfileData, ProfileCard, profileReducer } from '$entities';
 import {
   DynamicModuleLoader,
+  Page,
   ReducersList,
   useAppDispatch,
   useInitialEffect,
@@ -25,9 +26,11 @@ const ProfilePage: FC = memo(() => {
   });
 
   return (
-    <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <ProfileCard />
-    </DynamicModuleLoader>
+    <Page>
+      <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+        <ProfileCard />
+      </DynamicModuleLoader>
+    </Page>
   );
 });
 

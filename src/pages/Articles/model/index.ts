@@ -6,7 +6,7 @@ import {
   getArticlesListIsLoading,
   getArticlesListView,
 } from './selectores';
-import { fetchArticlesList } from './services';
+import { fetchArticlesList, fetchNextArticlesPage } from './services';
 import { articlesListActions, getArticlesList } from './slices';
 
 import { ArticleView } from '$entities';
@@ -25,11 +25,22 @@ export const useModel = () => {
     [dispatch],
   );
 
+  const onLoadNextPage = useCallback(async () => {
+    await dispatch(fetchNextArticlesPage());
+  }, [dispatch]);
+
   useInitialEffect(() => {
     dispatch(articlesListActions.initState());
 
     void dispatch(fetchArticlesList({ page: 1 }));
   });
 
-  return { articles, isLoading, errorMessage, articlesListView, onChangeView };
+  return {
+    articles,
+    isLoading,
+    errorMessage,
+    articlesListView,
+    onChangeView,
+    onLoadNextPage,
+  };
 };
