@@ -12,4 +12,3 @@ export * from './Skeleton';
 export * from './Code';
 export * from './Icon';
 export * from './Card';
-export * from './Page';

@@ -12,10 +12,10 @@ import {
   Button,
   ButtonVariant,
   DynamicModuleLoader,
-  Page,
   ReducersList,
   Text,
 } from '$shared';
+import { Page } from '$widgets';
 
 const reducers: ReducersList = {
   articleDetailsComments: articleDetailsCommentsReducer,

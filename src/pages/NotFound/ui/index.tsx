@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next';
 
 import classNames from './index.module.scss';
 
-import { buildClassNames, Page } from '$shared';
+import { buildClassNames } from '$shared';
+import { Page } from '$widgets';
 
 interface Props {
   className?: string;

@@ -4,11 +4,11 @@ import { useParams } from 'react-router-dom';
 import { fetchProfileData, ProfileCard, profileReducer } from '$entities';
 import {
   DynamicModuleLoader,
-  Page,
   ReducersList,
   useAppDispatch,
   useInitialEffect,
 } from '$shared';
+import { Page } from '$widgets';
 
 const reducers: ReducersList = {
   profile: profileReducer,

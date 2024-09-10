@@ -9,11 +9,11 @@ import { ArticleViewSelector } from '$features';
 import {
   buildClassNames,
   DynamicModuleLoader,
-  Page,
   ReducersList,
   Text,
   TextAlign,
 } from '$shared';
+import { Page } from '$widgets';
 
 const reducers: ReducersList = {
   articlesList: articlesListReducer,

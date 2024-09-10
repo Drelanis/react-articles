@@ -1,7 +1,8 @@
 import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Page, TranslationChunks } from '$shared';
+import { TranslationChunks } from '$shared';
+import { Page } from '$widgets';
 
 const AboutPage: FC = memo(() => {
   const { t } = useTranslation(TranslationChunks.ABOUT);
