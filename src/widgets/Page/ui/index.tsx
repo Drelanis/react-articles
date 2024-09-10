@@ -64,7 +64,7 @@ export const Page = memo((props: Props) => {
       onScroll={onScroll}
     >
       {children}
-      <div ref={triggerRef} />
+      <div className={classNames.trigger} ref={triggerRef} />
     </section>
   );
 });
