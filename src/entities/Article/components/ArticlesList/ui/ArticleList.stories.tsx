@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ArticlesList } from '.';
-import { ArticleView } from '$entities/Article/constants';
+import { ArticleSortField, ArticleView } from '$entities';
 import {
   Article,
   ArticleBlockVariant,
@@ -24,6 +24,9 @@ const bigArticleNumberInBigView = 9;
 
 const article: Article = {
   id: '1',
+  search: '',
+  sort: ArticleSortField.CREATED,
+  order: 'ask',
   user: {
     id: '1',
     userName: 'admin',

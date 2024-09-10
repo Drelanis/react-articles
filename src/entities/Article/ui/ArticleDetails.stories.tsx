@@ -6,6 +6,7 @@ import {
 } from '@reduxjs/toolkit';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
+import { ArticleSortField } from '../constants';
 import {
   Article,
   ArticleBlockVariant,
@@ -98,6 +99,9 @@ Error.decorators = [
 
 const article: Article = {
   id: '1',
+  search: '',
+  sort: ArticleSortField.CREATED,
+  order: 'ask',
   user: {
     id: '1',
     userName: 'admin',
