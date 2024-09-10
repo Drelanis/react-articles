@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ListTypeSelector } from '.';
-import { ArticleType } from '$entities';
+import { ArticleType } from '$shared/constants';
 
 export default {
   title: 'shared/ListTypeSelector',

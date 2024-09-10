@@ -1,8 +1,7 @@
-import { ArticleSortField } from '../../constants';
 import { fetchArticlesList } from '../fetchArticlesList';
 
 import { initArticlesPage } from '.';
-import { TestAsyncThunk } from '$shared';
+import { ListSortField, TestAsyncThunk } from '$shared';
 
 jest.mock('../fetchArticlesList');
 jest.mock('../../slices');
@@ -12,7 +11,7 @@ describe('fetchNextArticlesPage.test', () => {
     const thunk = new TestAsyncThunk(initArticlesPage, {
       articlesList: {
         search: '',
-        sort: ArticleSortField.CREATED,
+        sort: ListSortField.CREATED,
         order: 'ask',
         _isInitialized: false,
         page: 2,
@@ -33,7 +32,7 @@ describe('fetchNextArticlesPage.test', () => {
     const thunk = new TestAsyncThunk(initArticlesPage, {
       articlesList: {
         search: '',
-        sort: ArticleSortField.CREATED,
+        sort: ListSortField.CREATED,
         order: 'ask',
         _isInitialized: true,
         page: 2,

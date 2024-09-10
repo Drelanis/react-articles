@@ -8,9 +8,3 @@ export const ArticlesPageLimits = {
   [ListView.LIST]: ARTICLES_LIST_ITEMS_LIMIT,
   [ListView.TILE]: ARTICLES_TILE_ITEMS_LIMIT,
 };
-
-export enum ArticleSortField {
-  VIEWS = 'views',
-  TITLE = 'title',
-  CREATED = 'createdAt',
-}

@@ -10,8 +10,16 @@ import {
 import { fetchNextArticlesPage, initArticlesPage } from './services';
 import { articlesListActions, getArticlesList } from './slices';
 
-import { ArticleType } from '$entities';
-import { ListView, TabItem, useAppDispatch, useInitialEffect } from '$shared';
+import {
+  ArticleType,
+  ListOrderField,
+  ListSortField,
+  ListView,
+  SelectOption,
+  TabItem,
+  useAppDispatch,
+  useInitialEffect,
+} from '$shared';
 
 export const useModel = () => {
   const { t } = useTranslation();
@@ -58,7 +66,41 @@ export const useModel = () => {
     [t],
   );
 
+  const orderOptions = useMemo<SelectOption[]>(
+    () => [
+      {
+        value: ListOrderField.ASK,
+        content: t('descending'),
+      },
+      {
+        value: ListOrderField.DESK,
+        content: t('ascending'),
+      },
+    ],
+    [t],
+  );
+
+  const sortFieldOptions = useMemo<SelectOption[]>(
+    () => [
+      {
+        value: ListSortField.CREATED,
+        content: t('creationDate'),
+      },
+      {
+        value: ListSortField.TITLE,
+        content: t('title'),
+      },
+      {
+        value: ListSortField.VIEWS,
+        content: t('views'),
+      },
+    ],
+    [t],
+  );
+
   return {
+    sortFieldOptions,
+    orderOptions,
     typeTabs,
     articles,
     isLoading,

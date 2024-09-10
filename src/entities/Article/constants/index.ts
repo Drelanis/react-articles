@@ -10,10 +10,3 @@ export const ArticleBlockHints = {
   [ArticleBlockVariant.IMAGE]: ArticleImageBlock,
   [ArticleBlockVariant.TEXT]: ArticleTextBlock,
 };
-
-export enum ArticleType {
-  ALL = 'ALL',
-  IT = 'IT',
-  SCIENCE = 'SCIENCE',
-  ECONOMICS = 'ECONOMICS',
-}

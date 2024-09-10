@@ -29,5 +29,12 @@
   "it": "ІТ",
   "economics": "Економіка",
   "science": "Наука",
-  "search": "Пошук"
+  "search": "Пошук",
+  "sortBy": "Сортувати по",
+  "by": "по",
+  "descending": "низхідний",
+  "ascending": "висхідний",
+  "creationDate": "Дата створення",
+  "title": "Назва",
+  "views": "Перегляди"
 }

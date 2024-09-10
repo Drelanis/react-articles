@@ -29,5 +29,12 @@
   "it": "IT",
   "economics": "Economic",
   "science": "Science",
-  "search": "Search"
+  "search": "Search",
+  "sortBy": "Sort by",
+  "by": "by",
+  "descending": "Desc",
+  "ascending": "Asc",
+  "creationDate": "Creation date",
+  "title": "Title",
+  "views": "Views"
 }
