@@ -36,5 +36,6 @@
   "ascending": "висхідний",
   "creationDate": "Дата створення",
   "title": "Назва",
-  "views": "Перегляди"
+  "views": "Перегляди",
+  "articlesNotFound": "Статті не знайдено!"
 }

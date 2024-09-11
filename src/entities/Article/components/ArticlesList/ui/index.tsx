@@ -41,6 +41,16 @@ export const ArticlesList: FC<Props> = memo((props) => {
     articles,
   });
 
+  if (!isArticles) {
+    return (
+      <Text
+        align={TextAlign.CENTER}
+        variant={TextVariants.PRIMARY}
+        title={t('articlesNotFound')}
+      />
+    );
+  }
+
   return (
     <div className={containerClassNames}>
       {isArticles && Articles}

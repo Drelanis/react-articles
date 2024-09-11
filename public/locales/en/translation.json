@@ -36,5 +36,6 @@
   "ascending": "Asc",
   "creationDate": "Creation date",
   "title": "Title",
-  "views": "Views"
+  "views": "Views",
+  "articlesNotFound": "No article found!"
 }
