@@ -10,6 +10,6 @@ export enum ListSortField {
 }
 
 export enum ListOrderField {
-  DESK = 'desk',
-  ASK = 'ask',
+  DESC = 'desc',
+  ASC = 'asc',
 }

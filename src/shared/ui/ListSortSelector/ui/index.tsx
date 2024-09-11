@@ -55,7 +55,6 @@ export const ListSortSelector: FC<Props> = memo((props: Props) => {
       />
       <Select
         options={orderOptions}
-        label={t('by')}
         value={order}
         onChange={changeOrderHandler}
         className={classNames.order}

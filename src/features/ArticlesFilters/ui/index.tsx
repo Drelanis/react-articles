@@ -5,7 +5,10 @@ import { useModel } from '../model';
 import classNames from './index.module.scss';
 
 import {
+  ArticleType,
   buildClassNames,
+  ListOrderField,
+  ListSortField,
   ListSortSelector,
   ListTypeSelector,
   ListView,
@@ -13,16 +16,18 @@ import {
   Search,
 } from '$shared';
 
+type FuncWithStringParamType = (value: string) => void;
+
 type Props = {
-  onChangeOrder: () => void;
-  onChangeSearch: () => void;
-  onChangeSort: () => void;
-  onChangeType: () => void;
-  onChangeView: () => void;
-  order: string;
+  onChangeOrder: (newOrder: ListOrderField) => void;
+  onChangeSearch: (searchValue: string) => void;
+  onChangeSort: (newSort: ListSortField) => void;
+  onChangeType: (value: ArticleType) => void;
+  onChangeView: (listView: ListView) => void;
+  order: ListOrderField;
   search: string;
-  sort: string;
-  type: string;
+  sort: ListSortField;
+  type: ArticleType;
   view: ListView;
   className?: string;
 };
@@ -57,8 +62,8 @@ export const ArticlesFilters: FC<Props> = memo((props) => {
         <ListSortSelector
           order={order}
           sort={sort}
-          onChangeOrder={onChangeOrder}
-          onChangeSort={onChangeSort}
+          onChangeOrder={onChangeOrder as FuncWithStringParamType}
+          onChangeSort={onChangeSort as FuncWithStringParamType}
           orderOptions={orderOptions}
           sortFieldOptions={sortFieldOptions}
         />
@@ -71,7 +76,7 @@ export const ArticlesFilters: FC<Props> = memo((props) => {
       />
       <ListTypeSelector
         value={type}
-        onChangeType={onChangeType}
+        onChangeType={onChangeType as FuncWithStringParamType}
         className={tabsClassNames}
         typeTabs={typeTabs}
       />

@@ -37,12 +37,12 @@ export const useModel = () => {
   const orderOptions = useMemo<SelectOption[]>(
     () => [
       {
-        value: ListOrderField.ASK,
-        content: t('descending'),
+        value: ListOrderField.ASC,
+        content: t('ascending'),
       },
       {
-        value: ListOrderField.DESK,
-        content: t('ascending'),
+        value: ListOrderField.DESC,
+        content: t('descending'),
       },
     ],
     [t],

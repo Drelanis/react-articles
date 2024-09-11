@@ -19,11 +19,11 @@ export const Normal = Template.bind({});
 Normal.args = {
   orderOptions: [
     {
-      value: ListOrderField.ASK,
+      value: ListOrderField.ASC,
       content: 'desc',
     },
     {
-      value: ListOrderField.DESK,
+      value: ListOrderField.DESC,
       content: 'asc',
     },
   ],

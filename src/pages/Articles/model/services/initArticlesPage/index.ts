@@ -16,6 +16,6 @@ export const initArticlesPage = createAsyncThunk<
 
   if (!isInitialized) {
     dispatch(articlesListActions.initState());
-    await dispatch(fetchArticlesList({ page: 1 }));
+    await dispatch(fetchArticlesList({ replace: true }));
   }
 });

@@ -1,7 +1,7 @@
 import { fetchArticlesList } from '../fetchArticlesList';
 
 import { fetchNextArticlesPage } from '.';
-import { ListSortField, TestAsyncThunk } from '$shared';
+import { ListOrderField, ListSortField, TestAsyncThunk } from '$shared';
 
 jest.mock('../fetchArticlesList');
 
@@ -11,7 +11,7 @@ describe('fetchNextArticlesPage.test', () => {
       articlesList: {
         search: '',
         sort: ListSortField.CREATED,
-        order: 'ask',
+        order: ListOrderField.ASC,
         page: 2,
         ids: [],
         entities: {},
@@ -33,7 +33,7 @@ describe('fetchNextArticlesPage.test', () => {
       articlesList: {
         search: '',
         sort: ListSortField.CREATED,
-        order: 'ask',
+        order: ListOrderField.ASC,
         page: 2,
         ids: [],
         entities: {},

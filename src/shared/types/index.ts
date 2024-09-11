@@ -4,4 +4,4 @@ export type AppRoutesProps = RouteProps & {
   authOnly?: boolean;
 };
 
-export type SortOrderType = 'ask' | 'desk';
+// export type SortOrderType = 'asc' | 'desc';

@@ -2,11 +2,14 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useModel } from '../model';
+import { useArticlesFilters } from '../model/hooks';
 import { articlesListReducer } from '../model/slices';
 
+import classNames from './index.module.scss';
+
 import { ArticlesList } from '$entities';
+import { ArticlesFilters } from '$features';
 import {
-  ArticleViewSelector,
   buildClassNames,
   DynamicModuleLoader,
   ReducersList,
@@ -33,18 +36,39 @@ const ArticlesPage = memo((props: Props) => {
     isLoading,
     articles,
     articlesListView,
-    onChangeView,
     onLoadNextPage,
     errorMessage,
   } = useModel();
+
+  const {
+    view,
+    sort,
+    order,
+    search,
+    type,
+    onChangeView,
+    onChangeSort,
+    onChangeOrder,
+    onChangeSearch,
+    onChangeType,
+  } = useArticlesFilters();
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
       <Page className={containerClassNames} onScrollEnd={onLoadNextPage}>
         <Text align={TextAlign.CENTER} title={t('articlesPageTitle')} />
-        <ArticleViewSelector
-          view={articlesListView}
-          onViewClick={onChangeView}
+        <ArticlesFilters
+          className={classNames.articlesFilersContainer}
+          view={view}
+          onChangeView={onChangeView}
+          onChangeOrder={onChangeOrder}
+          onChangeSearch={onChangeSearch}
+          onChangeSort={onChangeSort}
+          onChangeType={onChangeType}
+          order={order}
+          search={search}
+          sort={sort}
+          type={type}
         />
         <ArticlesList
           articles={articles}

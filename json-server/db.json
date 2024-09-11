@@ -44,7 +44,7 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": ["SCIENCE"],
       "blocks": [
         {
           "id": "1",
@@ -114,7 +114,7 @@
       "img": "https://loudbench.com/wp-content/uploads/2023/02/Python-logo-1024x576.png",
       "views": 100,
       "createdAt": "24.02.2022",
-      "type": ["IT"],
+      "type": ["SCIENCE"],
       "blocks": [
         {
           "id": "1",
@@ -184,7 +184,7 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 555,
       "createdAt": "30.02.2022",
-      "type": ["IT"],
+      "type": ["SCIENCE"],
       "blocks": [
         {
           "id": "1",
@@ -254,7 +254,7 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 77,
       "createdAt": "01.03.2023",
-      "type": ["IT"],
+      "type": ["ECONOMICS"],
       "blocks": [
         {
           "id": "1",
@@ -276,7 +276,7 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 999,
       "createdAt": "30.07.2023",
-      "type": ["IT"],
+      "type": ["ECONOMICS"],
       "blocks": [
         {
           "id": "1",
@@ -298,7 +298,7 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 800,
       "createdAt": "26.04.2023",
-      "type": ["IT"],
+      "type": ["ECONOMICS"],
       "blocks": [
         {
           "id": "1",
@@ -320,7 +320,7 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 950,
       "createdAt": "26.02.2021",
-      "type": ["IT"],
+      "type": ["ECONOMICS"],
       "blocks": [
         {
           "id": "1",
@@ -562,7 +562,7 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 3984,
       "createdAt": "25.02.2005",
-      "type": ["IT"],
+      "type": ["SCIENCE"],
       "blocks": [
         {
           "id": "1",
