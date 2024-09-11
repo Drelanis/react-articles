@@ -5,7 +5,7 @@ import { Card, Input } from '$shared';
 
 type Props = {
   className: string;
-  onChangeSearch: ((value: string) => void) | undefined;
+  onChangeSearch: (value: string) => void;
   value: string;
 };
 
