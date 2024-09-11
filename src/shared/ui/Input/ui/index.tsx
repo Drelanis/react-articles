@@ -1,9 +1,10 @@
-import { FC, InputHTMLAttributes, memo } from 'react';
+import { InputHTMLAttributes } from 'react';
 
 import { useModel } from '../model';
 
 import classNames from './index.module.scss';
 
+import { GenericMemoWrapper } from '$shared/lib';
 import { buildClassNames } from '$shared/utils';
 
 type HTMLInputProps = Omit<
@@ -11,74 +12,76 @@ type HTMLInputProps = Omit<
   'value' | 'onChange' | 'readOnly'
 >;
 
-interface Props extends HTMLInputProps {
+interface Props<Type extends string> extends HTMLInputProps {
   autofocus?: boolean;
   className?: string;
-  onChange?: (value: string) => void;
+  onChange?: (value: Type) => void;
   readOnly?: boolean;
-  value?: string;
+  value?: Type;
 }
 
-export const Input: FC<Props> = memo((props) => {
-  const {
-    className,
-    value,
-    onChange,
-    type = 'text',
-    placeholder,
-    autofocus,
-    readOnly,
-    ...otherProps
-  } = props;
+export const Input = GenericMemoWrapper(
+  <Type extends string>(props: Props<Type>) => {
+    const {
+      className,
+      value,
+      onChange,
+      type = 'text',
+      placeholder,
+      autofocus,
+      readOnly,
+      ...otherProps
+    } = props;
 
-  const {
-    ref,
-    isFocused,
-    caretPosition,
-    onChangeHandler,
-    onBlur,
-    onFocus,
-    onSelect,
-  } = useModel({ autofocus, onChange });
+    const {
+      ref,
+      isFocused,
+      caretPosition,
+      onChangeHandler,
+      onBlur,
+      onFocus,
+      onSelect,
+    } = useModel({ autofocus, onChange });
 
-  const isCaretVisible = isFocused && !readOnly;
+    const isCaretVisible = isFocused && !readOnly;
 
-  const { containerClassNames, updatedCaretPosition } = useStyles({
-    className,
-    caretPosition,
-    readOnly,
-  });
+    const { containerClassNames, updatedCaretPosition } = useStyles({
+      className,
+      caretPosition,
+      readOnly,
+    });
 
-  return (
-    <div className={containerClassNames}>
-      {placeholder && (
-        <div className={classNames.placeholder}>{`${placeholder}>`}</div>
-      )}
-      <div className={classNames.caretWrapper}>
-        <input
-          ref={ref}
-          type={type}
-          value={value}
-          onChange={onChangeHandler}
-          className={classNames.input}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          onSelect={onSelect}
-          {...otherProps}
-        />
-        {isCaretVisible && isFocused && (
-          <span className={classNames.caret} style={updatedCaretPosition} />
+    return (
+      <div className={containerClassNames}>
+        {placeholder && (
+          <div className={classNames.placeholder}>{`${placeholder}>`}</div>
         )}
+        <div className={classNames.caretWrapper}>
+          <input
+            ref={ref}
+            type={type}
+            value={value}
+            onChange={onChangeHandler}
+            className={classNames.input}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            onSelect={onSelect}
+            {...otherProps}
+          />
+          {isCaretVisible && isFocused && (
+            <span className={classNames.caret} style={updatedCaretPosition} />
+          )}
+        </div>
       </div>
-    </div>
-  );
-});
+    );
+  },
+);
 
-type UseStylesParams = {
+type UseStylesParams<Type extends string> = {
   caretPosition: number;
-} & Pick<Props, 'className' | 'readOnly'>;
+} & Pick<Props<Type>, 'className' | 'readOnly'>;
 
-const useStyles = (params: UseStylesParams) => {
+const useStyles = <Type extends string>(params: UseStylesParams<Type>) => {
   const { caretPosition, className = '', readOnly } = params;
 
   const containerClassNames = buildClassNames({
