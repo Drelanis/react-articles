@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 
 import {
   getArticlesListError,
@@ -14,6 +15,8 @@ import { useAppDispatch, useInitialEffect } from '$shared';
 export const useModel = () => {
   const dispatch = useAppDispatch();
 
+  const [searchParams] = useSearchParams();
+
   const articles = useSelector(getArticlesList.selectAll);
   const isLoading = useSelector(getArticlesListIsLoading);
   const errorMessage = useSelector(getArticlesListError);
@@ -24,7 +27,7 @@ export const useModel = () => {
   }, [dispatch]);
 
   useInitialEffect(() => {
-    void dispatch(initArticlesPage());
+    void dispatch(initArticlesPage(searchParams));
   });
 
   return {

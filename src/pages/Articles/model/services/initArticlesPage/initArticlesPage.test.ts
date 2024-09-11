@@ -23,7 +23,7 @@ describe('fetchNextArticlesPage.test', () => {
       },
     });
 
-    await thunk.callThunk();
+    await thunk.callThunk(new URLSearchParams());
     const numberOfCalls = 2;
 
     expect(thunk.dispatch).toBeCalledTimes(numberOfCalls);
@@ -44,7 +44,7 @@ describe('fetchNextArticlesPage.test', () => {
       },
     });
 
-    await thunk.callThunk();
+    await thunk.callThunk(new URLSearchParams());
 
     expect(fetchArticlesList).not.toBeCalled();
   });
