@@ -16,8 +16,6 @@ import {
   Search,
 } from '$shared';
 
-type FuncWithStringParamType = (value: string) => void;
-
 type Props = {
   onChangeOrder: (newOrder: ListOrderField) => void;
   onChangeSearch: (searchValue: string) => void;
@@ -62,8 +60,8 @@ export const ArticlesFilters: FC<Props> = memo((props) => {
         <ListSortSelector
           order={order}
           sort={sort}
-          onChangeOrder={onChangeOrder as FuncWithStringParamType}
-          onChangeSort={onChangeSort as FuncWithStringParamType}
+          onChangeOrder={onChangeOrder}
+          onChangeSort={onChangeSort}
           orderOptions={orderOptions}
           sortFieldOptions={sortFieldOptions}
         />
@@ -76,7 +74,7 @@ export const ArticlesFilters: FC<Props> = memo((props) => {
       />
       <ListTypeSelector
         value={type}
-        onChangeType={onChangeType as FuncWithStringParamType}
+        onChangeType={onChangeType}
         className={tabsClassNames}
         typeTabs={typeTabs}
       />

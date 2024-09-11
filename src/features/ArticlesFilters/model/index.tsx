@@ -12,7 +12,7 @@ import {
 export const useModel = () => {
   const { t } = useTranslation();
 
-  const typeTabs = useMemo<TabItem[]>(
+  const typeTabs = useMemo<TabItem<ArticleType>[]>(
     () => [
       {
         value: ArticleType.ALL,
@@ -34,7 +34,7 @@ export const useModel = () => {
     [t],
   );
 
-  const orderOptions = useMemo<SelectOption[]>(
+  const orderOptions = useMemo<SelectOption<ListOrderField>[]>(
     () => [
       {
         value: ListOrderField.ASC,
@@ -48,7 +48,7 @@ export const useModel = () => {
     [t],
   );
 
-  const sortFieldOptions = useMemo<SelectOption[]>(
+  const sortFieldOptions = useMemo<SelectOption<ListSortField>[]>(
     () => [
       {
         value: ListSortField.CREATED,
