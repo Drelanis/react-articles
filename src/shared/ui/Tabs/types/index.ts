@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export type TabItem = {
+export type TabItem<Type extends string> = {
   content: ReactNode;
-  value: string;
+  value: Type;
 };

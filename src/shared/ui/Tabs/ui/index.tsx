@@ -1,30 +1,31 @@
-import { FC, memo } from 'react';
-
 import { useModel } from '../model';
 import { TabItem } from '../types';
 
 import classNames from './index.module.scss';
 
+import { GenericMemoWrapper } from '$shared/lib';
 import { buildClassNames } from '$shared/utils';
 
-type Props = {
-  onTabClick: (tab: TabItem) => void;
-  tabs: TabItem[];
-  value: string;
+type Props<Type extends string> = {
+  onTabClick: (tab: TabItem<Type>) => void;
+  tabs: TabItem<Type>[];
+  value: Type;
   className?: string;
 };
 
-export const Tabs: FC<Props> = memo((props) => {
-  const { className, tabs, onTabClick, value } = props;
+export const Tabs = GenericMemoWrapper(
+  <Type extends string>(props: Props<Type>) => {
+    const { className, tabs, onTabClick, value } = props;
 
-  const { TabComponents } = useModel({ tabs, value, onTabClick });
+    const { TabComponents } = useModel({ tabs, value, onTabClick });
 
-  const { containerClassNames } = useStyles({ className });
+    const { containerClassNames } = useStyles({ className });
 
-  return <div className={containerClassNames}>{TabComponents}</div>;
-});
+    return <div className={containerClassNames}>{TabComponents}</div>;
+  },
+);
 
-type UseStylesParams = Pick<Props, 'className'>;
+type UseStylesParams = Pick<Props<string>, 'className'>;
 
 const useStyles = (params: UseStylesParams) => {
   const { className = '' } = params;

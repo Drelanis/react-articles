@@ -4,17 +4,17 @@ import { TabItem } from '../types';
 
 import { Card, CardVariant } from '$shared/ui/Card';
 
-type Params = {
-  onTabClick: (tab: TabItem) => void;
-  tabs: TabItem[];
-  value: string;
+type Params<Type extends string> = {
+  onTabClick: (tab: TabItem<Type>) => void;
+  tabs: TabItem<Type>[];
+  value: Type;
 };
 
-export const useModel = (params: Params) => {
+export const useModel = <Type extends string>(params: Params<Type>) => {
   const { tabs, onTabClick, value } = params;
 
   const clickHandle = useCallback(
-    (tab: TabItem) => () => {
+    (tab: TabItem<Type>) => () => {
       onTabClick(tab);
     },
     [onTabClick],
