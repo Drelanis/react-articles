@@ -1,17 +1,17 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ArticleViewSelector } from '.';
+import { ListViewSelector } from '.';
 
 export default {
   title: 'shared/ListViewSelector',
-  component: ArticleViewSelector,
+  component: ListViewSelector,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ArticleViewSelector>;
+} as ComponentMeta<typeof ListViewSelector>;
 
-const Template: ComponentStory<typeof ArticleViewSelector> = (args) => (
-  <ArticleViewSelector {...args} />
+const Template: ComponentStory<typeof ListViewSelector> = (args) => (
+  <ListViewSelector {...args} />
 );
 
 export const Normal = Template.bind({});

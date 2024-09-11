@@ -12,7 +12,7 @@ type Props = {
   view?: ListView;
 };
 
-export const ArticleViewSelector: FC<Props> = memo((props) => {
+export const ListViewSelector: FC<Props> = memo((props) => {
   const { className, view = ListView.TILE, onViewClick } = props;
 
   const { containerClassNames, getIconClassNames } = useStyles({
