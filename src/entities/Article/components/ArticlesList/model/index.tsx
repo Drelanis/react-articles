@@ -5,7 +5,11 @@ import { ArticlesListSkeleton } from '../../ArticlesListSkeleton';
 import classNames from '../ui/index.module.scss';
 
 import { Article } from '$entities/Article/model';
-import { ListView } from '$shared';
+import {
+  ARTICLES_LIST_ITEMS_LIMIT,
+  ARTICLES_TILE_ITEMS_LIMIT,
+  ListView,
+} from '$shared';
 
 type Params = {
   articles: Article[];
@@ -16,13 +20,10 @@ export const useModel = (params: Params) => {
   const { view, articles } = params;
 
   const articlesSkeleton = useMemo(() => {
-    const articlesNumberInTileView = 3;
-    const bigArticleNumberInListView = 9;
-
     return new Array(
       view === ListView.TILE
-        ? bigArticleNumberInListView
-        : articlesNumberInTileView,
+        ? ARTICLES_LIST_ITEMS_LIMIT
+        : ARTICLES_TILE_ITEMS_LIMIT,
     )
       .fill(0)
       .map((_, index) => (

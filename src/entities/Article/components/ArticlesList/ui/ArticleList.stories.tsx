@@ -6,7 +6,7 @@ import {
   ArticleBlockVariant,
   ArticleVariant,
 } from '$entities/Article/model';
-import { ListView } from '$shared';
+import { ARTICLES_TILE_ITEMS_LIMIT, ListView } from '$shared';
 
 export default {
   title: 'entities/Article/ArticlesList',
@@ -19,8 +19,6 @@ export default {
 const Template: ComponentStory<typeof ArticlesList> = (args) => (
   <ArticlesList {...args} />
 );
-
-const bigArticleNumberInBigView = 9;
 
 const article: Article = {
   id: '1',
@@ -112,7 +110,7 @@ LoadingSmall.args = {
 
 export const ListSmall = Template.bind({});
 ListSmall.args = {
-  articles: new Array(bigArticleNumberInBigView).fill(0).map((item, index) => ({
+  articles: new Array(ARTICLES_TILE_ITEMS_LIMIT).fill(0).map((item, index) => ({
     ...article,
     id: String(index),
   })),
@@ -122,7 +120,7 @@ ListSmall.args = {
 
 export const ListBig = Template.bind({});
 ListBig.args = {
-  articles: new Array(bigArticleNumberInBigView).fill(0).map((_, index) => ({
+  articles: new Array(ARTICLES_TILE_ITEMS_LIMIT).fill(0).map((_, index) => ({
     ...article,
     id: String(index),
   })),
