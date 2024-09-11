@@ -13,10 +13,12 @@ import { articlesListActions } from '../../slices';
 
 import {
   ArticleType,
+  FETCH_DATA_DELAY,
   ListOrderField,
   ListSortField,
   ListView,
   useAppDispatch,
+  useDebounce,
 } from '$shared';
 
 export const useArticlesFilters = () => {
@@ -31,6 +33,8 @@ export const useArticlesFilters = () => {
   const fetchData = useCallback(async () => {
     await dispatch(fetchArticlesList({ replace: true }));
   }, [dispatch]);
+
+  const debouncedFetchData = useDebounce(fetchData, FETCH_DATA_DELAY);
 
   const onChangeView = useCallback(
     async (listView: ListView) => {
@@ -59,12 +63,12 @@ export const useArticlesFilters = () => {
   );
 
   const onChangeSearch = useCallback(
-    async (searchValue: string) => {
+    (searchValue: string) => {
       dispatch(articlesListActions.setSearch(searchValue));
       dispatch(articlesListActions.setPage(1));
-      await fetchData();
+      debouncedFetchData();
     },
-    [dispatch, fetchData],
+    [dispatch, debouncedFetchData],
   );
 
   const onChangeType = useCallback(

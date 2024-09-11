@@ -2,7 +2,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any -- exception */
 import { useCallback, useRef } from 'react';
 
-export function useDebounce(callback: (...args: any[]) => void, delay: number) {
+export const useDebounce = (
+  callback: (...args: any[]) => void,
+  delay: number,
+) => {
   const timer = useRef<NodeJS.Timeout | undefined>();
 
   return useCallback(
@@ -16,4 +19,4 @@ export function useDebounce(callback: (...args: any[]) => void, delay: number) {
     },
     [callback, delay],
   );
-}
+};
