@@ -18,7 +18,7 @@ export const useModel = (params: Params) => {
   const navigate = useNavigate();
 
   const onOpenArticle = useCallback(() => {
-    navigate(AppRoutes.ARTICLES + article.id);
+    navigate(`${AppRoutes.ARTICLES}/${article.id}`);
   }, [article.id, navigate]);
 
   const textBlock = useMemo(
