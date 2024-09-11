@@ -1,69 +1,59 @@
-import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import classNames from './index.module.scss';
 
+import { GenericMemoWrapper } from '$shared/lib';
 import { Select, SelectOption } from '$shared/ui/Select';
 import { buildClassNames } from '$shared/utils';
 
-type Props = {
-  onChangeOrder: (newOrder: string) => void;
-  onChangeSort: (newSort: string) => void;
-  order: string;
-  orderOptions: SelectOption[];
-  sort: string;
-  sortFieldOptions: SelectOption[];
+type Props<OrderType extends string, SortType extends string> = {
+  onChangeOrder: (newOrder: OrderType) => void;
+  onChangeSort: (newSort: SortType) => void;
+  order: OrderType;
+  orderOptions: SelectOption<OrderType>[];
+  sort: SortType;
+  sortFieldOptions: SelectOption<SortType>[];
   className?: string;
 };
 
-export const ListSortSelector: FC<Props> = memo((props: Props) => {
-  const {
-    className,
-    onChangeOrder,
-    onChangeSort,
-    order,
-    sort,
-    orderOptions,
-    sortFieldOptions,
-  } = props;
+export const ListSortSelector = GenericMemoWrapper(
+  <OrderType extends string, SortType extends string>(
+    props: Props<OrderType, SortType>,
+  ) => {
+    const {
+      className,
+      onChangeOrder,
+      onChangeSort,
+      order,
+      sort,
+      orderOptions,
+      sortFieldOptions,
+    } = props;
 
-  const { t } = useTranslation();
+    const { t } = useTranslation();
 
-  const changeSortHandler = useCallback(
-    (newSort: string) => {
-      onChangeSort(newSort);
-    },
-    [onChangeSort],
-  );
+    const { containerClassNames } = useStyles({ className });
 
-  const changeOrderHandler = useCallback(
-    (newOrder: string) => {
-      onChangeOrder(newOrder);
-    },
-    [onChangeOrder],
-  );
+    return (
+      <div className={containerClassNames}>
+        <Select
+          options={sortFieldOptions}
+          label={t('sortBy')}
+          value={sort}
+          onChange={onChangeSort}
+        />
+        <Select
+          options={orderOptions}
+          value={order}
+          onChange={onChangeOrder}
+          className={classNames.order}
+        />
+      </div>
+    );
+  },
+);
 
-  const { containerClassNames } = useStyles({ className });
-
-  return (
-    <div className={containerClassNames}>
-      <Select
-        options={sortFieldOptions}
-        label={t('sortBy')}
-        value={sort}
-        onChange={changeSortHandler}
-      />
-      <Select
-        options={orderOptions}
-        value={order}
-        onChange={changeOrderHandler}
-        className={classNames.order}
-      />
-    </div>
-  );
-});
-
-type StyleProps = Pick<Props, 'className'>;
+type StyleProps = Pick<Props<string, string>, 'className'>;
 
 const useStyles = (params: StyleProps) => {
   const { className = '' } = params;

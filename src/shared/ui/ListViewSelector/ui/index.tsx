@@ -1,33 +1,40 @@
-import { FC, memo, useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import { useModel } from '../model';
 
 import classNames from './index.module.scss';
 
-import { buildClassNames, ListView } from '$shared';
+import { ListView } from '$shared/constants';
+import { GenericMemoWrapper } from '$shared/lib';
+import { buildClassNames } from '$shared/utils';
 
-type Props = {
+type Props<Type extends string> = {
   className?: string;
-  onViewClick?: (view: ListView) => void;
-  view?: ListView;
+  onViewClick?: (view: Type) => void;
+  view?: Type;
 };
 
-export const ListViewSelector: FC<Props> = memo((props) => {
-  const { className, view = ListView.TILE, onViewClick } = props;
+export const ListViewSelector = GenericMemoWrapper(
+  <Type extends string>(props: Props<Type>) => {
+    const { className, view = ListView.TILE, onViewClick } = props;
 
-  const { containerClassNames, getIconClassNames } = useStyles({
-    view,
-    className,
-  });
+    const { containerClassNames, getIconClassNames } = useStyles({
+      view,
+      className,
+    });
 
-  const { ViewSelectors } = useModel({ onViewClick, getIconClassNames });
+    const { ViewSelectors } = useModel({ onViewClick, getIconClassNames });
 
-  return <div className={containerClassNames}>{ViewSelectors}</div>;
-});
+    return <div className={containerClassNames}>{ViewSelectors}</div>;
+  },
+);
 
-type UseStylesParams = Pick<Props, 'className' | 'view'>;
+type UseStylesParams<Type extends string> = Pick<
+  Props<Type>,
+  'className' | 'view'
+>;
 
-const useStyles = (params: UseStylesParams) => {
+const useStyles = <Type extends string>(params: UseStylesParams<Type>) => {
   const { className = '', view } = params;
 
   const containerClassNames = useMemo(
@@ -40,7 +47,7 @@ const useStyles = (params: UseStylesParams) => {
   );
 
   const getIconClassNames = useCallback(
-    (iconViewValue: ListView) => {
+    (iconViewValue: Type) => {
       const iconClassNames = buildClassNames({
         classNames: '',
         mods: {

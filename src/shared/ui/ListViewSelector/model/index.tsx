@@ -2,18 +2,18 @@ import { useCallback, useMemo } from 'react';
 
 import { viewTypes } from '../constants';
 
-import { Button, ButtonVariant, Icon, ListView } from '$shared';
+import { Button, ButtonVariant, Icon } from '$shared';
 
-type Params = {
-  getIconClassNames: (iconViewValue: ListView) => string;
-  onViewClick?: (view: ListView) => void;
+type Params<Type extends string> = {
+  getIconClassNames: (iconViewValue: Type) => string;
+  onViewClick?: (view: Type) => void;
 };
 
-export const useModel = (params: Params) => {
+export const useModel = <Type extends string>(params: Params<Type>) => {
   const { onViewClick, getIconClassNames } = params;
 
   const onClick = useCallback(
-    (newView: ListView) => () => {
+    (newView: Type) => () => {
       onViewClick?.(newView);
     },
     [onViewClick],
@@ -24,11 +24,11 @@ export const useModel = (params: Params) => {
       <Button
         key={index}
         variant={ButtonVariant.CLEAR}
-        onClick={onClick(viewType.view)}
+        onClick={onClick(viewType.view as Type)}
       >
         <Icon
           Svg={viewType.icon}
-          className={getIconClassNames(viewType.view)}
+          className={getIconClassNames(viewType.view as Type)}
         />
       </Button>
     ));
