@@ -1,17 +1,35 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useMemo } from 'react';
 
-type Params = {
-  onChange?: (value: string) => void;
+import { SelectOption } from '../types';
+import classNames from '../ui/index.module.scss';
+
+type Params<Type extends string> = {
+  onChange?: (value: Type) => void;
+  options?: SelectOption<Type>[];
 };
 
-export const useModel = (params: Params) => {
-  const { onChange } = params;
+export const useModel = <Type extends string>(params: Params<Type>) => {
+  const { onChange, options } = params;
 
   const onChangeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
     if (onChange) {
-      onChange(event.target.value);
+      onChange(event.target.value as Type);
     }
   };
 
-  return { onChangeHandler };
+  const OptionsList = useMemo(
+    () =>
+      options?.map((option) => (
+        <option
+          className={classNames.option}
+          value={option.value}
+          key={option.value}
+        >
+          {option.content}
+        </option>
+      )),
+    [options],
+  );
+
+  return { onChangeHandler, OptionsList };
 };

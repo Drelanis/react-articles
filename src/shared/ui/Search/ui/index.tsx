@@ -1,26 +1,28 @@
-import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Card, Input } from '$shared';
+import { GenericMemoWrapper } from '$shared/lib';
+import { Card, Input } from '$shared/ui';
 
-type Props = {
+type Props<Type extends string> = {
   className: string;
-  onChangeSearch: (value: string) => void;
-  value: string;
+  onChangeSearch: (value: Type) => void;
+  value: Type;
 };
 
-export const Search: FC<Props> = (props) => {
-  const { className, value, onChangeSearch } = props;
+export const Search = GenericMemoWrapper(
+  <Type extends string>(props: Props<Type>) => {
+    const { className, value, onChangeSearch } = props;
 
-  const { t } = useTranslation();
+    const { t } = useTranslation();
 
-  return (
-    <Card className={className}>
-      <Input
-        onChange={onChangeSearch}
-        value={value}
-        placeholder={t('search')}
-      />
-    </Card>
-  );
-};
+    return (
+      <Card className={className}>
+        <Input
+          onChange={onChangeSearch}
+          value={value}
+          placeholder={t('search')}
+        />
+      </Card>
+    );
+  },
+);

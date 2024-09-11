@@ -1,65 +1,48 @@
-import { memo, useMemo } from 'react';
-
 import { useModel } from '../model';
+import { SelectOption } from '../types';
 
 import classNames from './index.module.scss';
 
+import { GenericMemoWrapper } from '$shared/lib';
 import { buildClassNames } from '$shared/utils';
 
-export type SelectOption = {
-  content: string;
-  value: string;
-};
-
-type Props = {
+type Props<Type extends string> = {
   className?: string;
   label?: string;
-  onChange?: (value: string) => void;
-  options?: SelectOption[];
+  onChange?: (value: Type) => void;
+  options?: SelectOption<Type>[];
   readonly?: boolean;
-  value?: string;
+  value?: Type;
 };
 
-export const Select = memo((props: Props) => {
-  const { className, label, options, onChange, value, readonly } = props;
+export const Select = GenericMemoWrapper(
+  <Type extends string>(props: Props<Type>) => {
+    const { className, label, options, onChange, value, readonly } = props;
 
-  const { onChangeHandler } = useModel({ onChange });
+    const { onChangeHandler, OptionsList } = useModel({ onChange, options });
 
-  const optionsList = useMemo(
-    () =>
-      options?.map((option) => (
-        <option
-          className={classNames.option}
-          value={option.value}
-          key={option.value}
+    const { containerClassName, labelClassNames } = useStyles({
+      className,
+      readonly,
+    });
+
+    return (
+      <div className={containerClassName}>
+        {label && <span className={labelClassNames}>{`${label}>`}</span>}
+        <select
+          disabled={readonly}
+          className={classNames.select}
+          value={value}
+          onChange={onChangeHandler}
         >
-          {option.content}
-        </option>
-      )),
-    [options],
-  );
+          {OptionsList}
+        </select>
+      </div>
+    );
+  },
+);
 
-  const { containerClassName, labelClassNames } = useStyles({
-    className,
-    readonly,
-  });
-
-  return (
-    <div className={containerClassName}>
-      {label && <span className={labelClassNames}>{`${label}>`}</span>}
-      <select
-        disabled={readonly}
-        className={classNames.select}
-        value={value}
-        onChange={onChangeHandler}
-      >
-        {optionsList}
-      </select>
-    </div>
-  );
-});
-
-type UseStylesParams = Pick<Props, 'className' | 'readonly'>;
+type UseStylesParams = Pick<Props<string>, 'className' | 'readonly'>;
 
 const useStyles = (params: UseStylesParams) => {
   const { className = '', readonly } = params;
