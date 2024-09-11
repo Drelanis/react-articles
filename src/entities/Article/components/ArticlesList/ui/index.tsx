@@ -41,7 +41,7 @@ export const ArticlesList: FC<Props> = memo((props) => {
     articles,
   });
 
-  if (!isArticles) {
+  if (!isArticles && !isLoading) {
     return (
       <Text
         align={TextAlign.CENTER}
