@@ -22,8 +22,8 @@ export const useModel = (params: Params) => {
   const articlesSkeleton = useMemo(() => {
     return new Array(
       view === ListView.TILE
-        ? ARTICLES_LIST_ITEMS_LIMIT
-        : ARTICLES_TILE_ITEMS_LIMIT,
+        ? ARTICLES_TILE_ITEMS_LIMIT
+        : ARTICLES_LIST_ITEMS_LIMIT,
     )
       .fill(0)
       .map((_, index) => (
