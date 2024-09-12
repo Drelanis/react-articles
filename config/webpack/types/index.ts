@@ -2,8 +2,10 @@ import { BuildMode } from '../constants';
 
 export type BuildPaths = {
   build: string;
+  buildLocales: string;
   entry: string;
   html: string;
+  locales: string;
   src: string;
 };
 
