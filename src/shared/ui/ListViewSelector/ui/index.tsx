@@ -1,11 +1,12 @@
 import { useCallback, useMemo } from 'react';
 
+// TODO: Fix jest imports
+import { GenericMemoWrapper } from '../../../lib';
 import { useModel } from '../model';
 
 import classNames from './index.module.scss';
 
 import { ListView } from '$shared/constants';
-import { GenericMemoWrapper } from '$shared/lib';
 import { buildClassNames } from '$shared/utils';
 
 type Props<Type extends string> = {

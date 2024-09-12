@@ -1,6 +1,8 @@
 import { useCallback } from 'react';
 
-import { GenericMemoWrapper } from '$shared/lib';
+// TODO: Fix jest imports
+import { GenericMemoWrapper } from '../../../lib';
+
 import { TabItem, Tabs } from '$shared/ui';
 import { buildClassNames } from '$shared/utils';
 

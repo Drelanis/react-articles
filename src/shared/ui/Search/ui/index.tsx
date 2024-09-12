@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
-import { GenericMemoWrapper } from '$shared/lib';
+// TODO: Fix jest imports
+import { GenericMemoWrapper } from '../../../lib';
+
 import { Card, Input } from '$shared/ui';
 
 type Props<Type extends string> = {

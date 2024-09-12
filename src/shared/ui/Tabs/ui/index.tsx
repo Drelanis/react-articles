@@ -1,9 +1,9 @@
+import { GenericMemoWrapper } from '../../../lib';
 import { useModel } from '../model';
 import { TabItem } from '../types';
 
 import classNames from './index.module.scss';
 
-import { GenericMemoWrapper } from '$shared/lib';
 import { buildClassNames } from '$shared/utils';
 
 type Props<Type extends string> = {
