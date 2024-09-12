@@ -6,7 +6,7 @@ import { useAppDispatch } from '$shared/hooks';
 import { ReduxStoreManager, StateSchema, StateSchemaKey } from '$shared/store';
 
 export type ReducersList = {
-  [name in StateSchemaKey]?: Reducer;
+  [name in StateSchemaKey]?: Reducer<NonNullable<StateSchema[name]>>;
 };
 
 interface DynamicModuleLoaderProps {
