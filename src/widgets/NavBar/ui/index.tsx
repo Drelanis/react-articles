@@ -1,11 +1,12 @@
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { useModel } from '../model';
 
 import classNames from './index.module.scss';
 
 import { Auth, Logout } from '$features';
-import { buildClassNames } from '$shared';
+import { buildClassNames, Text, TextVariants } from '$shared';
 
 type Props = {
   className?: string[];
@@ -18,9 +19,12 @@ export const NavBar = memo((props: Props) => {
 
   const { userAuthData } = useModel();
 
+  const { t } = useTranslation();
+
   if (!userAuthData) {
     return (
       <div className={containerClassNames}>
+        <Text title={t('appName')} variant={TextVariants.INVERTED} />
         <Auth classNames={classNames.links} />
       </div>
     );
@@ -28,6 +32,7 @@ export const NavBar = memo((props: Props) => {
 
   return (
     <div className={containerClassNames}>
+      <Text title={t('appName')} variant={TextVariants.INVERTED} />
       <Logout className={classNames.links} />
     </div>
   );
