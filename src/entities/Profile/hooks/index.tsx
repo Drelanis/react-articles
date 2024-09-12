@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import {
+  getProfileData,
   getProfileError,
   getProfileForm,
   getProfileIsLoading,
@@ -13,6 +14,7 @@ import {
 
 import { Country } from '$entities/CountrySelector';
 import { Currency } from '$entities/CurrencySelector';
+import { getUserAuthData } from '$entities/User';
 import { Text, TextAlign, TextVariants, useAppDispatch } from '$shared';
 
 export const useModel = () => {
@@ -24,6 +26,8 @@ export const useModel = () => {
   const isLoading = useSelector(getProfileIsLoading);
   const error = useSelector(getProfileError);
   const validationErrors = useSelector(getProfileValidateErrors);
+  const authData = useSelector(getUserAuthData);
+  const profileData = useSelector(getProfileData);
 
   const isReadOnly = useSelector(getProfileReadonly);
 
@@ -83,7 +87,7 @@ export const useModel = () => {
     [dispatch],
   );
 
-  const validationErrorComponent = useMemo(() => {
+  const ValidationErrorComponent = useMemo(() => {
     if (!validationErrors) {
       return null;
     }
@@ -102,12 +106,15 @@ export const useModel = () => {
     return errors;
   }, [t, validationErrors]);
 
+  const canEdit = authData?.id === profileData?.id;
+
   return {
     data,
     isLoading,
     error,
     isReadOnly,
-    validationErrorComponent,
+    ValidationErrorComponent,
+    canEdit,
     onChangeFirstName,
     onChangeLastName,
     onChangeCity,

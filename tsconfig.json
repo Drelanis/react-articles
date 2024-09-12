@@ -26,6 +26,8 @@
       "$pages/*": ["src/pages/*"],
       "$shared": ["src/shared"],
       "$shared/*": ["src/shared/*"],
+      "$lib": ["src/shared/lib"],
+      "$lib/*": ["src/shared/lib/*"],
       "$widgets": ["src/widgets"],
       "$widgets/*": ["src/widgets/*"]
     },

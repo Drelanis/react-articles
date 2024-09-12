@@ -2,7 +2,8 @@ import { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { SidebarItem } from '../components';
-import { SidebarItemsList } from '../constants';
+
+import { getSidebarItems } from './selectors';
 
 import { getUserAuthData } from '$entities';
 
@@ -13,12 +14,13 @@ export const useModel = () => {
     setIsCollapsed((prev) => !prev);
   };
 
-  const isAuth = useSelector(getUserAuthData);
+  const authData = useSelector(getUserAuthData);
+  const sidebarItems = useSelector(getSidebarItems);
 
   const itemsList = useMemo(
     () =>
-      SidebarItemsList.map((item) => {
-        if (item.authOnly && !isAuth) {
+      sidebarItems.map((item) => {
+        if (item.authOnly && !authData) {
           return;
         }
 
@@ -26,8 +28,10 @@ export const useModel = () => {
           <SidebarItem item={item} isCollapsed={isCollapsed} key={item.path} />
         );
       }),
-    [isCollapsed, isAuth],
+    [isCollapsed, authData, sidebarItems],
   );
 
   return { onToggle, isCollapsed, itemsList };
 };
+
+export * from './types';

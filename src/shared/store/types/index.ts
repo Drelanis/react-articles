@@ -9,14 +9,34 @@ import {
 import { AxiosInstance } from 'axios';
 import { NavigateFunction } from 'react-router-dom';
 
-import { CounterSchema, ProfileSchema, UserSchema } from '$entities';
-import { LoginSchema } from '$features';
+import {
+  ArticleDetailsSchema,
+  CounterSchema,
+  ProfileSchema,
+  UserSchema,
+} from '$entities';
+import {
+  AddCommentFormSchema,
+  LoginSchema,
+  ScrollRestorationType,
+} from '$features';
+import {
+  ArticleDetailsCommentsSchema,
+  ArticleRecommendationsSchema,
+  ArticlesListSchemaType,
+} from '$pages';
 
 export type StateSchema = {
   counter: CounterSchema;
+  scrollRestoration: ScrollRestorationType;
   user: UserSchema;
 
   // Async reducers
+  addCommentForm?: AddCommentFormSchema;
+  articleDetails?: ArticleDetailsSchema;
+  articleDetailsComments?: ArticleDetailsCommentsSchema;
+  articleRecommendations?: ArticleRecommendationsSchema;
+  articlesList?: ArticlesListSchemaType;
   login?: LoginSchema;
   profile?: ProfileSchema;
 };

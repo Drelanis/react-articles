@@ -1,5 +1,6 @@
 export declare const center: string;
 export declare const error: string;
+export declare const inverted: string;
 export declare const left: string;
 export declare const primary: string;
 export declare const right: string;

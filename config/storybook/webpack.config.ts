@@ -11,6 +11,8 @@ export default ({ config }: { config: Configuration }) => {
     html: '',
     entry: '',
     src: path.resolve(__dirname, '..', '..', 'src'),
+    locales: '',
+    buildLocales: '',
   };
 
   if (!config || !config.resolve || !config.module?.rules) {
@@ -25,6 +27,7 @@ export default ({ config }: { config: Configuration }) => {
     ...config.resolve.alias,
     $app: path.resolve(__dirname, '/src/app/'),
     $shared: path.resolve(__dirname, '/src/shared/'),
+    $lib: path.resolve(__dirname, '/src/shared/lib/'),
     $entities: path.resolve(__dirname, '/src/entities/'),
     $features: path.resolve(__dirname, '/src/features/'),
     $pages: path.resolve(__dirname, '/src/pages/'),

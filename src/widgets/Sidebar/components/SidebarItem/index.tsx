@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import classNames from './index.module.scss';
 
 import { AppLinkTheme, Link } from '$shared';
-import { SidebarItemType } from '$widgets/Sidebar';
+import { SidebarItemType } from '$widgets/Sidebar/model';
 
 type Props = {
   isCollapsed: boolean;

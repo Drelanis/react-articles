@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 
 import { getInputFont, getTextWidth } from '../utils';
 
-type Params = {
+type Params<Type extends string> = {
   autofocus?: boolean;
-  onChange?: (value: string) => void;
+  onChange?: (value: Type) => void;
 };
 
-export const useModel = (params: Params) => {
+export const useModel = <Type extends string>(params: Params<Type>) => {
   const { autofocus, onChange } = params;
 
   const ref = useRef<HTMLInputElement | null>(null);
@@ -27,7 +27,7 @@ export const useModel = (params: Params) => {
     const font = getInputFont(inputElement!);
     const width = getTextWidth(event.target.value, font);
 
-    onChange?.(event.target.value);
+    onChange?.(event.target.value as Type);
     setCaretPosition(width);
   };
 

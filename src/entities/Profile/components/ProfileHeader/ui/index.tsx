@@ -16,11 +16,12 @@ import {
 } from '$shared';
 
 interface Props {
+  canEdit?: boolean;
   className?: string;
 }
 
 export const ProfileHeader = (props: Props) => {
-  const { className } = props;
+  const { className, canEdit } = props;
 
   const { t } = useTranslation('profile');
 
@@ -33,20 +34,22 @@ export const ProfileHeader = (props: Props) => {
     dispatch(profileActions.setReadonly(false));
   }, [dispatch]);
 
+  const EditController = readOnly ? (
+    <Button
+      className={classNames.editBtn}
+      variant={ButtonVariant.OUTLINE}
+      onClick={onEdit}
+    >
+      {t('edit')}
+    </Button>
+  ) : (
+    <EditingController />
+  );
+
   return (
     <div className={containerClassNames}>
       <Text title={t('profile')} />
-      {readOnly ? (
-        <Button
-          className={classNames.editBtn}
-          variant={ButtonVariant.OUTLINE}
-          onClick={onEdit}
-        >
-          {t('edit')}
-        </Button>
-      ) : (
-        <EditingController />
-      )}
+      {canEdit && EditController}
     </div>
   );
 };

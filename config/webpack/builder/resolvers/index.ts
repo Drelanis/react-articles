@@ -12,6 +12,7 @@ export const buildResolvers = (options: BuildOptions): ResolveOptions => {
     alias: {
       $app: path.resolve(__dirname, '/src/app/'),
       $shared: path.resolve(__dirname, '/src/shared/'),
+      $lib: path.resolve(__dirname, '/src/shared/lib/'),
       $entities: path.resolve(__dirname, '/src/entities/'),
       $features: path.resolve(__dirname, '/src/features/'),
       $pages: path.resolve(__dirname, '/src/pages/'),

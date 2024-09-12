@@ -2,6 +2,8 @@ import { RoutePath } from '../constants';
 
 import {
   AboutLazyPage,
+  ArticleDetailsLazyPage,
+  ArticlesLazyPage,
   MainLazyPage,
   NotFoundPage,
   ProfileLazyPage,
@@ -18,8 +20,18 @@ export const routeConfig: AppRoutesProps[] = [
     element: <AboutLazyPage />,
   },
   {
-    path: RoutePath.profile,
+    path: `${RoutePath.profile}:id`,
     element: <ProfileLazyPage />,
+    authOnly: true,
+  },
+  {
+    path: RoutePath.articles,
+    element: <ArticlesLazyPage />,
+    authOnly: true,
+  },
+  {
+    path: `${RoutePath.article}:id`,
+    element: <ArticleDetailsLazyPage />,
     authOnly: true,
   },
   {

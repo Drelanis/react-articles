@@ -5,7 +5,6 @@ import {
   Reducer,
   ReducersMapObject,
 } from '@reduxjs/toolkit';
-import { NavigateFunction } from 'react-router-dom';
 
 import { StateSchema } from '../types';
 
@@ -13,21 +12,22 @@ import { createReducerManager } from './reducerManager';
 
 // TODO Fix it!
 import { counterReducer, userReducer } from '$entities';
+import { scrollRestorationReducer } from '$features/ScrollRestoration';
 import { $api } from '$shared/api';
 
 type Params = {
   asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>;
   initialState?: DeepPartial<StateSchema>;
-  navigate?: NavigateFunction;
 };
 
 export const createReduxStore = (params: Params) => {
-  const { initialState, asyncReducers, navigate } = params;
+  const { initialState, asyncReducers } = params;
 
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
     counter: counterReducer,
     user: userReducer,
+    scrollRestoration: scrollRestorationReducer,
   };
 
   const reducerManager = createReducerManager(rootReducers);
@@ -42,7 +42,6 @@ export const createReduxStore = (params: Params) => {
         thunk: {
           extraArgument: {
             api: $api,
-            navigate,
           },
         },
       }),

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import classNames from './index.module.scss';
 
 import { buildClassNames } from '$shared';
+import { Page } from '$widgets';
 
 interface Props {
   className?: string;
@@ -16,7 +17,7 @@ export const NotFoundPage: FC<Props> = (props) => {
 
   const { containerClassNames } = useStyles({ className });
 
-  return <div className={containerClassNames}>{t('notFoundPage')}</div>;
+  return <Page className={containerClassNames}>{t('notFoundPage')}</Page>;
 };
 
 type StylesParams = Pick<Props, 'className'>;

@@ -1,5 +1,6 @@
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { DefinePlugin, ProgressPlugin, WebpackPluginInstance } from 'webpack';
@@ -26,6 +27,10 @@ export const buildPlugins = ({
       IS_DEV: JSON.stringify(isDev),
       PROJECT: JSON.stringify(project),
     }),
+    !isDev &&
+      new CopyPlugin({
+        patterns: [{ from: paths.locales, to: paths.buildLocales }],
+      }),
     isDev && new ReactRefreshWebpackPlugin(),
     // * For analyzing bundles
     // new BundleAnalyzerPlugin({

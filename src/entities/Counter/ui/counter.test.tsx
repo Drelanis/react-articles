@@ -2,7 +2,7 @@ import { userEvent } from '@storybook/testing-library';
 import { screen } from '@testing-library/react';
 
 import { Counter } from '.';
-import { componentRender } from '$shared';
+import { componentRender } from '$shared/lib';
 
 describe('Counter UI', () => {
   const initialState = { counter: { value: 10 } };

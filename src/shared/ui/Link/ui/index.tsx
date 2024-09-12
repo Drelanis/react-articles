@@ -11,7 +11,7 @@ type Props = {
   children?: ReactNode;
   className?: string[];
   theme?: AppLinkTheme;
-} & Pick<LinkProps, 'to'>;
+} & Pick<LinkProps, 'to' | 'target'>;
 
 export const Link: FC<Props> = (props) => {
   const {
