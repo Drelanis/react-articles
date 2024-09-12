@@ -22,6 +22,7 @@ export default {
     '\\.s?css$': 'identity-obj-proxy',
     '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     '^\\$shared': '<rootDir>src/shared',
+    '^\\$lib': '<rootDir>src/shared/lib',
     '^\\$entities': '<rootDir>src/entities',
     '^\\$app': '<rootDir>src/app',
     '^\\$pages': '<rootDir>src/pages',

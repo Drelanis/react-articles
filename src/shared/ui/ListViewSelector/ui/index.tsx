@@ -1,11 +1,11 @@
 import { useCallback, useMemo } from 'react';
 
-// TODO: Fix jest imports
-import { GenericMemoWrapper } from '../../../lib';
 import { useModel } from '../model';
 
 import classNames from './index.module.scss';
 
+// TODO: Fix jest imports
+import { GenericMemoWrapper } from '$lib';
 import { ListView } from '$shared/constants';
 import { buildClassNames } from '$shared/utils';
 
