@@ -72,8 +72,8 @@ const useStyles = (params: UseStylesParams) => {
   const { className = '', view = ListView.TILE } = params;
 
   const containerClassNames = buildClassNames({
-    classNames: '',
-    additional: [className, classNames[view]],
+    classNames: className,
+    additional: [classNames[view]],
   });
 
   return { containerClassNames };

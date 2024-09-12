@@ -1,12 +1,15 @@
 import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { useModel } from '../model';
-import { articleDetailsCommentsReducer } from '../model/slices';
+import {
+  articleDetailsCommentsReducer,
+  articleRecommendationsReducer,
+  useModel,
+} from '../model';
 
 import classNames from './ArticleDetailsPage.module.scss';
 
-import { ArticleDetails, Comments } from '$entities';
+import { ArticleDetails, ArticlesList, Comments } from '$entities';
 import { AddCommentFormLazy } from '$features';
 import {
   Button,
@@ -14,16 +17,24 @@ import {
   DynamicModuleLoader,
   ReducersList,
   Text,
+  TextAlign,
 } from '$shared';
 import { Page } from '$widgets';
 
 const reducers: ReducersList = {
   articleDetailsComments: articleDetailsCommentsReducer,
+  articleRecommendations: articleRecommendationsReducer,
 };
 
 const ArticleDetailsPage: FC = memo(() => {
-  const { comments, isCommentsLoading, onSendComment, onBackToList } =
-    useModel();
+  const {
+    comments,
+    isCommentsLoading,
+    isRecommendationsLoading,
+    onSendComment,
+    onBackToList,
+    recommendations,
+  } = useModel();
 
   const { t } = useTranslation();
 
@@ -34,6 +45,16 @@ const ArticleDetailsPage: FC = memo(() => {
           {t('goBack')}
         </Button>
         <ArticleDetails />
+        <Text
+          align={TextAlign.CENTER}
+          className={classNames.commentTitle}
+          title={t('recommendations')}
+        />
+        <ArticlesList
+          articles={recommendations}
+          isLoading={isRecommendationsLoading}
+          className={classNames.recommendations}
+        />
         {!isCommentsLoading && (
           <Text className={classNames.commentTitle} title={t('comments')} />
         )}

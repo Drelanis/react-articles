@@ -2,9 +2,16 @@ import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { getArticleCommentsIsLoading } from './selectors';
-import { addCommentForArticle, fetchCommentsByArticleId } from './services';
-import { getArticleComments } from './slices';
+import {
+  getArticleCommentsIsLoading,
+  getArticleRecommendationsIsLoading,
+} from './selectors';
+import {
+  addCommentForArticle,
+  fetchArticlesRecommendations,
+  fetchCommentsByArticleId,
+} from './services';
+import { getArticleComments, getArticleRecommendations } from './slices';
 
 import { AppRoutes, useAppDispatch, useInitialEffect } from '$shared';
 
@@ -17,6 +24,11 @@ export const useModel = () => {
   const comments = useSelector(getArticleComments.selectAll);
   const isCommentsLoading = useSelector(getArticleCommentsIsLoading);
 
+  const recommendations = useSelector(getArticleRecommendations.selectAll);
+  const isRecommendationsLoading = useSelector(
+    getArticleRecommendationsIsLoading,
+  );
+
   const onSendComment = useCallback(
     async (text: string) => {
       await dispatch(addCommentForArticle(text));
@@ -26,14 +38,28 @@ export const useModel = () => {
 
   useInitialEffect(() => {
     void dispatch(fetchCommentsByArticleId(id));
+    void dispatch(fetchArticlesRecommendations());
   });
 
   const onBackToList = useCallback(() => {
     navigate(AppRoutes.ARTICLES);
   }, [navigate]);
 
-  return { comments, isCommentsLoading, onSendComment, onBackToList };
+  return {
+    comments,
+    isCommentsLoading,
+    onSendComment,
+    onBackToList,
+    recommendations,
+    isRecommendationsLoading,
+  };
 };
 
-export { ArticleDetailsCommentsSchema } from './types';
-export { articleDetailsCommentsReducer } from './slices';
+export {
+  ArticleDetailsCommentsSchema,
+  ArticleRecommendationsSchema,
+} from './types';
+export {
+  articleDetailsCommentsReducer,
+  articleRecommendationsReducer,
+} from './slices';

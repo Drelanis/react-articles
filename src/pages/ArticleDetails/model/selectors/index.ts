@@ -5,3 +5,5 @@ export const getArticleCommentsIsLoading = (state: StateSchema) =>
 
 export const getArticleCommentsError = (state: StateSchema) =>
   state.articleDetailsComments?.error;
+
+export * from './recommendations';

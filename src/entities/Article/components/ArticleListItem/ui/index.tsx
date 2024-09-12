@@ -8,12 +8,14 @@ import classNames from './index.module.scss';
 
 import { Article } from '$entities/Article/model';
 import {
+  AppRoutes,
   Avatar,
   buildClassNames,
   Button,
   ButtonVariant,
   Card,
   Icon,
+  Link,
   ListView,
   Text,
 } from '$shared';
@@ -70,9 +72,11 @@ export const ArticleListItem: FC<Props> = memo((props) => {
             />
           )}
           <div className={classNames.footer}>
-            <Button onClick={onOpenArticle} variant={ButtonVariant.OUTLINE}>
-              {t('readMore')}
-            </Button>
+            <Link to={`${AppRoutes.ARTICLES}/${article.id}`}>
+              <Button onClick={onOpenArticle} variant={ButtonVariant.OUTLINE}>
+                {t('readMore')}
+              </Button>
+            </Link>
             {views}
           </div>
         </Card>
@@ -81,8 +85,12 @@ export const ArticleListItem: FC<Props> = memo((props) => {
   }
 
   return (
-    <div className={containerClassNames}>
-      <Card onClick={onOpenArticle}>
+    <Link
+      target="_blank"
+      to={`${AppRoutes.ARTICLES}/${article.id}`}
+      className={[containerClassNames]}
+    >
+      <Card>
         <div className={classNames.imageWrapper}>
           <img
             alt={article.title}
@@ -97,7 +105,7 @@ export const ArticleListItem: FC<Props> = memo((props) => {
         </div>
         <Text text={article.title} className={classNames.title} />
       </Card>
-    </div>
+    </Link>
   );
 });
 

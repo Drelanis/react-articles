@@ -49,3 +49,5 @@ const articleDetailsCommentsSlice = createSlice({
 
 export const { reducer: articleDetailsCommentsReducer } =
   articleDetailsCommentsSlice;
+
+export * from './articleRecommendationsSlice';
