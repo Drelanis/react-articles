@@ -37,5 +37,6 @@
   "creationDate": "Creation date",
   "title": "Title",
   "views": "Views",
-  "articlesNotFound": "No article found!"
+  "articlesNotFound": "No article found!",
+  "recommendations": "Recommendations"
 }
