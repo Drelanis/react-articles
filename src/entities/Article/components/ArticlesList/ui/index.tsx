@@ -9,7 +9,6 @@ import { Article } from '$entities/Article/model';
 import {
   buildClassNames,
   ErrorHints,
-  HStack,
   ListView,
   Text,
   TextAlign,
@@ -53,9 +52,9 @@ export const ArticlesList: FC<Props> = memo((props) => {
   }
 
   return (
-    <HStack className={containerClassNames}>
+    <div className={containerClassNames}>
       {isArticles && Articles}
-      {isLoading && articlesSkeleton}
+      {true && articlesSkeleton}
       {errorMessage && (
         <Text
           align={TextAlign.CENTER}
@@ -63,7 +62,7 @@ export const ArticlesList: FC<Props> = memo((props) => {
           title={t(errorMessage)}
         />
       )}
-    </HStack>
+    </div>
   );
 });
 
@@ -74,7 +73,7 @@ const useStyles = (params: UseStylesParams) => {
 
   const containerClassNames = buildClassNames({
     classNames: '',
-    additional: [classNames[view], className],
+    additional: [className, classNames[view]],
   });
 
   return { containerClassNames };
