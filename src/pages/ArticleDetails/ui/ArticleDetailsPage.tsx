@@ -18,6 +18,7 @@ import {
   ReducersList,
   Text,
   TextAlign,
+  VStack,
 } from '$shared';
 import { Page } from '$widgets';
 
@@ -55,13 +56,15 @@ const ArticleDetailsPage: FC = memo(() => {
           isLoading={isRecommendationsLoading}
           className={classNames.recommendations}
         />
-        {!isCommentsLoading && (
-          <Text className={classNames.commentTitle} title={t('comments')} />
-        )}
-        {!isCommentsLoading && (
-          <AddCommentFormLazy onSendComment={onSendComment} />
-        )}
-        <Comments comments={comments} isLoading={isCommentsLoading} />
+        <VStack gap="16">
+          {!isCommentsLoading && (
+            <Text className={classNames.commentTitle} title={t('comments')} />
+          )}
+          {!isCommentsLoading && (
+            <AddCommentFormLazy onSendComment={onSendComment} />
+          )}
+          <Comments comments={comments} isLoading={isCommentsLoading} />
+        </VStack>
       </DynamicModuleLoader>
     </Page>
   );

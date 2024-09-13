@@ -15,6 +15,7 @@ import {
   Button,
   ButtonVariant,
   DynamicModuleLoader,
+  HStack,
   Input,
   ReducersList,
   useAppDispatch,
@@ -52,7 +53,7 @@ const AddCommentForm = memo((props: Props) => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={containerClassNames}>
+      <HStack max className={containerClassNames} justify="between">
         <Input
           className={classNames.input}
           placeholder={t('enterTextComment')}
@@ -62,7 +63,7 @@ const AddCommentForm = memo((props: Props) => {
         <Button variant={ButtonVariant.OUTLINE} onClick={onSendHandler}>
           {t('sendTextComment')}
         </Button>
-      </div>
+      </HStack>
     </DynamicModuleLoader>
   );
 });

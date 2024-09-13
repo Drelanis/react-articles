@@ -3,7 +3,15 @@ import { FC, memo } from 'react';
 import classNames from './index.module.scss';
 
 import { CommentType } from '$entities/Comments/model';
-import { AppRoutes, Avatar, buildClassNames, Link, Text } from '$shared';
+import {
+  AppRoutes,
+  Avatar,
+  buildClassNames,
+  HStack,
+  Link,
+  Text,
+  VStack,
+} from '$shared';
 
 type Props = {
   comment: CommentType;
@@ -16,15 +24,15 @@ export const CommentCard: FC<Props> = memo((props) => {
   const { containerClassNames } = useStyles({ className });
 
   return (
-    <div className={containerClassNames}>
-      <div className={classNames.header}>
+    <VStack max className={containerClassNames} gap="16">
+      <HStack>
         {comment.user.avatar && <Avatar size={30} src={comment.user.avatar} />}
         <Link to={`${AppRoutes.PROFILE}/${comment.user.id}`}>
-          <Text className={classNames.username} title={comment.user.userName} />
+          <Text title={comment.user.userName} />
         </Link>
-      </div>
-      <Text className={classNames.text} text={comment.text} />
-    </div>
+      </HStack>
+      <Text text={comment.text} />
+    </VStack>
   );
 });
 
