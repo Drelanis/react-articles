@@ -2,7 +2,14 @@ import { FC, memo } from 'react';
 
 import classNames from './index.module.scss';
 
-import { buildClassNames, Card, ListView, Skeleton } from '$shared';
+import {
+  buildClassNames,
+  Card,
+  HStack,
+  ListView,
+  Skeleton,
+  VStack,
+} from '$shared';
 
 type Props = {
   view: ListView;
@@ -17,29 +24,27 @@ export const ArticlesListSkeleton: FC<Props> = memo((props: Props) => {
   if (view === ListView.LIST) {
     return (
       <Card className={containerClassNames}>
-        <div className={classNames.header}>
+        <HStack gap="8">
           <Skeleton border="50%" height={30} width={30} />
           <Skeleton width={150} height={16} className={classNames.username} />
           <Skeleton width={150} height={16} className={classNames.date} />
-        </div>
+        </HStack>
         <Skeleton width={250} height={24} className={classNames.title} />
         <Skeleton height={200} className={classNames.img} />
-        <div className={classNames.footer}>
+        <HStack className={classNames.footer}>
           <Skeleton height={36} width={200} />
-        </div>
+        </HStack>
       </Card>
     );
   }
 
   return (
     <Card className={containerClassNames}>
-      <div className={classNames.imageWrapper}>
+      <VStack gap="8">
         <Skeleton width="100%" height={200} className={classNames.img} />
-      </div>
-      <div className={classNames.infoWrapper}>
         <Skeleton width={130} height={16} />
-      </div>
-      <Skeleton width={150} height={16} className={classNames.title} />
+        <Skeleton width={150} height={16} className={classNames.title} />
+      </VStack>
     </Card>
   );
 });

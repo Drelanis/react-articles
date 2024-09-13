@@ -13,6 +13,7 @@ import {
   Text,
   TextAlign,
   TextVariants,
+  VStack,
 } from '$shared';
 
 type Props = {
@@ -52,7 +53,7 @@ export const ArticlesList: FC<Props> = memo((props) => {
   }
 
   return (
-    <div className={containerClassNames}>
+    <VStack max gap="32" className={containerClassNames}>
       {isArticles && Articles}
       {isLoading && articlesSkeleton}
       {errorMessage && (
@@ -62,7 +63,7 @@ export const ArticlesList: FC<Props> = memo((props) => {
           title={t(errorMessage)}
         />
       )}
-    </div>
+    </VStack>
   );
 });
 
@@ -72,8 +73,8 @@ const useStyles = (params: UseStylesParams) => {
   const { className = '', view = ListView.TILE } = params;
 
   const containerClassNames = buildClassNames({
-    classNames: className,
-    additional: [classNames[view]],
+    classNames: '',
+    additional: [classNames[view], className],
   });
 
   return { containerClassNames };

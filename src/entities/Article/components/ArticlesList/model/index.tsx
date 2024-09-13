@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 
 import { ArticleListItem } from '../../ArticleListItem';
 import { ArticlesListSkeleton } from '../../ArticlesListSkeleton';
-import classNames from '../ui/index.module.scss';
 
 import { Article } from '$entities/Article/model';
 import {
@@ -26,25 +25,14 @@ export const useModel = (params: Params) => {
         : ARTICLES_LIST_ITEMS_LIMIT,
     )
       .fill(0)
-      .map((_, index) => (
-        <ArticlesListSkeleton
-          className={classNames.card}
-          key={index}
-          view={view}
-        />
-      ));
+      .map((_, index) => <ArticlesListSkeleton key={index} view={view} />);
   }, [view]);
 
   const isArticles = Boolean(articles.length);
 
   const Articles = useMemo(() => {
     return articles.map((article: Article) => (
-      <ArticleListItem
-        article={article}
-        view={view}
-        className={classNames.card}
-        key={article.id}
-      />
+      <ArticleListItem article={article} view={view} key={article.id} />
     ));
   }, [articles, view]);
 
