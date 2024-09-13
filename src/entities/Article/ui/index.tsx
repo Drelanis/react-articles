@@ -11,11 +11,13 @@ import classNames from './index.module.scss';
 import {
   Avatar,
   buildClassNames,
+  HStack,
   Icon,
   Skeleton,
   Text,
   TextAlign,
   TextVariants,
+  VStack,
 } from '$shared';
 
 type Props = {
@@ -35,54 +37,47 @@ export const ArticleDetails: FC<Props> = memo((props) => {
 
   if (isLoading) {
     Content = (
-      <div className={containerClassNames}>
-        <Skeleton
-          className={classNames.avatar}
-          width={200}
-          height={200}
-          border="50%"
-        />
-        <Skeleton className={classNames.title} width={300} height={32} />
-        <Skeleton className={classNames.skeleton} width={600} height={24} />
-        <Skeleton className={classNames.skeleton} width="100%" height={200} />
-        <Skeleton className={classNames.skeleton} width="100%" height={200} />
-      </div>
+      <VStack max gap="16">
+        <HStack max justify="center">
+          <Skeleton width={200} height={200} border="50%" />
+        </HStack>
+        <Skeleton width={300} height={32} />
+        <Skeleton width={600} height={24} />
+        <Skeleton width="100%" height={200} />
+        <Skeleton width="100%" height={200} />
+      </VStack>
     );
   }
 
   if (error) {
     Content = (
-      <div className={containerClassNames}>
+      <HStack max justify="center">
         <Text
           variant={TextVariants.ERROR}
           align={TextAlign.CENTER}
           text={t(error)}
         />
-      </div>
+      </HStack>
     );
   }
 
   if (!isLoading && !error) {
     Content = (
-      <div className={containerClassNames}>
-        <div className={classNames.avatarWrapper}>
-          <Avatar size={200} src={article?.img} className={classNames.avatar} />
-        </div>
-        <Text
-          className={classNames.title}
-          title={article?.title}
-          text={article?.subtitle}
-        />
-        <div className={classNames.articleInfo}>
+      <VStack gap="8" className={containerClassNames}>
+        <HStack justify="center" max>
+          <Avatar size={200} src={article?.img} />
+        </HStack>
+        <Text title={article?.title} text={article?.subtitle} />
+        <HStack>
           <Icon className={classNames.icon} Svg={EyeIcon} />
           <Text text={String(article?.views)} />
-        </div>
-        <div className={classNames.articleInfo}>
+        </HStack>
+        <HStack>
           <Icon className={classNames.icon} Svg={CalendarIcon} />
           <Text text={article?.createdAt} />
-        </div>
+        </HStack>
         {ArticleContent}
-      </div>
+      </VStack>
     );
   }
 
