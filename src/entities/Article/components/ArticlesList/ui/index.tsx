@@ -9,11 +9,11 @@ import { Article } from '$entities/Article/model';
 import {
   buildClassNames,
   ErrorHints,
+  HStack,
   ListView,
   Text,
   TextAlign,
   TextVariants,
-  VStack,
 } from '$shared';
 
 type Props = {
@@ -53,7 +53,7 @@ export const ArticlesList: FC<Props> = memo((props) => {
   }
 
   return (
-    <VStack max gap="32" className={containerClassNames}>
+    <HStack className={containerClassNames}>
       {isArticles && Articles}
       {isLoading && articlesSkeleton}
       {errorMessage && (
@@ -63,7 +63,7 @@ export const ArticlesList: FC<Props> = memo((props) => {
           title={t(errorMessage)}
         />
       )}
-    </VStack>
+    </HStack>
   );
 });
 

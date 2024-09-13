@@ -89,7 +89,7 @@ const useStyles = (params: UseStylesParams) => {
   const menuClasses = [mapDirectionClass[direction]];
 
   const menuClassNames = buildClassNames({
-    classNames: classNames.dropdown,
+    classNames: classNames.menu,
     additional: menuClasses,
   });
 

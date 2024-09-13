@@ -7,6 +7,7 @@ import { Article } from '$entities/Article/model';
 import {
   ARTICLES_LIST_ITEMS_LIMIT,
   ARTICLES_TILE_ITEMS_LIMIT,
+  HStack,
   ListView,
 } from '$shared';
 
@@ -32,7 +33,9 @@ export const useModel = (params: Params) => {
 
   const Articles = useMemo(() => {
     return articles.map((article: Article) => (
-      <ArticleListItem article={article} view={view} key={article.id} />
+      <HStack key={article.id} max justify="center">
+        <ArticleListItem article={article} view={view} />
+      </HStack>
     ));
   }, [articles, view]);
 

@@ -5,8 +5,15 @@ import { useModel } from '../model';
 
 import classNames from './index.module.scss';
 
-import { Auth, Logout } from '$features';
-import { buildClassNames, Text, TextVariants } from '$shared';
+import { Auth } from '$features';
+import {
+  AppRoutes,
+  Avatar,
+  buildClassNames,
+  Dropdown,
+  Text,
+  TextVariants,
+} from '$shared';
 
 type Props = {
   className?: string[];
@@ -17,7 +24,7 @@ export const NavBar = memo((props: Props) => {
 
   const { containerClassNames } = useStyles({ className });
 
-  const { userAuthData } = useModel();
+  const { userAuthData, onLogout } = useModel();
 
   const { t } = useTranslation();
 
@@ -33,7 +40,21 @@ export const NavBar = memo((props: Props) => {
   return (
     <div className={containerClassNames}>
       <Text title={t('appName')} variant={TextVariants.INVERTED} />
-      <Logout className={classNames.links} />
+      <Dropdown
+        direction="bottom left"
+        className={classNames.dropdown}
+        items={[
+          {
+            content: t('profile'),
+            href: `${AppRoutes.PROFILE}/${userAuthData.id}`,
+          },
+          {
+            content: t('logout'),
+            onClick: onLogout,
+          },
+        ]}
+        trigger={<Avatar size={30} src={userAuthData.avatar} />}
+      />
     </div>
   );
 });
