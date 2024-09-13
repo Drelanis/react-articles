@@ -14,6 +14,7 @@ import {
   Button,
   ButtonVariant,
   Card,
+  HStack,
   Icon,
   Link,
   ListView,
@@ -35,7 +36,7 @@ export const ArticleListItem: FC<Props> = memo((props) => {
 
   const { textBlock, onOpenArticle } = useModel({ article });
 
-  const types = (
+  const ArticleTypes = (
     <Text text={article.type.join(', ')} className={classNames.types} />
   );
 
@@ -48,39 +49,30 @@ export const ArticleListItem: FC<Props> = memo((props) => {
 
   if (view === ListView.LIST) {
     return (
-      <div className={containerClassNames}>
-        <Card>
-          <div className={classNames.header}>
-            <Avatar size={30} src={article.user.avatar} />
-            <Text
-              text={article.user.userName}
-              className={classNames.username}
-            />
-            <Text text={article.createdAt} className={classNames.date} />
-          </div>
-          <Text title={article.title} className={classNames.title} />
-          {types}
-          <img
-            src={article.img}
-            className={classNames.img}
-            alt={article.title}
+      <Card className={containerClassNames}>
+        <HStack>
+          <Avatar size={30} src={article.user.avatar} />
+          <Text text={article.user.userName} className={classNames.username} />
+          <Text text={article.createdAt} className={classNames.date} />
+        </HStack>
+        <Text title={article.title} className={classNames.title} />
+        {ArticleTypes}
+        <img src={article.img} className={classNames.img} alt={article.title} />
+        {textBlock && (
+          <ArticleTextBlock
+            block={textBlock}
+            className={classNames.textBlock}
           />
-          {textBlock && (
-            <ArticleTextBlock
-              block={textBlock}
-              className={classNames.textBlock}
-            />
-          )}
-          <div className={classNames.footer}>
-            <Link to={`${AppRoutes.ARTICLES}/${article.id}`}>
-              <Button onClick={onOpenArticle} variant={ButtonVariant.OUTLINE}>
-                {t('readMore')}
-              </Button>
-            </Link>
-            {views}
-          </div>
-        </Card>
-      </div>
+        )}
+        <HStack className={classNames.footer}>
+          <Link to={`${AppRoutes.ARTICLES}/${article.id}`}>
+            <Button onClick={onOpenArticle} variant={ButtonVariant.OUTLINE}>
+              {t('readMore')}
+            </Button>
+          </Link>
+          {views}
+        </HStack>
+      </Card>
     );
   }
 
@@ -91,18 +83,18 @@ export const ArticleListItem: FC<Props> = memo((props) => {
       className={[containerClassNames]}
     >
       <Card>
-        <div className={classNames.imageWrapper}>
+        <HStack className={classNames.imageWrapper}>
           <img
             alt={article.title}
             src={article.img}
             className={classNames.img}
           />
           <Text text={article.createdAt} className={classNames.date} />
-        </div>
-        <div className={classNames.infoWrapper}>
-          {types}
+        </HStack>
+        <HStack className={classNames.infoWrapper}>
+          {ArticleTypes}
           {views}
-        </div>
+        </HStack>
         <Text text={article.title} className={classNames.title} />
       </Card>
     </Link>
