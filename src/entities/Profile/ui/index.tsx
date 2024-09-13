@@ -10,11 +10,13 @@ import { CountrySelect, CurrencySelect } from '$entities';
 import {
   Avatar,
   buildClassNames,
+  HStack,
   Input,
   Loader,
   Text,
   TextAlign,
   TextVariants,
+  VStack,
 } from '$shared';
 
 type Props = {
@@ -51,33 +53,36 @@ export const ProfileCard = memo((props: Props) => {
 
   if (isLoading) {
     return (
-      <div className={loaderContainer}>
-        <Loader />
-      </div>
+      <>
+        <ProfileHeader canEdit={canEdit} />
+        <HStack align="center" justify="center" className={loaderContainer}>
+          <Loader />
+        </HStack>
+      </>
     );
   }
 
   if (error) {
     return (
-      <div className={errorContainer}>
+      <HStack align="center" justify="center" className={errorContainer}>
         <Text
           variant={TextVariants.ERROR}
           title={t('profileLoadingError')}
           text={t('profileReload')}
           align={TextAlign.CENTER}
         />
-      </div>
+      </HStack>
     );
   }
 
   return (
-    <>
+    <VStack gap="8">
       <ProfileHeader canEdit={canEdit} />
-      <div className={containerClassNames}>
+      <VStack max className={containerClassNames}>
         {data?.avatar && (
-          <div className={classNames.avatarWrapper}>
+          <HStack max justify="center">
             <Avatar src={data?.avatar} />
-          </div>
+          </HStack>
         )}
         {ValidationErrorComponent}
         <Input
@@ -134,8 +139,8 @@ export const ProfileCard = memo((props: Props) => {
           onChange={onChangeCountry}
           readonly={isReadOnly}
         />
-      </div>
-    </>
+      </VStack>
+    </VStack>
   );
 });
 

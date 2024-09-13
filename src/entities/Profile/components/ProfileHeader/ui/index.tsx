@@ -4,13 +4,12 @@ import { useSelector } from 'react-redux';
 
 import { EditingController } from '../../EditingController';
 
-import classNames from './index.module.scss';
-
 import { getProfileReadonly, profileActions } from '$entities/Profile/model';
 import {
   buildClassNames,
   Button,
   ButtonVariant,
+  HStack,
   Text,
   useAppDispatch,
 } from '$shared';
@@ -35,11 +34,7 @@ export const ProfileHeader = (props: Props) => {
   }, [dispatch]);
 
   const EditController = readOnly ? (
-    <Button
-      className={classNames.editBtn}
-      variant={ButtonVariant.OUTLINE}
-      onClick={onEdit}
-    >
+    <Button variant={ButtonVariant.OUTLINE} onClick={onEdit}>
       {t('edit')}
     </Button>
   ) : (
@@ -47,10 +42,10 @@ export const ProfileHeader = (props: Props) => {
   );
 
   return (
-    <div className={containerClassNames}>
+    <HStack max justify="between" className={containerClassNames}>
       <Text title={t('profile')} />
       {canEdit && EditController}
-    </div>
+    </HStack>
   );
 };
 
@@ -60,7 +55,7 @@ const useStyles = (params: UseStylesParams) => {
   const { className = '' } = params;
 
   const containerClassNames = buildClassNames({
-    classNames: classNames.profileHeader,
+    classNames: '',
     additional: [className],
   });
 
