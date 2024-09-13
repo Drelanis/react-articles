@@ -33,7 +33,8 @@
 
 .active {
   border-radius: 8px;
-  background: var(--secondary-color);
+  background: var(--inverted-primary-color);
+  color: var(--secondary-color);
 }
 
 .optionsBottomLeft {
