@@ -41,7 +41,16 @@ module.exports = async (layer, sliceName) => {
     }
   };
 
+  const createRootIndex = async () => {
+    try {
+      await fs.writeFile(resolveModelPath('index.ts'), ``);
+    } catch (e) {
+      console.log('Failed to create root index file for model', e);
+    }
+  };
+
   await createModelStructure();
   await createReduxSlice();
   await createSchemaType();
+  await createRootIndex();
 };
