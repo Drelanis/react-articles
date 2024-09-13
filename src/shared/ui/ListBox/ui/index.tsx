@@ -3,6 +3,7 @@ import { FC, Fragment, memo, ReactNode } from 'react';
 
 import classNames from './index.module.scss';
 
+import { DropdownDirection } from '$shared/types';
 import { Button } from '$shared/ui/Button';
 import { HStack } from '$shared/ui/Stack';
 import { buildClassNames } from '$shared/utils';
@@ -13,8 +14,6 @@ export interface ListBoxItem {
   disabled?: boolean;
 }
 
-type DropdownDirection = 'top' | 'bottom';
-
 type Props = {
   onChange: (value: string) => void;
   className?: string;
@@ -24,11 +23,6 @@ type Props = {
   label?: string;
   readonly?: boolean;
   value?: string;
-};
-
-const mapDirectionClass: Record<DropdownDirection, string> = {
-  bottom: '',
-  top: classNames.optionsTop,
 };
 
 export const ListBox: FC<Props> = memo((props: Props) => {
@@ -94,12 +88,19 @@ export const ListBox: FC<Props> = memo((props: Props) => {
 type StyleProps = Pick<Props, 'className' | 'direction'>;
 
 const useStyles = (params: StyleProps) => {
-  const { className = '', direction = 'bottom' } = params;
+  const { className = '', direction = 'bottom right' } = params;
 
   const hListBoxClassNames = buildClassNames({
     classNames: classNames.listBox,
     additional: [className],
   });
+
+  const mapDirectionClass: Record<DropdownDirection, string> = {
+    'bottom left': classNames.optionsBottomLeft,
+    'bottom right': classNames.optionsBottomRight,
+    'top right': classNames.optionsTopRight,
+    'top left': classNames.optionsTopLeft,
+  };
 
   const optionsClasses = [mapDirectionClass[direction]];
 
