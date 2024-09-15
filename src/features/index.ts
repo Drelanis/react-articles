@@ -4,3 +4,4 @@ export * from './AddCommentForm';
 export * from './ScrollRestoration';
 export * from './ArticlesFilters';
 export * from './ThemeSwitcher';
+export * from './ArticleRecommendations';

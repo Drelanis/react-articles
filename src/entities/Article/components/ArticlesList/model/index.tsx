@@ -12,12 +12,12 @@ import {
 } from '$shared';
 
 type Params = {
-  articles: Article[];
   view: ListView;
+  articles?: Article[];
 };
 
 export const useModel = (params: Params) => {
-  const { view, articles } = params;
+  const { view, articles = [] } = params;
 
   const articlesSkeleton = useMemo(() => {
     return new Array(
