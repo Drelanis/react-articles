@@ -26,7 +26,13 @@ export const useModel = (params: Params) => {
         : ARTICLES_LIST_ITEMS_LIMIT,
     )
       .fill(0)
-      .map((_, index) => <ArticlesListSkeleton key={index} view={view} />);
+      .map((_, index) => (
+        <ArticlesListSkeleton
+          className={classNames.card}
+          key={index}
+          view={view}
+        />
+      ));
   }, [view]);
 
   const isArticles = Boolean(articles.length);
