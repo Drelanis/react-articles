@@ -25,11 +25,13 @@ import {
   ArticleRecommendationsSchema,
   ArticlesListSchemaType,
 } from '$pages';
+import { rtkApi } from '$shared/api';
 
 export type StateSchema = {
   counter: CounterSchema;
   scrollRestoration: ScrollRestorationType;
   user: UserSchema;
+  [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
   // Async reducers
   addCommentForm?: AddCommentFormSchema;
