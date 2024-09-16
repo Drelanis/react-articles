@@ -7,17 +7,13 @@ import {
   useModel,
 } from '../model';
 
-import classNames from './ArticleDetailsPage.module.scss';
-
-import { ArticleDetails, Comments } from '$entities';
-import { AddCommentFormLazy, ArticleRecommendations } from '$features';
+import { ArticleDetails } from '$entities';
+import { ArticleComments, ArticleRecommendations } from '$features';
 import {
   Button,
   ButtonVariant,
   DynamicModuleLoader,
   ReducersList,
-  Text,
-  VStack,
 } from '$shared';
 import { Page } from '$widgets';
 
@@ -27,8 +23,7 @@ const reducers: ReducersList = {
 };
 
 const ArticleDetailsPage: FC = memo(() => {
-  const { comments, isCommentsLoading, onSendComment, onBackToList } =
-    useModel();
+  const { onBackToList } = useModel();
 
   const { t } = useTranslation();
 
@@ -40,15 +35,7 @@ const ArticleDetailsPage: FC = memo(() => {
         </Button>
         <ArticleDetails />
         <ArticleRecommendations />
-        <VStack gap="16">
-          {!isCommentsLoading && (
-            <Text className={classNames.commentTitle} title={t('comments')} />
-          )}
-          {!isCommentsLoading && (
-            <AddCommentFormLazy onSendComment={onSendComment} />
-          )}
-          <Comments comments={comments} isLoading={isCommentsLoading} />
-        </VStack>
+        <ArticleComments />
       </DynamicModuleLoader>
     </Page>
   );

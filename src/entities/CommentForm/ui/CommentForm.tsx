@@ -8,7 +8,7 @@ import {
   getAddCommentFormText,
 } from '../model';
 
-import classNames from './AddCommentForm.module.scss';
+import classNames from './CommentForm.module.scss';
 
 import {
   buildClassNames,

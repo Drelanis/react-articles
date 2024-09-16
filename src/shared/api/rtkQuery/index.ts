@@ -4,6 +4,7 @@ import { USER_LOCAL_STORAGE_KEY } from '$shared/constants';
 
 export const rtkApi = createApi({
   reducerPath: 'api',
+  tagTypes: ['Comments'],
   baseQuery: fetchBaseQuery({
     baseUrl: API,
     prepareHeaders: (headers) => {

@@ -621,46 +621,28 @@
       "userId": "1"
     },
     {
-      "id": "2",
-      "text": "some comment 2",
-      "articleId": "1",
-      "userId": "1"
-    },
-    {
-      "articleId": "1",
-      "userId": "2",
-      "text": "user comment",
-      "id": "XIFfB9T"
-    },
-    {
-      "articleId": "3",
+      "articleId": "4",
       "userId": "1",
-      "text": "typescript comments",
-      "id": "L5buhKT"
-    },
-    {
-      "articleId": "2",
-      "userId": "1",
-      "text": "python comments",
-      "id": "G0E_ZWM"
+      "text": "1",
+      "id": "hS2Z2I_"
     },
     {
       "articleId": "4",
       "userId": "1",
-      "text": "hello)))",
-      "id": "GtuJjO7"
+      "text": "2",
+      "id": "1rGRxlL"
     },
     {
       "articleId": "4",
       "userId": "1",
-      "text": "second",
-      "id": "OPnUnlP"
+      "text": "3",
+      "id": "z0UvDlR"
     },
     {
       "articleId": "4",
       "userId": "1",
-      "text": "thirst",
-      "id": "_TrjBCZ"
+      "text": "34",
+      "id": "5oAPfwo"
     }
   ],
   "users": [

@@ -5,3 +5,4 @@ export * from './CurrencySelector';
 export * from './CountrySelector';
 export * from './Article';
 export * from './Comments';
+export * from './CommentForm';

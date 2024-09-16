@@ -11,15 +11,12 @@ import { NavigateFunction } from 'react-router-dom';
 
 import {
   ArticleDetailsSchema,
+  CommentFormSchema,
   CounterSchema,
   ProfileSchema,
   UserSchema,
 } from '$entities';
-import {
-  AddCommentFormSchema,
-  LoginSchema,
-  ScrollRestorationType,
-} from '$features';
+import { LoginSchema, ScrollRestorationType } from '$features';
 import {
   ArticleDetailsCommentsSchema,
   ArticleRecommendationsSchema,
@@ -34,7 +31,7 @@ export type StateSchema = {
   [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
   // Async reducers
-  addCommentForm?: AddCommentFormSchema;
+  addCommentForm?: CommentFormSchema;
   articleDetails?: ArticleDetailsSchema;
   articleDetailsComments?: ArticleDetailsCommentsSchema;
   articleRecommendations?: ArticleRecommendationsSchema;
