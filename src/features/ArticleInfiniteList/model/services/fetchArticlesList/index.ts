@@ -7,7 +7,7 @@ import {
   getArticlesListSearch,
   getArticlesListSort,
   getArticlesListType,
-} from '../../selectores';
+} from '../../selectors';
 
 import { Article } from '$entities';
 import {

@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { getArticlesListIsInitialized } from '../../selectores';
+import { getArticlesListIsInitialized } from '../../selectors';
 import { fetchArticlesList } from '../fetchArticlesList';
 
-import { articlesListActions } from '$pages/Articles/model/slices';
+import { articlesListActions } from '$features/ArticleInfiniteList/model';
 import {
   ArticleType,
   ListOrderField,

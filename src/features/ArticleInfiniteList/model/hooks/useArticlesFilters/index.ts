@@ -7,7 +7,7 @@ import {
   getArticlesListSort,
   getArticlesListType,
   getArticlesListView,
-} from '../../selectores';
+} from '../../selectors';
 import { fetchArticlesList } from '../../services';
 import { articlesListActions } from '../../slices';
 

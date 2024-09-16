@@ -16,11 +16,14 @@ import {
   ProfileSchema,
   UserSchema,
 } from '$entities';
-import { LoginSchema, ScrollRestorationType } from '$features';
+import {
+  ArticlesListSchemaType,
+  LoginSchema,
+  ScrollRestorationType,
+} from '$features';
 import {
   ArticleDetailsCommentsSchema,
   ArticleRecommendationsSchema,
-  ArticlesListSchemaType,
 } from '$pages';
 import { rtkApi } from '$shared/api';
 

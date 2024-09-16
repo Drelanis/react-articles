@@ -4,10 +4,10 @@ import {
   getArticlesListHasMore,
   getArticlesListIsLoading,
   getArticlesListPage,
-} from '../../selectores';
+} from '../../selectors';
 import { fetchArticlesList } from '../fetchArticlesList';
 
-import { articlesListActions } from '$pages/Articles/model/slices';
+import { articlesListActions } from '$features/ArticleInfiniteList/model';
 import { ThunkConfig } from '$shared';
 
 export const fetchNextArticlesPage = createAsyncThunk<

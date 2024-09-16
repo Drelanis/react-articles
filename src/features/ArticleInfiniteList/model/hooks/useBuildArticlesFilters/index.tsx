@@ -9,7 +9,7 @@ import {
   TabItem,
 } from '$shared';
 
-export const useModel = () => {
+export const useBuildArticlesFilters = () => {
   const { t } = useTranslation();
 
   const typeTabs = useMemo<TabItem<ArticleType>[]>(

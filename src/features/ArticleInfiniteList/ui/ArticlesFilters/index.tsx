@@ -1,12 +1,13 @@
 import { FC, memo } from 'react';
 
-import { useModel } from '../model';
+import { useBuildArticlesFilters } from '../../model';
 
 import classNames from './index.module.scss';
 
 import {
   ArticleType,
   buildClassNames,
+  HStack,
   ListOrderField,
   ListSortField,
   ListSortSelector,
@@ -14,6 +15,7 @@ import {
   ListView,
   ListViewSelector,
   Search,
+  VStack,
 } from '$shared';
 
 type Props = {
@@ -45,18 +47,16 @@ export const ArticlesFilters: FC<Props> = memo((props) => {
     onChangeView,
   } = props;
 
-  const { sortFieldOptions, typeTabs, orderOptions } = useModel();
+  const { sortFieldOptions, typeTabs, orderOptions } =
+    useBuildArticlesFilters();
 
-  const {
-    containerClassNames,
-    sortWrapperClassNames,
-    searchClassNames,
-    tabsClassNames,
-  } = useStyles({ className });
+  const { containerClassNames, searchClassNames, tabsClassNames } = useStyles({
+    className,
+  });
 
   return (
-    <div className={containerClassNames}>
-      <div className={sortWrapperClassNames}>
+    <VStack max className={containerClassNames}>
+      <HStack max align="center" justify="between">
         <ListSortSelector
           order={order}
           sort={sort}
@@ -66,7 +66,7 @@ export const ArticlesFilters: FC<Props> = memo((props) => {
           sortFieldOptions={sortFieldOptions}
         />
         <ListViewSelector view={view} onViewClick={onChangeView} />
-      </div>
+      </HStack>
       <Search
         className={searchClassNames}
         onChangeSearch={onChangeSearch}
@@ -78,7 +78,7 @@ export const ArticlesFilters: FC<Props> = memo((props) => {
         className={tabsClassNames}
         typeTabs={typeTabs}
       />
-    </div>
+    </VStack>
   );
 });
 
@@ -92,10 +92,6 @@ const useStyles = (params: StyleProps) => {
     additional: [className],
   });
 
-  const sortWrapperClassNames = buildClassNames({
-    classNames: classNames.sortWrapper,
-  });
-
   const searchClassNames = buildClassNames({
     classNames: classNames.search,
   });
@@ -106,7 +102,6 @@ const useStyles = (params: StyleProps) => {
 
   return {
     containerClassNames,
-    sortWrapperClassNames,
     searchClassNames,
     tabsClassNames,
   };
