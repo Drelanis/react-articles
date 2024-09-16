@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next';
 
-import { useModel } from '../model';
+import { useEditingController } from '../../model';
 
 import classNames from './index.module.scss';
 
 import { Button, ButtonVariant } from '$shared';
 
 export const EditingController = () => {
-  const { onCancelEdit, onSave } = useModel();
+  const { onCancelEdit, onSave } = useEditingController();
 
   const { t } = useTranslation('profile');
 

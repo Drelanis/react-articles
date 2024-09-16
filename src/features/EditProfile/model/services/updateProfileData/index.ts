@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { getProfileForm } from '../../selectors';
-import { Profile } from '../../types';
 import { validateProfileData } from '../validateProfileData';
 
+import { ProfileType } from '$entities';
 import {
   AppRoutes,
   ErrorHints,
@@ -12,7 +12,7 @@ import {
 } from '$shared';
 
 export const updateProfileData = createAsyncThunk<
-  Profile,
+  ProfileType,
   void,
   ThunkConfig<ErrorHints | ValidateErrorHintKeys[]>
 >('profile/updateProfileData', async (profileId, thunkApi) => {
@@ -27,7 +27,7 @@ export const updateProfileData = createAsyncThunk<
       return rejectWithValue(errors);
     }
 
-    const response = await extra.api.put<Profile>(
+    const response = await extra.api.put<ProfileType>(
       `${AppRoutes.PROFILE}/${formData?.id}`,
       formData,
     );

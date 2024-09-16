@@ -2,9 +2,9 @@ import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import { EditingController } from '../../EditingController';
+import { getProfileReadonly, profileActions } from '../../model';
+import { EditingController } from '../EditingController';
 
-import { getProfileReadonly, profileActions } from '$entities/Profile/model';
 import {
   buildClassNames,
   Button,

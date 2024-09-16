@@ -14,8 +14,8 @@
   "profile": [
     {
       "id": "1",
-      "firstName": "Denys Test",
-      "lastName": "Badaka 1",
+      "firstName": "DenysTest",
+      "lastName": "Badaka",
       "age": 100,
       "currency": "EUR",
       "country": "Ukraine",

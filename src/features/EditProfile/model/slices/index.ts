@@ -2,7 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { profileInitialState } from '../schemes';
 import { fetchProfileData, updateProfileData } from '../services';
-import { Profile } from '../types';
+
+import { ProfileType } from '$entities';
 
 export const profileSlice = createSlice({
   name: 'profile',
@@ -16,7 +17,7 @@ export const profileSlice = createSlice({
       state.validationError = undefined;
       state.form = state.data;
     },
-    updateProfile: (state, action: PayloadAction<Profile>) => {
+    updateProfile: (state, action: PayloadAction<ProfileType>) => {
       state.form = {
         ...state.form,
         ...action.payload,
@@ -32,7 +33,7 @@ export const profileSlice = createSlice({
       })
       .addCase(
         fetchProfileData.fulfilled,
-        (state, action: PayloadAction<Profile>) => {
+        (state, action: PayloadAction<ProfileType>) => {
           state.isLoading = false;
           state.data = action.payload;
           state.form = action.payload;
@@ -49,7 +50,7 @@ export const profileSlice = createSlice({
       })
       .addCase(
         updateProfileData.fulfilled,
-        (state, action: PayloadAction<Profile>) => {
+        (state, action: PayloadAction<ProfileType>) => {
           state.isLoading = false;
           state.data = action.payload;
           state.form = action.payload;

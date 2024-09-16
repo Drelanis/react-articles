@@ -1,5 +1,4 @@
-import { useCallback, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 
 import {
@@ -8,24 +7,20 @@ import {
   getProfileForm,
   getProfileIsLoading,
   getProfileReadonly,
-  getProfileValidateErrors,
-  profileActions,
-} from '../model';
+} from '../../selectors';
+import { profileActions } from '../../slices';
 
 import { Country } from '$entities/CountrySelector';
 import { Currency } from '$entities/CurrencySelector';
 import { getUserAuthData } from '$entities/User';
-import { Text, TextAlign, TextVariants, useAppDispatch } from '$shared';
+import { useAppDispatch } from '$shared';
 
-export const useModel = () => {
+export const useLogic = () => {
   const dispatch = useAppDispatch();
-
-  const { t } = useTranslation();
 
   const data = useSelector(getProfileForm);
   const isLoading = useSelector(getProfileIsLoading);
   const error = useSelector(getProfileError);
-  const validationErrors = useSelector(getProfileValidateErrors);
   const authData = useSelector(getUserAuthData);
   const profileData = useSelector(getProfileData);
 
@@ -87,25 +82,6 @@ export const useModel = () => {
     [dispatch],
   );
 
-  const ValidationErrorComponent = useMemo(() => {
-    if (!validationErrors) {
-      return null;
-    }
-
-    const errors = validationErrors.map((validateError) => {
-      return (
-        <Text
-          key={validateError}
-          variant={TextVariants.ERROR}
-          text={t(validateError)}
-          align={TextAlign.CENTER}
-        />
-      );
-    });
-
-    return errors;
-  }, [t, validationErrors]);
-
   const canEdit = authData?.id === profileData?.id;
 
   return {
@@ -113,7 +89,6 @@ export const useModel = () => {
     isLoading,
     error,
     isReadOnly,
-    ValidationErrorComponent,
     canEdit,
     onChangeFirstName,
     onChangeLastName,

@@ -1,8 +1,7 @@
-import { Profile } from '../../types';
-
+import { ProfileType } from '$entities';
 import { ValidateErrorHints } from '$shared';
 
-export const validateProfileData = (profile?: Profile) => {
+export const validateProfileData = (profile?: ProfileType) => {
   if (!profile) {
     return [ValidateErrorHints.NO_DATA];
   }

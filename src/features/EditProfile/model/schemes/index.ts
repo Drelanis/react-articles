@@ -1,4 +1,4 @@
-import { ProfileSchema } from '../types';
+import { ProfileSchema } from '$entities';
 
 export const profileInitialState: ProfileSchema = {
   readonly: true,

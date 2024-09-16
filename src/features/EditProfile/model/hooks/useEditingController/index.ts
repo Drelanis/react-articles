@@ -1,9 +1,11 @@
 import { useCallback } from 'react';
 
-import { profileActions, updateProfileData } from '$entities/Profile/model';
+import { updateProfileData } from '../../services';
+import { profileActions } from '../../slices';
+
 import { useAppDispatch } from '$shared';
 
-export const useModel = () => {
+export const useEditingController = () => {
   const dispatch = useAppDispatch();
 
   const onCancelEdit = useCallback(() => {

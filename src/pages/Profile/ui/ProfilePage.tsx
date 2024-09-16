@@ -1,7 +1,7 @@
 import { FC, memo } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { fetchProfileData, ProfileCard, profileReducer } from '$entities';
+import { EditProfile, fetchProfileData, profileReducer } from '$features';
 import {
   DynamicModuleLoader,
   ReducersList,
@@ -28,7 +28,7 @@ const ProfilePage: FC = memo(() => {
   return (
     <Page>
       <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-        <ProfileCard />
+        <EditProfile />
       </DynamicModuleLoader>
     </Page>
   );

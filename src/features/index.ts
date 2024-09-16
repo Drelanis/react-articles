@@ -5,3 +5,4 @@ export * from './ThemeSwitcher';
 export * from './ArticleRecommendations';
 export * from './ArticleCommentForm';
 export * from './ArticleInfiniteList';
+export * from './EditProfile';

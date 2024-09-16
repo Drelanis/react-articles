@@ -1,12 +1,12 @@
-import { memo } from 'react';
+import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { ProfileHeader } from '../components';
-import { useModel } from '../hooks';
+import { ProfileType } from '../model';
 
 import classNames from './index.module.scss';
 
-import { CountrySelect, CurrencySelect } from '$entities';
+import { Country, CountrySelect } from '$entities/CountrySelector';
+import { Currency, CurrencySelect } from '$entities/CurrencySelector';
 import {
   Avatar,
   buildClassNames,
@@ -21,11 +21,21 @@ import {
 
 type Props = {
   className?: string;
+  data?: ProfileType;
+  error?: string;
+  isLoading?: boolean;
+  isReadOnly?: boolean;
+  onChangeAge?: (value?: string) => void;
+  onChangeAvatar?: (value?: string) => void;
+  onChangeCity?: (value?: string) => void;
+  onChangeCountry?: (country: Country) => void;
+  onChangeCurrency?: (currency: Currency) => void;
+  onChangeFirstName?: (value?: string) => void;
+  onChangeLastName?: (value?: string) => void;
+  onChangeUserName?: (value?: string) => void;
 };
 
-export const ProfileCard = memo((props: Props) => {
-  const { className } = props;
-
+export const Profile: FC<Props> = memo((props) => {
   const { t } = useTranslation('profile');
 
   const {
@@ -33,8 +43,7 @@ export const ProfileCard = memo((props: Props) => {
     isLoading,
     error,
     isReadOnly,
-    canEdit,
-    ValidationErrorComponent,
+    className,
     onChangeFirstName,
     onChangeLastName,
     onChangeCity,
@@ -43,28 +52,25 @@ export const ProfileCard = memo((props: Props) => {
     onChangeAvatar,
     onChangeCurrency,
     onChangeCountry,
-  } = useModel();
+  } = props;
 
   const { containerClassNames, loaderContainer, errorContainer } = useStyles({
-    isReadOnly,
     className,
     isLoading,
+    isReadOnly,
   });
 
   if (isLoading) {
     return (
-      <>
-        <ProfileHeader canEdit={canEdit} />
-        <HStack align="center" justify="center" className={loaderContainer}>
-          <Loader />
-        </HStack>
-      </>
+      <HStack max align="center" justify="center" className={loaderContainer}>
+        <Loader />
+      </HStack>
     );
   }
 
   if (error) {
     return (
-      <HStack align="center" justify="center" className={errorContainer}>
+      <HStack max align="center" justify="center" className={errorContainer}>
         <Text
           variant={TextVariants.ERROR}
           title={t('profileLoadingError')}
@@ -76,70 +82,66 @@ export const ProfileCard = memo((props: Props) => {
   }
 
   return (
-    <VStack gap="8">
-      <ProfileHeader canEdit={canEdit} />
-      <VStack max className={containerClassNames}>
-        {data?.avatar && (
-          <HStack max justify="center">
-            <Avatar src={data?.avatar} />
-          </HStack>
-        )}
-        {ValidationErrorComponent}
-        <Input
-          readOnly={isReadOnly}
-          value={data?.firstName || ''}
-          placeholder={t('firstName')}
-          className={classNames.input}
-          onChange={onChangeFirstName}
-        />
-        <Input
-          readOnly={isReadOnly}
-          value={data?.lastName}
-          placeholder={t('lastName')}
-          className={classNames.input}
-          onChange={onChangeLastName}
-        />
-        <Input
-          value={String(data?.age)}
-          placeholder={t('age')}
-          className={classNames.input}
-          onChange={onChangeAge}
-          readOnly={isReadOnly}
-        />
-        <Input
-          value={data?.city}
-          placeholder={t('city')}
-          className={classNames.input}
-          onChange={onChangeCity}
-          readOnly={isReadOnly}
-        />
-        <Input
-          value={data?.userName}
-          placeholder={t('userName')}
-          className={classNames.input}
-          onChange={onChangeUserName}
-          readOnly={isReadOnly}
-        />
-        <Input
-          value={data?.avatar}
-          placeholder={t('avatar')}
-          className={classNames.input}
-          onChange={onChangeAvatar}
-          readOnly={isReadOnly}
-        />
-        <CurrencySelect
-          className={classNames.input}
-          value={data?.currency}
-          onChange={onChangeCurrency}
-          readonly={isReadOnly}
-        />
-        <CountrySelect
-          className={classNames.input}
-          value={data?.country}
-          onChange={onChangeCountry}
-          readonly={isReadOnly}
-        />
-      </VStack>
+    <VStack max className={containerClassNames}>
+      {data?.avatar && (
+        <HStack max justify="center">
+          <Avatar src={data?.avatar} />
+        </HStack>
+      )}
+      <Input
+        readOnly={isReadOnly}
+        value={data?.firstName || ''}
+        placeholder={t('firstName')}
+        className={classNames.input}
+        onChange={onChangeFirstName}
+      />
+      <Input
+        readOnly={isReadOnly}
+        value={data?.lastName}
+        placeholder={t('lastName')}
+        className={classNames.input}
+        onChange={onChangeLastName}
+      />
+      <Input
+        value={String(data?.age)}
+        placeholder={t('age')}
+        className={classNames.input}
+        onChange={onChangeAge}
+        readOnly={isReadOnly}
+      />
+      <Input
+        value={data?.city}
+        placeholder={t('city')}
+        className={classNames.input}
+        onChange={onChangeCity}
+        readOnly={isReadOnly}
+      />
+      <Input
+        value={data?.userName}
+        placeholder={t('userName')}
+        className={classNames.input}
+        onChange={onChangeUserName}
+        readOnly={isReadOnly}
+      />
+      <Input
+        value={data?.avatar}
+        placeholder={t('avatar')}
+        className={classNames.input}
+        onChange={onChangeAvatar}
+        readOnly={isReadOnly}
+      />
+      <CurrencySelect
+        className={classNames.input}
+        value={data?.currency}
+        onChange={onChangeCurrency}
+        readonly={isReadOnly}
+      />
+      <CountrySelect
+        className={classNames.input}
+        value={data?.country}
+        onChange={onChangeCountry}
+        readonly={isReadOnly}
+      />
     </VStack>
   );
 });

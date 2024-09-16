@@ -1,9 +1,9 @@
 import { DeepPartial } from '@reduxjs/toolkit';
 
 import { updateProfileData } from '../services';
-import { ProfileSchema } from '../types';
 
 import { profileActions, profileReducer } from '.';
+import { ProfileSchema } from '$entities';
 import { Country } from '$entities/CountrySelector';
 import { Currency } from '$entities/CurrencySelector';
 
