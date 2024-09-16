@@ -24,7 +24,6 @@ const reducers: ReducersList = {
 
 export const ArticleInfiniteList: FC<Props> = memo((props) => {
   const { className } = props;
-  // const { t } = useTranslation();
 
   const { containerClassNames } = useStyles({ className });
 
