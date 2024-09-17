@@ -59,5 +59,11 @@
       "module": "CommonJS"
     }
   },
-  "include": ["./config", "./src", "./@types", "./webpack.config.ts"]
+  "include": [
+    "./config",
+    "./src",
+    "./@types",
+    "./webpack.config.ts",
+    "vite.config.ts"
+  ]
 }

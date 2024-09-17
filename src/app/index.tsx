@@ -4,7 +4,7 @@ import { AppProviders } from './lib';
 import { App } from './ui';
 
 import './styles/index.main.scss';
-import 'shared/configs/i18n';
+import '$shared/configs/i18n';
 
 const rootElement = document.getElementById('root');
 

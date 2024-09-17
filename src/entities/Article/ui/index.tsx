@@ -1,7 +1,5 @@
 import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import CalendarIcon from 'shared/assets/icons/calendar-20-20.svg';
-import EyeIcon from 'shared/assets/icons/eye-20-20.svg';
 
 import { ArticleWrapper } from '../components';
 import { useModel } from '../model';
@@ -19,6 +17,8 @@ import {
   TextVariants,
   VStack,
 } from '$shared';
+import CalendarIcon from '$shared/assets/icons/calendar-20-20.svg';
+import EyeIcon from '$shared/assets/icons/eye-20-20.svg';
 
 type Props = {
   className?: string;

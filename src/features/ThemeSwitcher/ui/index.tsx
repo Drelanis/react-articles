@@ -1,9 +1,9 @@
 import { memo } from 'react';
-import ThemeIcon from 'shared/assets/icons/theme-toggle-icon.svg';
 
 import classNames from './index.module.scss';
 
 import { buildClassNames, Button, ButtonVariant, useTheme } from '$shared';
+import ThemeIcon from '$shared/assets/icons/theme-toggle-icon.svg';
 
 type Props = {
   className?: string;
