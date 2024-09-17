@@ -40,5 +40,7 @@
   "articlesNotFound": "No article found!",
   "recommendations": "Recommendations",
   "appName": "Drelanis's app",
-  "profile": "Profile"
+  "profile": "Profile",
+  "adminPanel": "Admin Panel",
+  "forbiddenPage": "You do not have access to this page"
 }

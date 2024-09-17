@@ -1,19 +1,12 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { useModel } from '../model';
+import { useLogic } from '../model';
 
 import classNames from './index.module.scss';
 
 import { Auth } from '$features';
-import {
-  AppRoutes,
-  Avatar,
-  buildClassNames,
-  Dropdown,
-  Text,
-  TextVariants,
-} from '$shared';
+import { Avatar, buildClassNames, Dropdown, Text, TextVariants } from '$shared';
 
 type Props = {
   className?: string[];
@@ -24,7 +17,7 @@ export const NavBar = memo((props: Props) => {
 
   const { containerClassNames } = useStyles({ className });
 
-  const { userAuthData, onLogout } = useModel();
+  const { userAuthData, dropDownItems } = useLogic();
 
   const { t } = useTranslation();
 
@@ -43,16 +36,7 @@ export const NavBar = memo((props: Props) => {
       <Dropdown
         direction="bottom left"
         className={classNames.dropdown}
-        items={[
-          {
-            content: t('profile'),
-            href: `${AppRoutes.PROFILE}/${userAuthData.id}`,
-          },
-          {
-            content: t('logout'),
-            onClick: onLogout,
-          },
-        ]}
+        items={dropDownItems}
         trigger={<Avatar size={30} src={userAuthData.avatar} />}
       />
     </div>

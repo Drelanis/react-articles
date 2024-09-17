@@ -40,5 +40,7 @@
   "articlesNotFound": "Статті не знайдено!",
   "recommendations": "Рекомендації",
   "appName": "Drelanis's app",
-  "profile": "Профіль"
+  "profile": "Профіль",
+  "adminPanel": "Панель адміністратора",
+  "forbiddenPage": "У вас немає доступу до цієї сторінки"
 }
