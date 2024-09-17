@@ -44,7 +44,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["SCIENCE"],
+      "type": [
+        "SCIENCE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -114,7 +116,9 @@
       "img": "https://loudbench.com/wp-content/uploads/2023/02/Python-logo-1024x576.png",
       "views": 100,
       "createdAt": "24.02.2022",
-      "type": ["SCIENCE"],
+      "type": [
+        "SCIENCE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -184,7 +188,9 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 555,
       "createdAt": "30.02.2022",
-      "type": ["SCIENCE"],
+      "type": [
+        "SCIENCE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -254,7 +260,9 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 77,
       "createdAt": "01.03.2023",
-      "type": ["ECONOMICS"],
+      "type": [
+        "ECONOMICS"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -276,7 +284,9 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 999,
       "createdAt": "30.07.2023",
-      "type": ["ECONOMICS"],
+      "type": [
+        "ECONOMICS"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -298,7 +308,9 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 800,
       "createdAt": "26.04.2023",
-      "type": ["ECONOMICS"],
+      "type": [
+        "ECONOMICS"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -320,7 +332,9 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 950,
       "createdAt": "26.02.2021",
-      "type": ["ECONOMICS"],
+      "type": [
+        "ECONOMICS"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -342,7 +356,9 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 30,
       "createdAt": "30.06.2024",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -364,7 +380,9 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 678,
       "createdAt": "09.007.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -386,7 +404,9 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 390,
       "createdAt": "26.11.2023",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -408,7 +428,9 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 356,
       "createdAt": "22.02.2023",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -430,7 +452,9 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 687,
       "createdAt": "07.07.2024",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -452,7 +476,9 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 324,
       "createdAt": "22.02.2021",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -474,7 +500,9 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 6248,
       "createdAt": "26.02.2019",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -496,7 +524,9 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 102,
       "createdAt": "26.02.2018",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -518,7 +548,9 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 9875,
       "createdAt": "26.02.2016",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -540,7 +572,9 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 30894,
       "createdAt": "26.02.2010",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -562,7 +596,9 @@
       "img": "https://blog.theodo.com/_astro/ts_logo.BstCNrTU_1Dbxpr.webp",
       "views": 3984,
       "createdAt": "25.02.2005",
-      "type": ["SCIENCE"],
+      "type": [
+        "SCIENCE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -614,21 +650,27 @@
       "id": "1",
       "userName": "admin",
       "password": "123",
-      "roles": ["ADMIN"],
+      "roles": [
+        "ADMIN"
+      ],
       "avatar": "https://seeklogo.com/images/L/linkin-park-band-logo-3F627013D0-seeklogo.com.png"
     },
     {
       "id": "2",
       "userName": "user",
       "password": "123",
-      "roles": ["USER"],
+      "roles": [
+        "USER"
+      ],
       "avatar": "https://seeklogo.com/images/L/linkin-park-band-logo-3F627013D0-seeklogo.com.png"
     },
     {
       "id": "3",
       "userName": "manager",
       "password": "123",
-      "roles": ["MANAGER"],
+      "roles": [
+        "MANAGER"
+      ],
       "avatar": "https://seeklogo.com/images/L/linkin-park-band-logo-3F627013D0-seeklogo.com.png"
     }
   ]
