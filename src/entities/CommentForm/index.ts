@@ -1,2 +1,3 @@
 export * from './ui';
-export { CommentFormSchema, getAddCommentFormText } from './model';
+export { getAddCommentFormText } from './model';
+export type { CommentFormSchema } from './model';

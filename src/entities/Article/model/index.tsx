@@ -69,7 +69,7 @@ export const useModel = () => {
   return { isLoading, error, article, ArticleContent };
 };
 
-export {
+export type {
   ArticleDetailsSchema,
   ArticleCodeBlockType,
   ArticleImageBlockType,

@@ -1,5 +1,5 @@
 export { userReducer, userActions } from './slices';
-export { UserSchema, User } from './schemes';
+export type { UserSchema, User } from './schemes';
 export { UserRole } from './constants';
 export {
   isUserAdmin,

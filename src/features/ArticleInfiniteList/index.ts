@@ -1,6 +1,3 @@
 export * from './ui';
-export {
-  articlesListReducer,
-  fetchNextArticlesPage,
-  ArticlesListSchemaType,
-} from './model';
+export type { ArticlesListSchemaType } from './model';
+export { articlesListReducer, fetchNextArticlesPage } from './model';

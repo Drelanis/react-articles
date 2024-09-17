@@ -38,7 +38,7 @@ export const useModel = () => {
   };
 };
 
-export {
+export type {
   ArticleDetailsCommentsSchema,
   ArticleRecommendationsSchema,
 } from './types';
