@@ -14,13 +14,18 @@ export const EditingController = () => {
   return (
     <>
       <Button
+        data-testid="editProfile.cancelButton"
         className={classNames.editBtn}
         variant={ButtonVariant.OUTLINE_RED}
         onClick={onCancelEdit}
       >
         {t('cancel')}
       </Button>
-      <Button variant={ButtonVariant.OUTLINE} onClick={onSave}>
+      <Button
+        data-testid="editProfile.saveButton"
+        variant={ButtonVariant.OUTLINE}
+        onClick={onSave}
+      >
         {t('save')}
       </Button>
     </>

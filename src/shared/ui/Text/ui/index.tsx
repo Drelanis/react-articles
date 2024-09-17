@@ -15,13 +15,17 @@ type Props = {
 };
 
 export const Text: FC<Props> = memo((props) => {
-  const { className, text, title, variant, align } = props;
+  const { className, text, title, variant, align, ...otherProps } = props;
 
   const { containerClassNames } = useStyles({ className, variant, align });
 
   return (
     <div className={containerClassNames}>
-      {title && <p className={classNames.title}>{title}</p>}
+      {title && (
+        <p {...otherProps} className={classNames.title}>
+          {title}
+        </p>
+      )}
       {text && <p className={classNames.text}>{text}</p>}
     </div>
   );

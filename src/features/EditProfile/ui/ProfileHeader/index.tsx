@@ -34,7 +34,11 @@ export const ProfileHeader = (props: Props) => {
   }, [dispatch]);
 
   const EditController = readOnly ? (
-    <Button variant={ButtonVariant.OUTLINE} onClick={onEdit}>
+    <Button
+      data-testid="editProfile.editButton"
+      variant={ButtonVariant.OUTLINE}
+      onClick={onEdit}
+    >
       {t('edit')}
     </Button>
   ) : (

@@ -94,13 +94,15 @@ export const Profile: FC<Props> = memo((props) => {
         placeholder={t('firstName')}
         className={classNames.input}
         onChange={onChangeFirstName}
+        data-testid="profileCard.firstName"
       />
       <Input
         readOnly={isReadOnly}
-        value={data?.lastName}
+        value={data?.lastName || ''}
         placeholder={t('lastName')}
         className={classNames.input}
         onChange={onChangeLastName}
+        data-testid="profileCard.lastName"
       />
       <Input
         value={String(data?.age)}

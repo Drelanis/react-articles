@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import {
   getProfileData,
@@ -8,12 +9,13 @@ import {
   getProfileIsLoading,
   getProfileReadonly,
 } from '../../selectors';
+import { fetchProfileData } from '../../services';
 import { profileActions } from '../../slices';
 
 import { Country } from '$entities/CountrySelector';
 import { Currency } from '$entities/CurrencySelector';
 import { getUserAuthData } from '$entities/User';
-import { useAppDispatch } from '$shared';
+import { useAppDispatch, useInitialEffect } from '$shared';
 
 export const useLogic = () => {
   const dispatch = useAppDispatch();
@@ -25,6 +27,13 @@ export const useLogic = () => {
   const profileData = useSelector(getProfileData);
 
   const isReadOnly = useSelector(getProfileReadonly);
+  const { id } = useParams<{ id: string }>();
+
+  useInitialEffect(() => {
+    if (id) {
+      void dispatch(fetchProfileData(id));
+    }
+  });
 
   const onChangeFirstName = useCallback(
     (value?: string) => {

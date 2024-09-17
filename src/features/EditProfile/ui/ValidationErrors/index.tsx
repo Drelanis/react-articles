@@ -16,6 +16,7 @@ export const ValidationErrors: FC = memo(() => {
       validationErrors?.map((validateError) => {
         return (
           <Text
+            data-testid="profileCard.validationError"
             key={validateError}
             variant={TextVariants.ERROR}
             text={t(validateError)}
