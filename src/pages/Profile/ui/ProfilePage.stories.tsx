@@ -3,9 +3,10 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import ProfilePage from './ProfilePage';
 
-import { Profile, profileReducer, ProfileSchema } from '$entities';
+import { ProfileSchema, ProfileType } from '$entities';
 import { Country } from '$entities/CountrySelector';
 import { Currency } from '$entities/CurrencySelector';
+import { profileReducer } from '$features';
 import {
   StateSchema,
   StoreDecorator,
@@ -26,7 +27,7 @@ const asyncProfileReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
   profile: profileReducer as Reducer<ProfileSchema | undefined>,
 };
 
-const data: Profile = {
+const data: ProfileType = {
   userName: 'admin',
   age: 100,
   country: Country.UKRAINE,

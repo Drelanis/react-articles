@@ -1,10 +1,10 @@
 import { memo } from 'react';
-import CopyIcon from 'shared/assets/icons/copy-20-20.svg';
 
 import { useModel } from '../model';
 
 import classNames from './index.module.scss';
 
+import CopyIcon from '$shared/assets/icons/copy-20-20.svg';
 import { Button, ButtonVariant } from '$shared/ui';
 import { buildClassNames } from '$shared/utils';
 

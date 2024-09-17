@@ -16,10 +16,11 @@ import {
 } from '$shared';
 
 type Props = {
-  articles: Article[];
+  articles?: Article[];
   className?: string;
   errorMessage?: ErrorHints;
   isLoading?: boolean;
+  tileHorizontal?: boolean;
   view?: ListView;
 };
 
@@ -30,11 +31,16 @@ export const ArticlesList: FC<Props> = memo((props) => {
     view = ListView.TILE,
     isLoading,
     errorMessage,
+    tileHorizontal,
   } = props;
 
   const { t } = useTranslation();
 
-  const { containerClassNames } = useStyles({ view, className });
+  const { containerClassNames } = useStyles({
+    view,
+    className,
+    tileHorizontal,
+  });
 
   const { articlesSkeleton, Articles, isArticles } = useModel({
     view,
@@ -66,14 +72,19 @@ export const ArticlesList: FC<Props> = memo((props) => {
   );
 });
 
-type UseStylesParams = Pick<Props, 'className' | 'view'>;
+type UseStylesParams = Pick<Props, 'className' | 'view' | 'tileHorizontal'>;
 
 const useStyles = (params: UseStylesParams) => {
-  const { className = '', view = ListView.TILE } = params;
+  const { className = '', view = ListView.TILE, tileHorizontal } = params;
+
+  const isTile = view === ListView.TILE;
 
   const containerClassNames = buildClassNames({
-    classNames: className,
-    additional: [classNames[view]],
+    classNames: '',
+    additional: [classNames[view], className],
+    mods: {
+      [classNames.horizontal]: isTile && tileHorizontal,
+    },
   });
 
   return { containerClassNames };

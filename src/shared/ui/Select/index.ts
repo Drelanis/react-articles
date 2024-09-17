@@ -1,2 +1,2 @@
 export * from './ui';
-export { SelectOption } from './types';
+export type { SelectOption } from './types';

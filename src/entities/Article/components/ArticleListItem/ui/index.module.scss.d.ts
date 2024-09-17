@@ -1,6 +1,5 @@
 export declare const date: string;
 export declare const footer: string;
-export declare const header: string;
 export declare const imageWrapper: string;
 export declare const img: string;
 export declare const infoWrapper: string;

@@ -1,9 +1,12 @@
 import { RoutePath } from '../constants';
 
+import { UserRole } from '$entities';
 import {
   AboutLazyPage,
+  AdminPanelLazyPage,
   ArticleDetailsLazyPage,
   ArticlesLazyPage,
+  ForbiddenPage,
   MainLazyPage,
   NotFoundPage,
   ProfileLazyPage,
@@ -30,9 +33,19 @@ export const routeConfig: AppRoutesProps[] = [
     authOnly: true,
   },
   {
+    path: RoutePath.admin,
+    element: <AdminPanelLazyPage />,
+    authOnly: true,
+    roles: [UserRole.ADMIN, UserRole.MANAGER],
+  },
+  {
     path: `${RoutePath.article}:id`,
     element: <ArticleDetailsLazyPage />,
     authOnly: true,
+  },
+  {
+    path: RoutePath.forbidden,
+    element: <ForbiddenPage />,
   },
   {
     path: RoutePath['not-found'],

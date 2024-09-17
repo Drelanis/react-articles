@@ -1,9 +1,9 @@
-type Mods = Record<string, boolean | undefined | null>;
+export type ClassNamesModsType = Record<string, boolean | undefined | null>;
 
 type Params = {
   classNames: string;
   additional?: string[];
-  mods?: Mods;
+  mods?: ClassNamesModsType;
 };
 
 export const buildClassNames = (params: Params): string => {

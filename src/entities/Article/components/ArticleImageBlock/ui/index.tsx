@@ -1,9 +1,7 @@
 import { memo } from 'react';
 
-import classNames from './index.module.scss';
-
 import { ArticleImageBlockType } from '$entities/Article/model';
-import { buildClassNames, Text, TextAlign } from '$shared';
+import { buildClassNames, Text, TextAlign, VStack } from '$shared';
 
 type Props = {
   block: ArticleImageBlockType;
@@ -16,10 +14,10 @@ export const ArticleImageBlock = memo((props: Props) => {
   const { containerClassNames } = useStyles({ className });
 
   return (
-    <div className={containerClassNames}>
-      <img src={block.src} alt={block.title} className={classNames.image} />
+    <VStack max align="center" className={containerClassNames}>
+      <img src={block.src} alt={block.title} />
       {block.title && <Text text={block.title} align={TextAlign.CENTER} />}
-    </div>
+    </VStack>
   );
 });
 

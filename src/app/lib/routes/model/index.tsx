@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { RequireAuth } from '../components';
+import { NavigationRequirements } from '../components';
 import { routeConfig } from '../config';
 
 import { getUserMounted } from '$entities';
@@ -11,7 +11,7 @@ export const useModel = () => {
 
   const { routes } = useRoutes({
     params: routeConfig,
-    AuthWrapper: RequireAuth,
+    AuthWrapper: NavigationRequirements,
   });
 
   return { routes, isUserMounted };

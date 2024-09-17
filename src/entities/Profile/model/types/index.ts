@@ -2,7 +2,7 @@ import { Country } from '$entities/CountrySelector';
 import { Currency } from '$entities/CurrencySelector';
 import { ValidateErrorHintKeys } from '$shared';
 
-export type Profile = {
+export type ProfileType = {
   age?: number;
   avatar?: string;
   city?: string;
@@ -17,8 +17,8 @@ export type Profile = {
 export type ProfileSchema = {
   isLoading: boolean;
   readonly: boolean;
-  data?: Profile;
+  data?: ProfileType;
   error?: string;
-  form?: Profile;
+  form?: ProfileType;
   validationError?: ValidateErrorHintKeys[];
 };

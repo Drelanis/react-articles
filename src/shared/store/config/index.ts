@@ -13,7 +13,7 @@ import { createReducerManager } from './reducerManager';
 // TODO Fix it!
 import { counterReducer, userReducer } from '$entities';
 import { scrollRestorationReducer } from '$features/ScrollRestoration';
-import { $api } from '$shared/api';
+import { $api, rtkApi } from '$shared/api';
 
 type Params = {
   asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>;
@@ -28,6 +28,7 @@ export const createReduxStore = (params: Params) => {
     counter: counterReducer,
     user: userReducer,
     scrollRestoration: scrollRestorationReducer,
+    [rtkApi.reducerPath]: rtkApi.reducer,
   };
 
   const reducerManager = createReducerManager(rootReducers);
@@ -44,7 +45,7 @@ export const createReduxStore = (params: Params) => {
             api: $api,
           },
         },
-      }),
+      }).concat(rtkApi.middleware),
   });
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- TODO Fix me

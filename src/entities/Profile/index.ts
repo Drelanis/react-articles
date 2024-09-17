@@ -1,2 +1,2 @@
-export * from './model';
+export type { ProfileSchema, ProfileType } from './model';
 export * from './ui';

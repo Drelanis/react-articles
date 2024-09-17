@@ -34,7 +34,7 @@ export const CountrySelect: FC<Props> = memo((props: Props) => {
   return (
     <Select
       className={selectClassNames}
-      label={t('profile')}
+      label={t('country')}
       options={options}
       value={value}
       onChange={onChangeHandler}

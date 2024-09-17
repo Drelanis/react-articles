@@ -7,7 +7,13 @@ import { useModel } from '../model';
 import { Switchers } from './components';
 import classNames from './index.module.scss';
 
-import { buildClassNames, Button, ButtonSize, ButtonVariant } from '$shared';
+import {
+  buildClassNames,
+  Button,
+  ButtonSize,
+  ButtonVariant,
+  VStack,
+} from '$shared';
 
 type Props = {
   className?: string;
@@ -32,7 +38,9 @@ export const Sidebar = memo((props: Props) => {
       >
         {isCollapsed ? '>' : '<'}
       </Button>
-      <div className={classNames.items}>{itemsList}</div>
+      <VStack gap="16" className={classNames.items}>
+        {itemsList}
+      </VStack>
       <Switchers column={isCollapsed} />
     </div>
   );

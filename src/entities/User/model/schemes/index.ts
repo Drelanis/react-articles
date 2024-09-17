@@ -1,7 +1,10 @@
+import { UserRole } from '../constants';
+
 export type User = {
   id: string;
   userName: string;
   avatar?: string;
+  roles?: UserRole[];
 };
 
 export type UserSchema = {

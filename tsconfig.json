@@ -47,6 +47,7 @@
     // можно писать такой
     // import React from 'react';
     "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
     "plugins": [
       {
         "name": "typescript-plugin-css-modules"
@@ -58,5 +59,11 @@
       "module": "CommonJS"
     }
   },
-  "include": ["./config", "./src", "./@types", "./webpack.config.ts"]
+  "include": [
+    "./config",
+    "./src",
+    "./@types",
+    "./webpack.config.ts",
+    "vite.config.ts"
+  ]
 }

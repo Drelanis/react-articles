@@ -1,2 +1,2 @@
 export * from './ui';
-export { LoginSchema } from './components';
+export type { LoginSchema } from './components';

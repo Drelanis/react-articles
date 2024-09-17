@@ -2,7 +2,8 @@ import { FC } from 'react';
 
 import classNames from './index.module.scss';
 
-import { buildClassNames, LanguageSwitcher, ThemeSwitcher } from '$shared';
+import { ThemeSwitcher } from '$features';
+import { buildClassNames, LanguageSwitcher } from '$shared';
 
 type Props = {
   column: boolean;

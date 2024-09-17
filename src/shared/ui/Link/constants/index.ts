@@ -9,4 +9,5 @@ export const AppRoutes = {
   PROFILE: '/profile',
   ARTICLES: '/articles',
   COMMENTS: '/comments',
+  ADMIN: '/admin',
 };

@@ -3,9 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { CommentType, useModel } from '../model';
 
-import classNames from './index.module.scss';
-
-import { buildClassNames, Skeleton, Text } from '$shared';
+import { buildClassNames, HStack, Skeleton, Text, VStack } from '$shared';
 
 type Props = {
   className?: string;
@@ -23,21 +21,21 @@ export const Comments: FC<Props> = memo((props) => {
 
   if (isLoading) {
     return (
-      <div className={containerClassNames}>
-        <div className={classNames.header}>
+      <VStack gap="16" max>
+        <HStack gap="16">
           <Skeleton width={30} height={30} border="50%" />
-          <Skeleton height={16} width={100} className={classNames.userName} />
-        </div>
-        <Skeleton className={classNames.text} width="100%" height={50} />
-      </div>
+          <Skeleton height={16} width={100} />
+        </HStack>
+        <Skeleton width="100%" height={50} />
+      </VStack>
     );
   }
 
   return (
-    <div className={containerClassNames}>
+    <VStack max className={containerClassNames} gap="16">
       {isComments && CommentsList}
       {!isComments && <Text text={t('noComments')} />}
-    </div>
+    </VStack>
   );
 });
 
@@ -47,7 +45,7 @@ const useStyles = (params: UseStylesParams) => {
   const { className = '' } = params;
 
   const containerClassNames = buildClassNames({
-    classNames: classNames.comment,
+    classNames: '',
     additional: [className],
   });
 
