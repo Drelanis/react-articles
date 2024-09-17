@@ -193,11 +193,11 @@ To connect reducers asynchronously (to avoid pulling them into the main bundle),
 
 ## Pages
 
-- [ArticleCommentForm](/src/pages/About/)
-- [ArticleCommentForm](/src/pages/AdminPanel/)
-- [ArticleCommentForm](/src/pages/ArticleDetails/)
-- [ArticleCommentForm](/src/pages/Articles/)
-- [ArticleCommentForm](/src/pages/ForbiddenPage/)
-- [ArticleCommentForm](/src/pages/Main/)
-- [ArticleCommentForm](/src/pages/NotFound/)
-- [ArticleCommentForm](/src/pages/Profile/)
+- [About](/src/pages/About/)
+- [AdminPanel](/src/pages/AdminPanel/)
+- [ArticleDetails](/src/pages/ArticleDetails/)
+- [Articles](/src/pages/Articles/)
+- [ForbiddenPage](/src/pages/ForbiddenPage/)
+- [Main](/src/pages/Main/)
+- [NotFound](/src/pages/NotFound/)
+- [Profile](/src/pages/Profile/)

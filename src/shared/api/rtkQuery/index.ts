@@ -8,6 +8,10 @@ export const rtkApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: API,
     prepareHeaders: (headers) => {
+      if (PROJECT === 'storybook') {
+        localStorage.setItem(USER_LOCAL_STORAGE_KEY, 'storybookTest');
+      }
+
       const token = localStorage.getItem(USER_LOCAL_STORAGE_KEY) || '';
 
       if (token) {
