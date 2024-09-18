@@ -1,6 +1,6 @@
 import { DeepPartial } from '@reduxjs/toolkit';
 
-import { getCounter } from '.';
+import { getCounterValue } from '.';
 import { StateSchema } from '$shared';
 
 describe('getCounter', () => {
@@ -9,6 +9,6 @@ describe('getCounter', () => {
       counter: { value: 10 },
     };
 
-    expect(getCounter(state as StateSchema)).toEqual({ value: 10 });
+    expect(getCounterValue(state as StateSchema)).toEqual({ value: 10 });
   });
 });
