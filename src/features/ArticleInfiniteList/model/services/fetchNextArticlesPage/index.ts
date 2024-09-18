@@ -7,6 +7,7 @@ import {
 } from '../../selectors';
 import { fetchArticlesList } from '../fetchArticlesList';
 
+import { getUserAuthData } from '$entities/User';
 import { articlesListActions } from '$features/ArticleInfiniteList/model';
 import { ThunkConfig } from '$shared';
 
@@ -16,6 +17,12 @@ export const fetchNextArticlesPage = createAsyncThunk<
   ThunkConfig<string>
 >('articlesPage/fetchNextArticlesPage', async (_, thunkApi) => {
   const { getState, dispatch } = thunkApi;
+  const authData = getUserAuthData(getState());
+
+  if (!authData) {
+    return;
+  }
+
   const hasMore = getArticlesListHasMore(getState());
   const page = getArticlesListPage(getState());
   const isLoading = getArticlesListIsLoading(getState());

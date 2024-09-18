@@ -18,11 +18,12 @@ import { buildClassNames } from '$shared/utils';
 type Props = {
   children: ReactNode;
   className?: string;
+  dataTestId?: string;
   onScrollEnd?: () => void;
 };
 
 export const Page = memo((props: Props) => {
-  const { className, children, onScrollEnd } = props;
+  const { className, children, onScrollEnd, dataTestId } = props;
 
   const { containerClassNames } = useStyles({ className });
 
@@ -59,6 +60,7 @@ export const Page = memo((props: Props) => {
 
   return (
     <section
+      data-testid={dataTestId}
       ref={wrapperRef}
       className={containerClassNames}
       onScroll={onScroll}

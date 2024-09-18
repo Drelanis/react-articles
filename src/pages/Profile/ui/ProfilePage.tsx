@@ -5,7 +5,7 @@ import { Page } from '$widgets';
 
 const ProfilePage: FC = memo(() => {
   return (
-    <Page>
+    <Page dataTestId="test-profile-page">
       <EditProfile />
     </Page>
   );

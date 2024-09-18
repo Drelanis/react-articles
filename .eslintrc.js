@@ -248,7 +248,7 @@ module.exports = {
     'react',
     'i18next',
   ],
-  ignorePatterns: ['*.js', 'dist/', 'node_modules/', '**/*.scss'],
+  ignorePatterns: ['*.js', 'dist/', 'node_modules/', '**/*.scss', 'cypress/'],
   rules: {
     // ! TODO: Fix this
     'jsx-a11y/click-events-have-key-events': 'off',
