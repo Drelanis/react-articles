@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import { AppRoutesProps } from '$shared/types';
 
 type Props = {
-  AuthWrapper: ({
+  NavigationRequirements: ({
     children,
     roles,
   }: {
@@ -15,19 +15,21 @@ type Props = {
 };
 
 export const useRoutes = (props: Props) => {
-  const { AuthWrapper, params } = props;
+  const { NavigationRequirements, params } = props;
 
   const routes = useMemo(() => {
     return params.map(({ element, path, authOnly, roles }) => {
       const routeElement = authOnly ? (
-        <AuthWrapper roles={roles}>{element as JSX.Element}</AuthWrapper>
+        <NavigationRequirements roles={roles}>
+          {element as JSX.Element}
+        </NavigationRequirements>
       ) : (
         element
       );
 
       return <Route key={path} path={path} element={routeElement} />;
     });
-  }, [params, AuthWrapper]);
+  }, [params, NavigationRequirements]);
 
   return { routes };
 };

@@ -11,7 +11,7 @@ export const useModel = () => {
 
   const { routes } = useRoutes({
     params: routeConfig,
-    AuthWrapper: NavigationRequirements,
+    NavigationRequirements,
   });
 
   return { routes, isUserMounted };
