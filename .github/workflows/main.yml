@@ -46,3 +46,6 @@ jobs:
         id: deployment
         if: always()
         uses: actions/deploy-pages@v1
+      - name: Output deployed URL
+        run: echo "Deployed to: ${{ steps.deployment.outputs.page_url }}"
+        if: always()
