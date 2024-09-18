@@ -1,3 +1,5 @@
-import { StateSchema } from '$shared';
+import { buildAppSelector, StateSchema } from '$shared';
 
-export const getCounter = (state: StateSchema) => state.counter;
+export const [useCounterValue, getCounterValue] = buildAppSelector(
+  (state: StateSchema) => state.counter,
+);
