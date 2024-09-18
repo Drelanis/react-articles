@@ -10,6 +10,9 @@ permissions:
   id-token: write
 jobs:
   pipeline:
+    environment:
+      name: github-pages
+      url: ${{ steps.change-page-url.outputs.new_page_url }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -46,6 +49,6 @@ jobs:
         id: deployment
         if: always()
         uses: actions/deploy-pages@v1
-      - name: Output deployed URL
-        run: echo "Deployed to: ${{ steps.deployment.outputs.page_url }}"
-        if: always()
+      - name: Override page_url
+        id: change-page-url
+        run: echo "new_page_url=${{ steps.deployment.outputs.page_url }}notebook/" >> $GITHUB_OUTPUT
