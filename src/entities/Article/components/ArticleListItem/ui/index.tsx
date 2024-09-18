@@ -8,6 +8,7 @@ import classNames from './index.module.scss';
 
 import { Article } from '$entities/Article/model';
 import {
+  AppImage,
   AppRoutes,
   Avatar,
   buildClassNames,
@@ -18,6 +19,7 @@ import {
   Icon,
   Link,
   ListView,
+  Skeleton,
   Text,
 } from '$shared';
 import EyeIcon from '$shared/assets/icons/eye-20-20.svg';
@@ -57,7 +59,12 @@ export const ArticleListItem: FC<Props> = memo((props) => {
         </HStack>
         <Text title={article.title} className={classNames.title} />
         {ArticleTypes}
-        <img src={article.img} className={classNames.img} alt={article.title} />
+        <AppImage
+          fallback={<Skeleton width="100%" height={250} />}
+          src={article.img}
+          className={classNames.img}
+          alt={article.title}
+        />
         {textBlock && (
           <ArticleTextBlock
             block={textBlock}
@@ -84,7 +91,8 @@ export const ArticleListItem: FC<Props> = memo((props) => {
     >
       <Card>
         <HStack className={classNames.imageWrapper}>
-          <img
+          <AppImage
+            fallback={<Skeleton width={200} height={200} />}
             alt={article.title}
             src={article.img}
             className={classNames.img}

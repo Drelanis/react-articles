@@ -1,8 +1,5 @@
-import { createSelector } from '@reduxjs/toolkit';
+import { buildAppSelector } from '$shared';
 
-import { getCounter } from '../getCounter';
-
-export const getCounterValue = createSelector(
-  getCounter,
-  (counter) => counter.value,
+export const [useCounterValue, getCounterValue] = buildAppSelector(
+  (state) => state.counter?.value,
 );

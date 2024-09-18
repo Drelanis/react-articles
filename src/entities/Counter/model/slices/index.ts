@@ -1,8 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
-
 import { counterInitialState } from '../schemes';
 
-export const counterSlice = createSlice({
+import { buildAppSlice } from '$shared';
+
+export const counterSlice = buildAppSlice({
   name: 'counter',
   initialState: counterInitialState,
   reducers: {
@@ -15,5 +15,8 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { actions: counterActions } = counterSlice;
-export const { reducer: counterReducer } = counterSlice;
+export const {
+  actions: counterActions,
+  reducer: counterReducer,
+  useActions: useCounterActions,
+} = counterSlice;

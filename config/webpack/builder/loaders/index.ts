@@ -48,6 +48,7 @@ export const buildLoaders = ({ isDev }: BuildOptions): RuleSetRule[] => {
       {
         loader: require.resolve('babel-loader'),
         options: {
+          cacheDirectory: true,
           plugins: [isDev && require.resolve('react-refresh/babel')].filter(
             Boolean,
           ),

@@ -9,11 +9,21 @@ import {
 import { addDecorator } from '@storybook/react';
 
 export const parameters = {
+  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
       date: /Date$/i,
     },
+  },
+  layout: 'fullscreen',
+  themes: {
+    default: 'light',
+    list: [
+      { name: 'light', class: ThemeVariants.LIGHT, color: '#ffffff' },
+      { name: 'dark', class: ThemeVariants.DARK, color: '#000000' },
+      { name: 'orange', class: ThemeVariants.ORANGE, color: '#ffb005' },
+    ],
   },
 };
 
