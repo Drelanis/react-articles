@@ -64,14 +64,6 @@ More about tests - [Testing Documentation](/docs/TESTS.md)
 
 ## Linting
 
-The project uses ESLint for TypeScript code and Stylelint for style files.
-
-For strict control over core architectural principles, a custom ESLint plugin _eslint-plugin-ulbi-tv-plugin_ is used, which enforces 3 rules:
-
-1. `path-checker` - Prohibits using absolute imports within the same module
-2. `layer-imports` - Ensures correct layer usage according to FSD (e.g., `widgets` cannot be used in `features` or `entities`)
-3. `public-api-imports` - Allows imports from other modules only via the public API. Includes auto-fix.
-
 ##### Running linters:
 
 - `npm run lint:ts` - Check TypeScript files
