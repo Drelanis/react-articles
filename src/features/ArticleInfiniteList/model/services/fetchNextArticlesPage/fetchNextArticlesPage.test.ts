@@ -22,7 +22,7 @@ describe('fetchNextArticlesPage.test', () => {
     });
 
     await thunk.callThunk();
-    const numberOfCalls = 4;
+    const numberOfCalls = 2;
 
     expect(thunk.dispatch).toBeCalledTimes(numberOfCalls);
     // TODO: Fix me

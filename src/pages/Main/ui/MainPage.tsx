@@ -7,7 +7,7 @@ import { Page } from '$widgets';
 const MainPage: FC = memo(() => {
   const { t } = useTranslation(TranslationChunks.MAIN);
 
-  return <Page>{t('mainPage')}</Page>;
+  return <Page dataTestId="test-main-page">{t('mainPage')}</Page>;
 });
 
 export default MainPage;

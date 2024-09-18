@@ -20,7 +20,11 @@ const ArticlesPage = memo((props: Props) => {
   const { onLoadNextPage } = useModel();
 
   return (
-    <Page className={containerClassNames} onScrollEnd={onLoadNextPage}>
+    <Page
+      dataTestId="test-articles-page"
+      className={containerClassNames}
+      onScrollEnd={onLoadNextPage}
+    >
       <Text align={TextAlign.CENTER} title={t('articlesPageTitle')} />
       <ArticleInfiniteList />
     </Page>

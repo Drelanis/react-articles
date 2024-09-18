@@ -13,10 +13,12 @@ export const userSlice = createSlice({
     },
     initAuthData: (state) => {
       const user = localStorage.getItem(USER_LOCAL_STORAGE_KEY);
+
       if (user) {
         state.authData = JSON.parse(user) as User;
-        state.isMounted = true;
       }
+
+      state.isMounted = true;
     },
     logout: (state) => {
       state.authData = undefined;

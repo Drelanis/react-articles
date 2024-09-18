@@ -17,7 +17,11 @@ export const NotFoundPage: FC<Props> = (props) => {
 
   const { containerClassNames } = useStyles({ className });
 
-  return <Page className={containerClassNames}>{t('notFoundPage')}</Page>;
+  return (
+    <Page dataTestId="test-not-found" className={containerClassNames}>
+      {t('notFoundPage')}
+    </Page>
+  );
 };
 
 type StylesParams = Pick<Props, 'className'>;

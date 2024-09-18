@@ -16,6 +16,7 @@ import {
   ArticleType,
   ErrorHints,
   ThunkConfig,
+  USER_LOCAL_STORAGE_KEY,
 } from '$shared';
 
 type Params = {
@@ -47,6 +48,9 @@ export const fetchArticlesList = createAsyncThunk<
     });
 
     const response = await extra.api.get<Article[]>(AppRoutes.ARTICLES, {
+      headers: {
+        Authorization: localStorage.getItem(USER_LOCAL_STORAGE_KEY),
+      },
       params: {
         _expand: 'user',
         _limit: limit,

@@ -1,20 +1,25 @@
-import { FC, Suspense, useEffect } from 'react';
+import { FC, Suspense } from 'react';
 
 import { Routes } from '../lib';
 
 import classNames from './index.module.scss';
 
 import { userActions } from '$entities';
-import { buildClassNames, useAppDispatch, useTheme } from '$shared';
+import {
+  buildClassNames,
+  useAppDispatch,
+  useInitialEffect,
+  useTheme,
+} from '$shared';
 import { NavBar, Sidebar } from '$widgets';
 
 export const App: FC = () => {
   const { containerClassName } = useStyles();
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
+  useInitialEffect(() => {
     dispatch(userActions.initAuthData());
-  }, [dispatch]);
+  });
 
   return (
     <div className={containerClassName}>
