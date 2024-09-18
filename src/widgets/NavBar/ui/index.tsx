@@ -37,7 +37,9 @@ export const NavBar = memo((props: Props) => {
         direction="bottom left"
         className={classNames.dropdown}
         items={dropDownItems}
-        trigger={<Avatar size={30} src={userAuthData.avatar} />}
+        trigger={
+          <Avatar fallbackInverted size={30} src={userAuthData.avatar} />
+        }
       />
     </div>
   );
