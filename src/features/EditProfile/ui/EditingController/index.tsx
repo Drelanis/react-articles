@@ -22,7 +22,7 @@ export const EditingController = () => {
         {t('cancel')}
       </Button>
       <Button
-        data-testid="editProfile.saveButton"
+        data-testid="editProfile-saveButton"
         variant={ButtonVariant.OUTLINE}
         onClick={onSave}
       >

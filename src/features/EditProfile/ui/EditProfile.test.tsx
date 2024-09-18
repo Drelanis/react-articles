@@ -43,7 +43,7 @@ describe('features/EditProfile', () => {
       },
     });
 
-    userEvent.click(screen.getByTestId('editProfile.editButton'));
+    userEvent.click(screen.getByTestId('editProfile-editButton'));
 
     expect(screen.getByTestId('editProfile.cancelButton')).toBeInTheDocument();
   });
@@ -58,20 +58,20 @@ describe('features/EditProfile', () => {
       },
     });
 
-    userEvent.click(screen.getByTestId('editProfile.editButton'));
+    userEvent.click(screen.getByTestId('editProfile-editButton'));
 
-    userEvent.clear(screen.getByTestId('profileCard.firstName'));
-    userEvent.clear(screen.getByTestId('profileCard.lastName'));
+    userEvent.clear(screen.getByTestId('profileCard-firstName'));
+    userEvent.clear(screen.getByTestId('profileCard-lastName'));
 
-    userEvent.type(screen.getByTestId('profileCard.firstName'), 'user');
-    userEvent.type(screen.getByTestId('profileCard.lastName'), 'user');
+    userEvent.type(screen.getByTestId('profileCard-firstName'), 'user');
+    userEvent.type(screen.getByTestId('profileCard-lastName'), 'user');
 
-    expect(screen.getByTestId('profileCard.firstName')).toHaveValue('user');
-    expect(screen.getByTestId('profileCard.lastName')).toHaveValue('user');
+    expect(screen.getByTestId('profileCard-firstName')).toHaveValue('user');
+    expect(screen.getByTestId('profileCard-lastName')).toHaveValue('user');
 
     userEvent.click(screen.getByTestId('editProfile.cancelButton'));
 
-    expect(screen.getByTestId('profileCard.firstName')).toHaveValue('Denys');
-    expect(screen.getByTestId('profileCard.lastName')).toHaveValue('Badaka');
+    expect(screen.getByTestId('profileCard-firstName')).toHaveValue('Denys');
+    expect(screen.getByTestId('profileCard-lastName')).toHaveValue('Badaka');
   });
 });
