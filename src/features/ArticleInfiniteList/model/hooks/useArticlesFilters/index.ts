@@ -12,6 +12,8 @@ import { fetchArticlesList } from '../../services';
 import { articlesListActions } from '../../slices';
 
 import {
+  ARTICLES_LIST_ITEMS_LIMIT,
+  ARTICLES_TILE_ITEMS_LIMIT,
   ArticleType,
   FETCH_DATA_DELAY,
   ListOrderField,
@@ -39,6 +41,13 @@ export const useArticlesFilters = () => {
   const onChangeView = useCallback(
     async (listView: ListView) => {
       dispatch(articlesListActions.setView(listView));
+
+      if (listView === ListView.LIST) {
+        dispatch(articlesListActions.setLimit(ARTICLES_LIST_ITEMS_LIMIT));
+      } else {
+        dispatch(articlesListActions.setLimit(ARTICLES_TILE_ITEMS_LIMIT));
+      }
+
       await fetchData();
     },
     [dispatch, fetchData],
