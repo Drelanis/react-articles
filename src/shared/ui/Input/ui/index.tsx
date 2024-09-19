@@ -4,7 +4,6 @@ import { useModel } from '../model';
 
 import classNames from './index.module.scss';
 
-// TODO: Fix jest imports
 import { GenericMemoWrapper } from '$lib';
 import { buildClassNames } from '$shared/utils';
 

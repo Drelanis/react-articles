@@ -2,7 +2,6 @@ import { useTranslation } from 'react-i18next';
 
 import classNames from './index.module.scss';
 
-// TODO: Fix jest imports
 import { GenericMemoWrapper } from '$lib';
 import { Select, SelectOption } from '$shared/ui/Select';
 import { buildClassNames } from '$shared/utils';

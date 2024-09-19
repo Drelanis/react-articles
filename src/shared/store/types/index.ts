@@ -1,4 +1,3 @@
-// TODO Fix this problem!!!
 import {
   AnyAction,
   CombinedState,

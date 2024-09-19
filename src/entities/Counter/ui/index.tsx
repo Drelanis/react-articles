@@ -1,4 +1,4 @@
-/* eslint-disable i18next/no-literal-string -- TODO */
+/* eslint-disable i18next/no-literal-string -- exception */
 import { memo } from 'react';
 
 import { useCounterActions, useCounterValue } from '../model';

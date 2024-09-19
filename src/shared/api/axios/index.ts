@@ -8,17 +8,3 @@ export const $api = axios.create({
     Authorization: localStorage.getItem(USER_LOCAL_STORAGE_KEY) || '',
   },
 });
-
-// TODO: Fix me for unit testing
-// $api.interceptors.request.use((config) => {
-//   const newConfig = {
-//     ...config,
-//   };
-
-//   if (newConfig.headers) {
-//     newConfig.headers.Authorization =
-//       localStorage.getItem(USER_LOCAL_STORAGE_KEY) || '';
-//   }
-
-//   return newConfig;
-// });

@@ -5,7 +5,6 @@ import { ReactNode } from 'react';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import { MemoryRouter } from 'react-router-dom';
 
-// TODO Providers FIX this problem in FSD!!!
 import { StoreProvider, ThemeProvider } from '$shared/providers';
 import { StateSchema } from '$shared/store';
 

@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 
-// TODO: Fix jest imports
 import { GenericMemoWrapper } from '$lib';
 import { Card, Input } from '$shared/ui';
 

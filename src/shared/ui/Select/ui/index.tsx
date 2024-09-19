@@ -1,4 +1,3 @@
-// TODO: Fix jest imports
 import { useModel } from '../model';
 import { SelectOption } from '../types';
 

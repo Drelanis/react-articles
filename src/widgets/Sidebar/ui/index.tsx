@@ -1,5 +1,3 @@
-/* eslint-disable i18next/no-literal-string -- TODO */
-
 import { memo } from 'react';
 
 import { useModel } from '../model';

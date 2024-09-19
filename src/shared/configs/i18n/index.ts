@@ -2,13 +2,11 @@ import i18next from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
 
-// TODO update aliases
 import aboutEn from '../../../../locales/en/about.json';
 import articlesEn from '../../../../locales/en/articles.json';
 import mainEn from '../../../../locales/en/main.json';
 import profileEn from '../../../../locales/en/profile.json';
 import translationEn from '../../../../locales/en/translation.json';
-// TODO update aliases
 import aboutUa from '../../../../locales/ua/about.json';
 import articlesUa from '../../../../locales/ua/articles.json';
 import mainUa from '../../../../locales/ua/main.json';

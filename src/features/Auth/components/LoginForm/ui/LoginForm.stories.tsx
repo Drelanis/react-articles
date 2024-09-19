@@ -23,7 +23,6 @@ export const Primary = Template.bind({});
 Primary.args = {};
 
 const asyncLoginReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
-  // TODO: Research this moment
   login: loginReducer as Reducer<LoginSchema | undefined>,
 };
 

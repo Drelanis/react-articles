@@ -10,7 +10,6 @@ import { StateSchema } from '../types';
 
 import { createReducerManager } from './reducerManager';
 
-// TODO Fix it!
 import { counterReducer, userReducer } from '$entities';
 import { scrollRestorationReducer } from '$features/ScrollRestoration';
 import { $api, rtkApi } from '$shared/api';
@@ -34,7 +33,6 @@ export const createReduxStore = (params: Params) => {
   const reducerManager = createReducerManager(rootReducers);
 
   const store = configureStore({
-    // TODO: Fix me
     reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
     devTools: IS_DEV,
     preloadedState: initialState as StateSchema,
