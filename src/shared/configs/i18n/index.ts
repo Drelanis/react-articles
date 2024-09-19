@@ -3,17 +3,17 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
 
 // TODO update aliases
-import aboutEn from '../../../../public/locales/en/about.json';
-import articlesEn from '../../../../public/locales/en/articles.json';
-import mainEn from '../../../../public/locales/en/main.json';
-import profileEn from '../../../../public/locales/en/profile.json';
-import translationEn from '../../../../public/locales/en/translation.json';
+import aboutEn from '../../../../locales/en/about.json';
+import articlesEn from '../../../../locales/en/articles.json';
+import mainEn from '../../../../locales/en/main.json';
+import profileEn from '../../../../locales/en/profile.json';
+import translationEn from '../../../../locales/en/translation.json';
 // TODO update aliases
-import aboutUa from '../../../../public/locales/ua/about.json';
-import articlesUa from '../../../../public/locales/ua/articles.json';
-import mainUa from '../../../../public/locales/ua/main.json';
-import profileUa from '../../../../public/locales/ua/profile.json';
-import translationUa from '../../../../public/locales/ua/translation.json';
+import aboutUa from '../../../../locales/ua/about.json';
+import articlesUa from '../../../../locales/ua/articles.json';
+import mainUa from '../../../../locales/ua/main.json';
+import profileUa from '../../../../locales/ua/profile.json';
+import translationUa from '../../../../locales/ua/translation.json';
 
 export type TranslationPagesKeys =
   | keyof typeof aboutEn

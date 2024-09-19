@@ -11,7 +11,7 @@
     "start:dev:server": "node ./json-server/index.js",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
-    "i18next:build": "i18next-resources-for-ts toc -i ./public/locales/en -o ./@types/resources.ts",
+    "i18next:build": "i18next-resources-for-ts toc -i ./locales/en -o ./@types/resources.ts",
     "husky:install": "husky install",
     "lint:ts": "eslint .",
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
